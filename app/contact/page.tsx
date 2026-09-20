@@ -17,6 +17,7 @@ export default function ContactPage() {
   return (
     <div className="mx-auto max-w-6xl px-5 py-20">
       <SectionHeading
+        as="h1"
         eyebrow="تواصل معنا"
         title="أرسل طلب الصيانة الآن"
         description="شارك تفاصيل العطل وسيتواصل معك فريقنا الفني لمراجعة الحالة وتحديد الخدمة المناسبة."

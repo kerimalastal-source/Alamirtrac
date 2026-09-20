@@ -6,6 +6,8 @@ import HeroIllustration from "@/components/HeroIllustration";
 import { business, services, blogPosts } from "@/lib/content";
 
 export const metadata: Metadata = {
+  description:
+    "شركة الأمير (ALAMIR TRAC) لصيانة وإعادة تأهيل المعدات الثقيلة وأنظمة الهيدروليك في القاهرة، بخبرة تزيد عن 30 عاماً.",
   alternates: { canonical: "/" },
 };
 

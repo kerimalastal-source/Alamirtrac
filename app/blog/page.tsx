@@ -17,6 +17,7 @@ export default function BlogPage() {
   return (
     <div className="mx-auto max-w-6xl px-5 py-20">
       <SectionHeading
+        as="h1"
         eyebrow="المدونة الفنية"
         title="مقالات ونصائح صيانة المعدات الثقيلة"
         description="خبرة فريقنا الفني في مقالات مبسطة تساعدك على فهم أعطال معداتك واتخاذ القرار الصحيح."

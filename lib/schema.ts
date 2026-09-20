@@ -2,13 +2,20 @@ import { business, type Service, type BlogPost, type FaqCategory } from "@/lib/c
 
 const logoUrl = `${business.url}/logo.avif`;
 
+const brandNameVariants = ["ALAMIR TRAC", "Alamir Trac", "الأمير تراك", "الامير تراك", "شركة الأمير"];
+
+const egyptAreaServed = {
+  "@type": "Country",
+  name: "مصر",
+};
+
 export function localBusinessSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "@id": `${business.url}/#business`,
     name: business.fullName,
-    alternateName: business.nameBrand,
+    alternateName: brandNameVariants,
     description: business.description,
     url: business.url,
     telephone: business.phone,
@@ -22,11 +29,23 @@ export function localBusinessSchema() {
       addressLocality: "القاهرة",
       addressCountry: "EG",
     },
-    areaServed: {
-      "@type": "City",
-      name: "القاهرة",
-    },
+    areaServed: egyptAreaServed,
     sameAs: [business.facebook, business.instagram],
+  };
+}
+
+export function websiteSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${business.url}/#website`,
+    name: business.fullName,
+    alternateName: brandNameVariants,
+    url: business.url,
+    inLanguage: "ar",
+    publisher: {
+      "@id": `${business.url}/#business`,
+    },
   };
 }
 
@@ -45,10 +64,7 @@ export function serviceSchema(service: Service) {
       telephone: business.phone,
       url: business.url,
     },
-    areaServed: {
-      "@type": "City",
-      name: "القاهرة",
-    },
+    areaServed: egyptAreaServed,
   };
 }
 

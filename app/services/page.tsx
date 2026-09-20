@@ -15,6 +15,7 @@ export default function ServicesPage() {
   return (
     <div className="mx-auto max-w-6xl px-5 py-20">
       <SectionHeading
+        as="h1"
         eyebrow="خدماتنا"
         title="خدمات صيانة المعدات الثقيلة والهيدروليك"
         description="فريق فني متخصص يغطي كل أنظمة المعدة الثقيلة، من الفحص الدوري إلى إعادة التأهيل الكاملة. اختر الخدمة لمعرفة تفاصيلها."

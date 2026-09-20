@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import FloatingContactButtons from "@/components/FloatingContactButtons";
 import JsonLd from "@/components/JsonLd";
 import { business } from "@/lib/content";
-import { localBusinessSchema } from "@/lib/schema";
+import { localBusinessSchema, websiteSchema } from "@/lib/schema";
 import "./globals.css";
 
 const GA_MEASUREMENT_ID = "G-8N9W3E758L";
@@ -37,6 +37,9 @@ export const metadata: Metadata = {
     "إعادة تأهيل معدات ثقيلة",
     "صيانة معدات ثقيلة القاهرة",
     "ALAMIR TRAC",
+    "Alamir Trac",
+    "الأمير تراك",
+    "الامير تراك",
   ],
   authors: [{ name: business.fullName, url: business.url }],
   robots: {
@@ -80,6 +83,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           `}
         </Script>
         <JsonLd data={localBusinessSchema()} />
+        <JsonLd data={websiteSchema()} />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

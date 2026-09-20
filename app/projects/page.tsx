@@ -14,6 +14,7 @@ export default function ProjectsPage() {
   return (
     <div className="mx-auto max-w-6xl px-5 py-20">
       <SectionHeading
+        as="h1"
         eyebrow="من أعمالنا"
         title="نماذج من أعمال الصيانة وإعادة التأهيل"
         description="أمثلة من طبيعة الأعمال التي ننفذها. القسم قابل للتحديث بصور وتفاصيل حقيقية من أرشيف الشركة."

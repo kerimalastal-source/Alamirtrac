@@ -21,7 +21,7 @@ export async function generateMetadata({
   if (!service) return {};
   return {
     title: service.title,
-    description: service.description,
+    description: service.metaDescription ?? service.description,
     alternates: { canonical: `/services/${service.slug}` },
   };
 }
