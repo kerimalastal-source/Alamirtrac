@@ -24,7 +24,7 @@ export default function ContactPage() {
         </div>
 
         <div className="space-y-6">
-          <div className="rounded-2xl border border-border bg-surface p-6">
+          <div className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
             <h3 className="font-bold text-foreground">البريد الإلكتروني</h3>
             <a
               href={`mailto:${business.email}`}
@@ -34,11 +34,11 @@ export default function ContactPage() {
               {business.email}
             </a>
           </div>
-          <div className="rounded-2xl border border-border bg-surface p-6">
+          <div className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
             <h3 className="font-bold text-foreground">موقع العمل</h3>
             <p className="mt-2 text-muted">{business.city}</p>
           </div>
-          <div className="rounded-2xl border border-border bg-surface p-6">
+          <div className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
             <h3 className="font-bold text-foreground">مجالات الصيانة</h3>
             <p className="mt-2 text-sm leading-6 text-muted">
               المعدات الثقيلة، الهيدروليك، المحركات، حقن الديزل، أنظمة التبريد، الأنظمة الكهربائية، وإعادة التأهيل الشاملة.

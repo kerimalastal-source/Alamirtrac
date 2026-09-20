@@ -31,15 +31,15 @@ const whyUs = [
 export default function Home() {
   return (
     <>
-      <section className="bg-grid border-b border-border">
+      <section className="bg-grid bg-dark">
         <div className="mx-auto max-w-6xl px-5 py-24 sm:py-32">
           <span className="text-sm font-bold tracking-wide text-accent">
             {business.nameBrand} — القاهرة
           </span>
-          <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-tight text-foreground sm:text-5xl">
+          <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-tight text-dark-foreground sm:text-5xl">
             صيانة وإعادة تأهيل المعدات الثقيلة وأنظمة الهيدروليك
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">{business.description}</p>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-dark-muted">{business.description}</p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Link
               href="/contact"
@@ -49,19 +49,19 @@ export default function Home() {
             </Link>
             <Link
               href="/services"
-              className="rounded-md border border-border px-6 py-3 font-bold text-foreground transition-colors hover:border-accent hover:text-accent"
+              className="rounded-md border border-dark-border px-6 py-3 font-bold text-dark-foreground transition-colors hover:border-accent hover:text-accent"
             >
               تصفح خدماتنا
             </Link>
           </div>
 
-          <div className="mt-16 grid grid-cols-3 gap-6 border-t border-border pt-10">
+          <div className="mt-16 grid grid-cols-3 gap-6 border-t border-dark-border pt-10">
             {stats.map((stat) => (
               <div key={stat.label}>
                 <div className="font-heading text-3xl font-extrabold text-accent sm:text-4xl">
                   {stat.value}
                 </div>
-                <div className="mt-1 text-sm text-muted">{stat.label}</div>
+                <div className="mt-1 text-sm text-dark-muted">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -81,12 +81,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-border bg-surface">
+      <section className="border-y border-border bg-background">
         <div className="mx-auto max-w-6xl px-5 py-20">
           <SectionHeading eyebrow="لماذا ALAMIR TRAC" title="خبرة ميدانية تحمي معداتك من التوقف" />
           <div className="mt-10 grid gap-6 sm:grid-cols-2">
             {whyUs.map((item) => (
-              <div key={item.title} className="rounded-2xl border border-border bg-background p-6">
+              <div key={item.title} className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
                 <h3 className="text-lg font-bold text-foreground">{item.title}</h3>
                 <p className="mt-2 text-sm leading-6 text-muted">{item.description}</p>
               </div>
@@ -107,7 +107,7 @@ export default function Home() {
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="flex flex-col rounded-2xl border border-border bg-surface p-5 transition-colors hover:border-accent/50"
+              className="flex flex-col rounded-2xl border border-border bg-surface p-5 shadow-sm transition-colors hover:border-accent/50"
             >
               <h3 className="text-base font-bold leading-6 text-foreground">{post.title}</h3>
               <p className="mt-2 line-clamp-3 text-sm leading-6 text-muted">{post.excerpt}</p>
@@ -117,15 +117,17 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t border-border bg-surface">
+      <section className="bg-accent">
         <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 px-5 py-16 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h2 className="text-2xl font-extrabold text-foreground">عندك عطل في معدة ثقيلة؟</h2>
-            <p className="mt-2 text-muted">تواصل معنا الآن وسيراجع فريقنا الفني حالة العطل والخدمة المطلوبة.</p>
+            <h2 className="text-2xl font-extrabold text-accent-foreground">عندك عطل في معدة ثقيلة؟</h2>
+            <p className="mt-2 text-accent-foreground/85">
+              تواصل معنا الآن وسيراجع فريقنا الفني حالة العطل والخدمة المطلوبة.
+            </p>
           </div>
           <Link
             href="/contact"
-            className="shrink-0 rounded-md bg-accent px-6 py-3 font-bold text-accent-foreground transition-colors hover:bg-accent-strong"
+            className="shrink-0 rounded-md bg-dark px-6 py-3 font-bold text-dark-foreground transition-colors hover:bg-dark-elevated"
           >
             اطلب صيانة الآن
           </Link>

@@ -25,7 +25,7 @@ export default function ServicesPage() {
         ))}
       </div>
 
-      <div className="mt-16 flex flex-col items-start gap-4 rounded-2xl border border-border bg-surface p-8 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mt-16 flex flex-col items-start gap-4 rounded-2xl border border-border bg-surface p-8 shadow-sm sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h2 className="text-xl font-bold text-foreground">مش متأكد أي خدمة تحتاجها؟</h2>
           <p className="mt-1 text-sm text-muted">أرسل لنا تفاصيل العطل وسيراجعها الفريق الفني ويقترح الحل المناسب.</p>

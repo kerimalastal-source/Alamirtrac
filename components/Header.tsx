@@ -11,13 +11,13 @@ const links = [
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-dark-border bg-dark/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
         <Link href="/" className="flex items-baseline gap-2">
-          <span className="font-heading text-xl font-extrabold tracking-tight text-foreground">
+          <span className="font-heading text-xl font-extrabold tracking-tight text-dark-foreground">
             ALAMIR<span className="text-accent">TRAC</span>
           </span>
-          <span className="hidden text-xs text-muted sm:inline">{business.nameAr}</span>
+          <span className="hidden text-xs text-dark-muted sm:inline">{business.nameAr}</span>
         </Link>
 
         <nav className="hidden items-center gap-7 md:flex">
@@ -25,7 +25,7 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm text-muted transition-colors hover:text-foreground"
+              className="text-sm text-dark-muted transition-colors hover:text-dark-foreground"
             >
               {link.label}
             </Link>
@@ -40,12 +40,12 @@ export default function Header() {
         </Link>
       </div>
 
-      <nav className="flex items-center gap-5 overflow-x-auto border-t border-border px-5 py-2 md:hidden">
+      <nav className="flex items-center gap-5 overflow-x-auto border-t border-dark-border px-5 py-2 md:hidden">
         {links.map((link) => (
           <Link
             key={link.href}
             href={link.href}
-            className="shrink-0 text-sm text-muted transition-colors hover:text-foreground"
+            className="shrink-0 text-sm text-dark-muted transition-colors hover:text-dark-foreground"
           >
             {link.label}
           </Link>

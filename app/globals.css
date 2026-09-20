@@ -1,15 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0b0d10;
-  --surface: #12151a;
-  --surface-2: #191d24;
-  --border: #262b33;
-  --foreground: #eef1f5;
-  --muted: #9aa3af;
-  --accent: #e8891a;
-  --accent-strong: #ff9d2b;
-  --accent-foreground: #1a1002;
+  /* Light theme — page content */
+  --background: #f8fafc;
+  --surface: #ffffff;
+  --surface-2: #f1f5f9;
+  --border: #e2e8f0;
+  --foreground: #0f172a;
+  --muted: #64748b;
+
+  /* Brand accent — industrial safety orange */
+  --accent: #ff6b00;
+  --accent-strong: #e25900;
+  --accent-foreground: #ffffff;
+
+  /* Dark navy — header, hero band, footer */
+  --dark: #0f172a;
+  --dark-elevated: #1e293b;
+  --dark-border: #253449;
+  --dark-foreground: #f8fafc;
+  --dark-muted: #94a3b8;
 }
 
 @theme inline {
@@ -22,6 +32,11 @@
   --color-accent: var(--accent);
   --color-accent-strong: var(--accent-strong);
   --color-accent-foreground: var(--accent-foreground);
+  --color-dark: var(--dark);
+  --color-dark-elevated: var(--dark-elevated);
+  --color-dark-border: var(--dark-border);
+  --color-dark-foreground: var(--dark-foreground);
+  --color-dark-muted: var(--dark-muted);
   --font-heading: var(--font-cairo);
   --font-body: var(--font-tajawal);
 }
@@ -47,6 +62,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .bg-grid {
   background-image:
-    linear-gradient(to bottom, rgba(11, 13, 16, 0.75), rgba(11, 13, 16, 0.96)),
-    repeating-linear-gradient(135deg, rgba(232, 137, 26, 0.06) 0px, rgba(232, 137, 26, 0.06) 2px, transparent 2px, transparent 26px);
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.96)),
+    repeating-linear-gradient(135deg, rgba(255, 107, 0, 0.08) 0px, rgba(255, 107, 0, 0.08) 2px, transparent 2px, transparent 26px);
 }

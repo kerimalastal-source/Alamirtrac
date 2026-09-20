@@ -8,7 +8,7 @@ export default function ServiceCard({ service, detailed }: { service: Service; d
   return (
     <div
       id={service.slug}
-      className="group scroll-mt-24 rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-accent/50"
+      className="group scroll-mt-24 rounded-2xl border border-border bg-surface p-6 shadow-sm transition-colors hover:border-accent/50 hover:shadow-md"
     >
       <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-surface-2 text-accent transition-colors group-hover:bg-accent group-hover:text-accent-foreground">
         <Icon className="h-6 w-6" />

@@ -19,7 +19,7 @@ export default function ProjectsPage() {
 
       <div className="mt-12 grid gap-6 sm:grid-cols-2">
         {projects.map((project) => (
-          <div key={project.slug} className="overflow-hidden rounded-2xl border border-border bg-surface">
+          <div key={project.slug} className="overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
             <div className="flex h-40 items-center justify-center border-b border-border bg-surface-2 text-sm text-muted">
               صورة العمل (قريباً)
             </div>

@@ -23,7 +23,7 @@ export default function BlogPage() {
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="flex flex-col rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-accent/50"
+            className="flex flex-col rounded-2xl border border-border bg-surface p-6 shadow-sm transition-colors hover:border-accent/50 hover:shadow-md"
           >
             <span className="text-xs text-muted">
               {new Date(post.publishedDate).toLocaleDateString("ar-EG", {
