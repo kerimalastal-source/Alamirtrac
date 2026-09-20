@@ -1,0 +1,44 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import SectionHeading from "@/components/SectionHeading";
+import { blogPosts } from "@/lib/content";
+
+export const metadata: Metadata = {
+  title: "المدونة",
+  description:
+    "مقالات فنية من ALAMIR TRAC حول صيانة المعدات الثقيلة، أعطال الهيدروليك، المحركات، أنظمة التبريد والصيانة الوقائية.",
+};
+
+export default function BlogPage() {
+  return (
+    <div className="mx-auto max-w-6xl px-5 py-20">
+      <SectionHeading
+        eyebrow="المدونة الفنية"
+        title="مقالات ونصائح صيانة المعدات الثقيلة"
+        description="خبرة فريقنا الفني في مقالات مبسطة تساعدك على فهم أعطال معداتك واتخاذ القرار الصحيح."
+      />
+
+      <div className="mt-12 grid gap-6 sm:grid-cols-2">
+        {blogPosts.map((post) => (
+          <Link
+            key={post.slug}
+            href={`/blog/${post.slug}`}
+            className="flex flex-col rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-accent/50"
+          >
+            <span className="text-xs text-muted">
+              {new Date(post.publishedDate).toLocaleDateString("ar-EG", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}{" "}
+              · {post.minutesToRead} دقيقة قراءة
+            </span>
+            <h2 className="mt-3 text-lg font-bold leading-7 text-foreground">{post.title}</h2>
+            <p className="mt-2 leading-6 text-muted">{post.excerpt}</p>
+            <span className="mt-4 text-sm font-bold text-accent">اقرأ المقال كاملاً ←</span>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
