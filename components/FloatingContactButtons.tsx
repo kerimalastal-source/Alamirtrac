@@ -3,28 +3,28 @@ import { WhatsappIcon, PhoneCallIcon, FacebookIcon, InstagramIcon } from "@/comp
 
 const buttons = [
   {
-    href: business.whatsapp,
-    label: "تواصل عبر واتساب",
-    className: "bg-[#25D366] hover:bg-[#1eb955]",
-    Icon: WhatsappIcon,
-  },
-  {
     href: `tel:${business.phone}`,
     label: "اتصل بنا",
     className: "bg-accent hover:bg-accent-strong",
     Icon: PhoneCallIcon,
   },
   {
-    href: business.instagram,
-    label: "تابعنا على إنستغرام",
-    className: "bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] hover:opacity-90",
-    Icon: InstagramIcon,
+    href: business.whatsapp,
+    label: "تواصل عبر واتساب",
+    className: "bg-[#25D366] hover:bg-[#1eb955]",
+    Icon: WhatsappIcon,
   },
   {
     href: business.facebook,
     label: "تابعنا على فيسبوك",
     className: "bg-[#1877F2] hover:bg-[#1465d1]",
     Icon: FacebookIcon,
+  },
+  {
+    href: business.instagram,
+    label: "تابعنا على إنستغرام",
+    className: "bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] hover:opacity-90",
+    Icon: InstagramIcon,
   },
 ];
 
