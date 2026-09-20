@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cairo, Tajawal } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import FloatingContactButtons from "@/components/FloatingContactButtons";
 import { business } from "@/lib/content";
 import "./globals.css";
 
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <FloatingContactButtons />
       </body>
     </html>
   );

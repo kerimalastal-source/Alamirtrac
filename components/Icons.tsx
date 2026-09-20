@@ -157,6 +157,40 @@ export function ContractIcon(props: IconProps) {
   );
 }
 
+export function WhatsappIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 32 32" fill="currentColor" {...props}>
+      <path d="M16.02 3C9.4 3 4 8.4 4 15.02c0 2.35.62 4.55 1.7 6.46L3 29l7.7-2.62a11.98 11.98 0 0 0 5.32 1.24h.01c6.62 0 12.01-5.4 12.01-12.02C28.04 8.4 22.65 3 16.02 3Zm0 21.77h-.01a10 10 0 0 1-5.1-1.4l-.37-.22-3.85 1.3 1.31-3.75-.24-.38a9.9 9.9 0 0 1-1.53-5.3c0-5.48 4.46-9.94 9.95-9.94 2.65 0 5.14 1.04 7.02 2.92a9.85 9.85 0 0 1 2.91 7.02c0 5.48-4.46 9.75-9.09 9.75Zm5.44-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.24-.46-2.37-1.46-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.91-2.2-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35Z" />
+    </svg>
+  );
+}
+
+export function PhoneCallIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" {...base} {...props}>
+      <path d="M7.7 3.5 9.6 8l-2.3 1.8a13.3 13.3 0 0 0 6.9 6.9L16 14.4l4.5 1.9v3.5c0 1-.85 1.8-1.85 1.7C11.9 21 3 12.1 2.5 5.35 2.4 4.35 3.2 3.5 4.2 3.5H7.7Z" />
+    </svg>
+  );
+}
+
+export function FacebookIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 32 32" fill="currentColor" {...props}>
+      <path d="M21.5 11h-3v-2.4c0-.9.6-1.1 1-1.1h2V3.9L18.5 3.9c-3.9 0-4.8 2.9-4.8 4.8V11H11v4h2.7v13h4.8V15h3.3l.4-4Z" />
+    </svg>
+  );
+}
+
+export function InstagramIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
+      <rect x="4" y="4" width="24" height="24" rx="6" />
+      <circle cx="16" cy="16" r="5.2" />
+      <circle cx="22.4" cy="9.6" r="1.1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
 export const serviceIcons = {
   wrench: WrenchIcon,
   hydraulic: HydraulicIcon,

@@ -10,6 +10,10 @@ export const business = {
   mapQuery: "البراجيل، القاهرة",
   email: "alamirtrac@gmail.com",
   yearsOfExperience: 30,
+  phone: "+201043676451",
+  whatsapp: "https://wa.me/201043676451",
+  facebook: "https://www.facebook.com/share/1EuTxNf66E",
+  instagram: "https://www.instagram.com/alamirtrac?stkn=MXhjZmdzaGNod2pvYg==",
 } as const;
 
 export type ServiceIcon =

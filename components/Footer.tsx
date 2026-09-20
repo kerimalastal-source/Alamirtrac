@@ -58,6 +58,11 @@ export default function Footer() {
           <ul className="space-y-2 text-sm text-muted">
             <li>{business.address}</li>
             <li dir="ltr" className="text-right">
+              <a href={`tel:${business.phone}`} className="transition-colors hover:text-accent">
+                {business.phone}
+              </a>
+            </li>
+            <li dir="ltr" className="text-right">
               <a href={`mailto:${business.email}`} className="transition-colors hover:text-accent">
                 {business.email}
               </a>
