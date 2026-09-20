@@ -40,8 +40,8 @@ export default function Home() {
       <section className="bg-grid bg-dark">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-10 px-5 py-24 sm:py-32 lg:flex-row lg:justify-between">
           <div>
-            <span className="text-sm font-bold tracking-wide text-accent">
-              {business.nameBrand} — القاهرة
+            <span className="text-xl font-extrabold tracking-wide text-accent sm:text-2xl">
+              {business.nameBrand} — الأمير تراك
             </span>
             <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-tight text-dark-foreground sm:text-5xl">
               صيانة وإعادة تأهيل المعدات الثقيلة وأنظمة الهيدروليك
