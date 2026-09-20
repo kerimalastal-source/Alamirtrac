@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="border-t border-border bg-surface">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <Image src="/logo.avif" alt={business.fullName} width={358} height={192} className="h-12 w-auto" />
+          <Image src="/logo.avif" alt={business.fullName} width={358} height={192} className="h-20 w-auto" />
           <p className="mt-3 text-sm leading-6 text-muted">{business.description}</p>
         </div>
 

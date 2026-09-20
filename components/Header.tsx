@@ -13,7 +13,7 @@ const links = [
 export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-surface/95 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3">
         <Link href="/" className="flex items-center gap-2">
           <Image
             src="/logo.avif"
@@ -21,7 +21,7 @@ export default function Header() {
             width={358}
             height={192}
             priority
-            className="h-11 w-auto sm:h-12"
+            className="h-16 w-auto sm:h-20"
           />
           <span className="hidden text-xs text-muted sm:inline">{business.nameAr}</span>
         </Link>
