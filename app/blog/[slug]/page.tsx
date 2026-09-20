@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { blogPosts } from "@/lib/content";
+import { blogPosts, business } from "@/lib/content";
 import JsonLd from "@/components/JsonLd";
 import CoverIllustration from "@/components/CoverIllustration";
+import { WhatsappIcon } from "@/components/Icons";
 import { blogPostingSchema, breadcrumbSchema } from "@/lib/schema";
 
 export function generateStaticParams() {
@@ -77,12 +78,23 @@ export default async function BlogPostPage({
           <h2 className="font-bold text-foreground">تحتاج فحصاً فنياً لمعدتك؟</h2>
           <p className="mt-1 text-sm text-muted">فريق ALAMIR TRAC جاهز لمراجعة العطل واقتراح الحل المناسب.</p>
         </div>
-        <Link
-          href="/contact"
-          className="mt-4 inline-block rounded-md bg-accent px-5 py-2.5 font-bold text-accent-foreground transition-colors hover:bg-accent-strong sm:mt-0"
-        >
-          تواصل معنا
-        </Link>
+        <div className="mt-4 flex flex-col gap-3 sm:mt-0">
+          <Link
+            href="/contact"
+            className="rounded-md bg-accent px-5 py-2.5 text-center font-bold text-accent-foreground transition-colors hover:bg-accent-strong"
+          >
+            تواصل معنا
+          </Link>
+          <a
+            href={business.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 rounded-md bg-[#25D366] px-5 py-2.5 font-bold text-white transition-colors hover:bg-[#1eb955]"
+          >
+            <WhatsappIcon className="h-5 w-5" />
+            تواصل عبر واتساب
+          </a>
+        </div>
       </div>
     </article>
   );
