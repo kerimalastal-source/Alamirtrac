@@ -26,20 +26,20 @@ export default function Header() {
           <span className="hidden text-xs text-muted sm:inline">{business.nameAr}</span>
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex">
-          <Link href="/" className="text-sm text-muted transition-colors hover:text-foreground">
+        <nav className="hidden items-center gap-8 md:flex">
+          <Link href="/" className="text-base font-semibold text-foreground transition-colors hover:text-accent">
             الرئيسية
           </Link>
 
           <div className="group relative">
             <Link
               href="/services"
-              className="inline-flex items-center gap-1 text-sm text-muted transition-colors hover:text-foreground"
+              className="inline-flex items-center gap-1 text-base font-semibold text-foreground transition-colors hover:text-accent"
             >
               خدماتنا
               <svg
                 viewBox="0 0 24 24"
-                className="h-3.5 w-3.5 transition-transform group-hover:rotate-180"
+                className="h-4 w-4 transition-transform group-hover:rotate-180"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
@@ -55,7 +55,7 @@ export default function Header() {
                 <Link
                   key={service.slug}
                   href={`/services/${service.slug}`}
-                  className="rounded-lg px-3 py-2 text-sm text-muted transition-colors hover:bg-surface-2 hover:text-foreground"
+                  className="rounded-lg px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-surface-2 hover:text-accent"
                 >
                   {service.title}
                 </Link>
@@ -63,13 +63,13 @@ export default function Header() {
             </div>
           </div>
 
-          <Link href="/projects" className="text-sm text-muted transition-colors hover:text-foreground">
+          <Link href="/projects" className="text-base font-semibold text-foreground transition-colors hover:text-accent">
             أعمالنا
           </Link>
-          <Link href="/blog" className="text-sm text-muted transition-colors hover:text-foreground">
+          <Link href="/blog" className="text-base font-semibold text-foreground transition-colors hover:text-accent">
             المدونة
           </Link>
-          <Link href="/contact" className="text-sm text-muted transition-colors hover:text-foreground">
+          <Link href="/contact" className="text-base font-semibold text-foreground transition-colors hover:text-accent">
             تواصل معنا
           </Link>
         </nav>
@@ -82,12 +82,12 @@ export default function Header() {
         </Link>
       </div>
 
-      <nav className="flex items-center gap-5 overflow-x-auto border-t border-border px-5 py-2 md:hidden">
+      <nav className="flex items-center gap-6 overflow-x-auto border-t border-border px-5 py-2.5 md:hidden">
         {links.map((link) => (
           <Link
             key={link.href}
             href={link.href}
-            className="shrink-0 text-sm text-muted transition-colors hover:text-foreground"
+            className="shrink-0 text-base font-semibold text-foreground transition-colors hover:text-accent"
           >
             {link.label}
           </Link>
