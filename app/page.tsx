@@ -1,7 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
 import { business, services, blogPosts } from "@/lib/content";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const stats = [
   { value: "+30", label: "عاماً من الخبرة" },

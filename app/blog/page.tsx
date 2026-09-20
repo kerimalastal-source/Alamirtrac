@@ -4,9 +4,10 @@ import SectionHeading from "@/components/SectionHeading";
 import { blogPosts } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "المدونة",
+  title: "مقالات ونصائح صيانة المعدات الثقيلة",
   description:
     "مقالات فنية من ALAMIR TRAC حول صيانة المعدات الثقيلة، أعطال الهيدروليك، المحركات، أنظمة التبريد والصيانة الوقائية.",
+  alternates: { canonical: "/blog" },
 };
 
 export default function BlogPage() {

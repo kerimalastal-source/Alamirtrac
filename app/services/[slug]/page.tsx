@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { services } from "@/lib/content";
 import ServiceHero from "@/components/ServiceHero";
 import { serviceIcons } from "@/components/Icons";
+import JsonLd from "@/components/JsonLd";
+import { serviceSchema, breadcrumbSchema } from "@/lib/schema";
 
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
@@ -17,7 +19,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const service = services.find((item) => item.slug === slug);
   if (!service) return {};
-  return { title: service.title, description: service.description };
+  return {
+    title: service.title,
+    description: service.description,
+    alternates: { canonical: `/services/${service.slug}` },
+  };
 }
 
 export default async function ServiceDetailPage({
@@ -33,6 +39,14 @@ export default async function ServiceDetailPage({
 
   return (
     <article className="mx-auto max-w-4xl px-5 py-16 sm:py-20">
+      <JsonLd data={serviceSchema(service)} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "الرئيسية", path: "/" },
+          { name: "خدماتنا", path: "/services" },
+          { name: service.title, path: `/services/${service.slug}` },
+        ])}
+      />
       <Link href="/services" className="text-sm font-bold text-accent hover:text-accent-strong">
         ← كل الخدمات
       </Link>

@@ -5,9 +5,10 @@ import ServiceCard from "@/components/ServiceCard";
 import { services } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "خدماتنا",
+  title: "خدمات صيانة المعدات الثقيلة والهيدروليك",
   description:
     "خدمات ALAMIR TRAC لصيانة المعدات الثقيلة: الهيدروليك، المحركات، الديزل، التبريد، الكهرباء، المجنزرات، ناقل الحركة، اللحام، والصيانة الطارئة في القاهرة.",
+  alternates: { canonical: "/services" },
 };
 
 export default function ServicesPage() {

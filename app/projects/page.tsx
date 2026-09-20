@@ -3,9 +3,10 @@ import SectionHeading from "@/components/SectionHeading";
 import { projects } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "من أعمالنا",
+  title: "نماذج من أعمال الصيانة وإعادة التأهيل",
   description:
     "نماذج من أعمال ALAMIR TRAC في صيانة وإعادة تأهيل المعدات الثقيلة وأنظمة الهيدروليك والمحركات والتبريد والديزل والكهرباء.",
+  alternates: { canonical: "/projects" },
 };
 
 export default function ProjectsPage() {

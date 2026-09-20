@@ -4,9 +4,10 @@ import ContactForm from "@/components/ContactForm";
 import { business } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "تواصل معنا",
+  title: "تواصل معنا واطلب الصيانة",
   description:
     "تواصل مع ALAMIR TRAC في البراجيل، القاهرة لطلبات صيانة وإعادة تأهيل المعدات الثقيلة وأنظمة الهيدروليك والمحركات والديزل والتبريد والكهرباء.",
+  alternates: { canonical: "/contact" },
 };
 
 const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(business.mapQuery)}&output=embed`;

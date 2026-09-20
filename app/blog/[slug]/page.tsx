@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { blogPosts } from "@/lib/content";
+import JsonLd from "@/components/JsonLd";
+import { blogPostingSchema, breadcrumbSchema } from "@/lib/schema";
 
 export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
@@ -15,7 +17,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = blogPosts.find((item) => item.slug === slug);
   if (!post) return {};
-  return { title: post.title, description: post.excerpt };
+  return {
+    title: post.title,
+    description: post.excerpt,
+    alternates: { canonical: `/blog/${post.slug}` },
+  };
 }
 
 export default async function BlogPostPage({
@@ -31,6 +37,14 @@ export default async function BlogPostPage({
 
   return (
     <article className="mx-auto max-w-3xl px-5 py-20">
+      <JsonLd data={blogPostingSchema(post)} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "الرئيسية", path: "/" },
+          { name: "المدونة", path: "/blog" },
+          { name: post.title, path: `/blog/${post.slug}` },
+        ])}
+      />
       <Link href="/blog" className="text-sm font-bold text-accent hover:text-accent-strong">
         ← كل المقالات
       </Link>
