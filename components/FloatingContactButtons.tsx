@@ -30,7 +30,7 @@ const buttons = [
 
 export default function FloatingContactButtons() {
   return (
-    <div className="fixed bottom-5 end-5 z-50 flex flex-col gap-3">
+    <div className="fixed bottom-5 start-5 z-50 flex flex-col gap-3">
       {buttons.map(({ href, label, className, Icon }) => {
         const isExternal = href.startsWith("http");
         return (
