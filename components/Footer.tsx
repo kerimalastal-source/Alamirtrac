@@ -36,6 +36,11 @@ export default function Footer() {
           <h3 className="mb-3 text-sm font-bold text-foreground">روابط</h3>
           <ul className="space-y-2">
             <li>
+              <Link href="/about" className="text-sm text-muted transition-colors hover:text-accent">
+                من نحن
+              </Link>
+            </li>
+            <li>
               <Link href="/projects" className="text-sm text-muted transition-colors hover:text-accent">
                 من أعمالنا
               </Link>

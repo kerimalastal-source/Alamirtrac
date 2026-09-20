@@ -4,6 +4,7 @@ import { business, services, blogPosts } from "@/lib/content";
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${business.url}/`, changeFrequency: "weekly", priority: 1 },
+    { url: `${business.url}/about`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${business.url}/services`, changeFrequency: "weekly", priority: 0.9 },
     { url: `${business.url}/projects`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${business.url}/blog`, changeFrequency: "weekly", priority: 0.7 },

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 const stats = [
   { value: "+30", label: "عاماً من الخبرة" },
-  { value: "7", label: "مجالات صيانة متخصصة" },
+  { value: `${services.length}`, label: "خدمة صيانة متخصصة" },
   { value: "القاهرة", label: "مقر العمل الرئيسي" },
 ];
 

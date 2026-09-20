@@ -4,6 +4,7 @@ import { business, services } from "@/lib/content";
 
 const links = [
   { href: "/", label: "الرئيسية" },
+  { href: "/about", label: "من نحن" },
   { href: "/services", label: "خدماتنا" },
   { href: "/projects", label: "أعمالنا" },
   { href: "/blog", label: "المدونة" },
@@ -29,6 +30,9 @@ export default function Header() {
         <nav className="hidden items-center gap-8 md:flex">
           <Link href="/" className="text-base font-semibold text-foreground transition-colors hover:text-accent">
             الرئيسية
+          </Link>
+          <Link href="/about" className="text-base font-semibold text-foreground transition-colors hover:text-accent">
+            من نحن
           </Link>
 
           <div className="group relative">
