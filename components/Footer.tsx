@@ -15,16 +15,21 @@ export default function Footer() {
         <div>
           <h3 className="mb-3 text-sm font-bold text-dark-foreground">خدماتنا</h3>
           <ul className="space-y-2">
-            {services.slice(0, 5).map((service) => (
+            {services.slice(0, 6).map((service) => (
               <li key={service.slug}>
                 <Link
-                  href={`/services#${service.slug}`}
+                  href={`/services/${service.slug}`}
                   className="text-sm text-dark-muted transition-colors hover:text-accent"
                 >
                   {service.title}
                 </Link>
               </li>
             ))}
+            <li>
+              <Link href="/services" className="text-sm font-bold text-accent hover:text-accent-strong">
+                كل الخدمات ←
+              </Link>
+            </li>
           </ul>
         </div>
 

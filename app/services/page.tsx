@@ -7,7 +7,7 @@ import { services } from "@/lib/content";
 export const metadata: Metadata = {
   title: "خدماتنا",
   description:
-    "خدمات ALAMIR TRAC لصيانة المعدات الثقيلة والهيدروليك والمحركات والديزل وأنظمة التبريد والكهرباء وإعادة التأهيل في القاهرة.",
+    "خدمات ALAMIR TRAC لصيانة المعدات الثقيلة: الهيدروليك، المحركات، الديزل، التبريد، الكهرباء، المجنزرات، ناقل الحركة، اللحام، والصيانة الطارئة في القاهرة.",
 };
 
 export default function ServicesPage() {
@@ -16,12 +16,12 @@ export default function ServicesPage() {
       <SectionHeading
         eyebrow="خدماتنا"
         title="خدمات صيانة المعدات الثقيلة والهيدروليك"
-        description="فريق فني متخصص يغطي كل أنظمة المعدة الثقيلة، من الفحص الدوري إلى إعادة التأهيل الكاملة."
+        description="فريق فني متخصص يغطي كل أنظمة المعدة الثقيلة، من الفحص الدوري إلى إعادة التأهيل الكاملة. اختر الخدمة لمعرفة تفاصيلها."
       />
 
-      <div className="mt-12 grid gap-6 sm:grid-cols-2">
+      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {services.map((service) => (
-          <ServiceCard key={service.slug} service={service} detailed />
+          <ServiceCard key={service.slug} service={service} />
         ))}
       </div>
 

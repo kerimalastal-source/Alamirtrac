@@ -69,13 +69,18 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-6xl px-5 py-20">
-        <SectionHeading
-          eyebrow="خدماتنا"
-          title="حلول صيانة شاملة لمعداتك الثقيلة"
-          description="نغطي كل أنظمة المعدة الثقيلة بفريق فني واحد، من الفحص الدوري إلى إعادة التأهيل الكاملة."
-        />
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <SectionHeading
+            eyebrow="خدماتنا"
+            title="حلول صيانة شاملة لمعداتك الثقيلة"
+            description="نغطي كل أنظمة المعدة الثقيلة بفريق فني واحد، من الفحص الدوري إلى إعادة التأهيل الكاملة."
+          />
+          <Link href="/services" className="text-sm font-bold text-accent hover:text-accent-strong">
+            كل الخدمات ←
+          </Link>
+        </div>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
+          {services.slice(0, 6).map((service) => (
             <ServiceCard key={service.slug} service={service} />
           ))}
         </div>

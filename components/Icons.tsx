@@ -79,6 +79,84 @@ export function OverhaulIcon(props: IconProps) {
   );
 }
 
+export function UndercarriageIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" {...base} {...props}>
+      <rect x="3" y="8" width="18" height="8" rx="4" />
+      <circle cx="7.5" cy="12" r="1.3" fill="currentColor" stroke="none" />
+      <circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none" />
+      <circle cx="16.5" cy="12" r="1.3" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+export function GearboxIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" {...base} {...props}>
+      <circle cx="12" cy="12" r="3" />
+      <path d="M12 4v2.2M12 17.8V20M4 12h2.2M17.8 12H20M6.5 6.5l1.5 1.5M16 16l1.5 1.5M17.5 6.5 16 8M8 16l-1.5 1.5" />
+    </svg>
+  );
+}
+
+export function HoseIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" {...base} {...props}>
+      <path d="M4 6c3 0 3 3 6 3s3-3 6-3 3 3 6 3" />
+      <path d="M4 15c3 0 3 3 6 3s3-3 6-3 3 3 6 3" />
+    </svg>
+  );
+}
+
+export function GeneratorIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" {...base} {...props}>
+      <rect x="3" y="6" width="14" height="12" rx="1.5" />
+      <path d="M11.2 9 8.5 13h2.3l-1 3.2L12.8 12h-2.3L11.2 9Z" fill="currentColor" stroke="none" />
+      <path d="M17 10h4M17 14h4" />
+    </svg>
+  );
+}
+
+export function EmergencyIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" {...base} {...props}>
+      <path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21Z" />
+      <path d="M12 6.8v3.4M12 13.6h.01" />
+    </svg>
+  );
+}
+
+export function WeldingIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" {...base} {...props}>
+      <path d="M4 14 10 8" />
+      <path d="M14 4l6 6-9 9-4-4 9-9-2-2Z" />
+      <path d="M4 20l2-4M16 4l2-2M19 9l2-2" />
+    </svg>
+  );
+}
+
+export function InspectionIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" {...base} {...props}>
+      <circle cx="10.5" cy="10.5" r="6" />
+      <path d="M15.2 15.2 20 20" />
+      <path d="M7.8 10.5l1.8 1.8 3-3.6" />
+    </svg>
+  );
+}
+
+export function ContractIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" {...base} {...props}>
+      <path d="M6 3h9l3 3v15H6z" />
+      <path d="M15 3v3h3" />
+      <path d="M9 12h6M9 15h6M9 9h2" />
+    </svg>
+  );
+}
+
 export const serviceIcons = {
   wrench: WrenchIcon,
   hydraulic: HydraulicIcon,
@@ -87,4 +165,12 @@ export const serviceIcons = {
   cooling: CoolingIcon,
   electric: ElectricIcon,
   overhaul: OverhaulIcon,
+  undercarriage: UndercarriageIcon,
+  gearbox: GearboxIcon,
+  hose: HoseIcon,
+  generator: GeneratorIcon,
+  emergency: EmergencyIcon,
+  welding: WeldingIcon,
+  inspection: InspectionIcon,
+  contract: ContractIcon,
 };

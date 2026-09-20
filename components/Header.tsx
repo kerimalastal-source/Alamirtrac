@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { business } from "@/lib/content";
+import { business, services } from "@/lib/content";
 
 const links = [
   { href: "/", label: "الرئيسية" },
@@ -21,15 +21,51 @@ export default function Header() {
         </Link>
 
         <nav className="hidden items-center gap-7 md:flex">
-          {links.map((link) => (
+          <Link href="/" className="text-sm text-dark-muted transition-colors hover:text-dark-foreground">
+            الرئيسية
+          </Link>
+
+          <div className="group relative">
             <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm text-dark-muted transition-colors hover:text-dark-foreground"
+              href="/services"
+              className="inline-flex items-center gap-1 text-sm text-dark-muted transition-colors hover:text-dark-foreground"
             >
-              {link.label}
+              خدماتنا
+              <svg
+                viewBox="0 0 24 24"
+                className="h-3.5 w-3.5 transition-transform group-hover:rotate-180"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
             </Link>
-          ))}
+
+            <div className="invisible absolute end-0 top-full z-50 grid w-[34rem] grid-cols-2 gap-x-4 gap-y-1 rounded-xl border border-dark-border bg-dark p-3 opacity-0 shadow-lg transition-opacity group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+              {services.map((service) => (
+                <Link
+                  key={service.slug}
+                  href={`/services/${service.slug}`}
+                  className="rounded-lg px-3 py-2 text-sm text-dark-muted transition-colors hover:bg-dark-elevated hover:text-dark-foreground"
+                >
+                  {service.title}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <Link href="/projects" className="text-sm text-dark-muted transition-colors hover:text-dark-foreground">
+            أعمالنا
+          </Link>
+          <Link href="/blog" className="text-sm text-dark-muted transition-colors hover:text-dark-foreground">
+            المدونة
+          </Link>
+          <Link href="/contact" className="text-sm text-dark-muted transition-colors hover:text-dark-foreground">
+            تواصل معنا
+          </Link>
         </nav>
 
         <Link
