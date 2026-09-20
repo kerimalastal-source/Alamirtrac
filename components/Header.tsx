@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import SiteSearch from "@/components/SiteSearch";
 import { business, services } from "@/lib/content";
 
 const links = [
@@ -78,12 +79,15 @@ export default function Header() {
           </Link>
         </nav>
 
-        <Link
-          href="/contact"
-          className="rounded-md bg-accent px-4 py-2 text-sm font-bold text-accent-foreground transition-colors hover:bg-accent-strong"
-        >
-          اطلب صيانة
-        </Link>
+        <div className="flex items-center gap-2">
+          <SiteSearch />
+          <Link
+            href="/contact"
+            className="rounded-md bg-accent px-4 py-2 text-sm font-bold text-accent-foreground transition-colors hover:bg-accent-strong"
+          >
+            اطلب صيانة
+          </Link>
+        </div>
       </div>
 
       <nav className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2 border-t border-border px-5 py-2.5 md:hidden">
