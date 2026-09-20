@@ -39,8 +39,15 @@ export default function ContactPage() {
             </a>
           </div>
           <div className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
-            <h3 className="font-bold text-foreground">موقع العمل</h3>
-            <p className="mt-2 text-muted">{business.address}</p>
+            <h3 className="font-bold text-foreground">مواقعنا</h3>
+            <div className="mt-3">
+              <span className="text-xs font-bold text-accent">مركز الصيانة</span>
+              <p className="mt-1 text-muted">{business.address}</p>
+            </div>
+            <div className="mt-4 border-t border-border pt-4">
+              <span className="text-xs font-bold text-accent">مركز الإدارة الرئيسي</span>
+              <p className="mt-1 text-muted">{business.hqAddress}</p>
+            </div>
           </div>
           <div className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
             <h3 className="font-bold text-foreground">مجالات الصيانة</h3>

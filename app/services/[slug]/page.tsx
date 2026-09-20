@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { services } from "@/lib/content";
+import { services, business } from "@/lib/content";
 import ServiceHero from "@/components/ServiceHero";
-import { serviceIcons } from "@/components/Icons";
+import { serviceIcons, WhatsappIcon } from "@/components/Icons";
 import JsonLd from "@/components/JsonLd";
 import { serviceSchema, breadcrumbSchema } from "@/lib/schema";
 
@@ -79,12 +79,23 @@ export default async function ServiceDetailPage({
             أرسل لنا تفاصيل العطل أو المعدة وسيتواصل معك فريقنا الفني لتحديد الموعد المناسب.
           </p>
         </div>
-        <Link
-          href="/contact"
-          className="shrink-0 rounded-md bg-dark px-6 py-3 font-bold text-dark-foreground transition-colors hover:bg-dark-elevated"
-        >
-          اطلب الخدمة الآن
-        </Link>
+        <div className="flex shrink-0 flex-col gap-3">
+          <Link
+            href="/contact"
+            className="rounded-md bg-dark px-6 py-3 text-center font-bold text-dark-foreground transition-colors hover:bg-dark-elevated"
+          >
+            اطلب الخدمة الآن
+          </Link>
+          <a
+            href={business.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 rounded-md bg-[#25D366] px-6 py-3 font-bold text-white transition-colors hover:bg-[#1eb955]"
+          >
+            <WhatsappIcon className="h-5 w-5" />
+            تواصل معنا عبر واتساب
+          </a>
+        </div>
       </div>
 
       <div className="mt-14">
