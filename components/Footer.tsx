@@ -57,7 +57,7 @@ export default function Footer() {
         <div>
           <h3 className="mb-3 text-sm font-bold text-dark-foreground">بيانات التواصل</h3>
           <ul className="space-y-2 text-sm text-dark-muted">
-            <li>{business.city}</li>
+            <li>{business.address}</li>
             <li dir="ltr" className="text-right">
               <a href={`mailto:${business.email}`} className="transition-colors hover:text-accent">
                 {business.email}

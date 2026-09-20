@@ -6,8 +6,10 @@ import { business } from "@/lib/content";
 export const metadata: Metadata = {
   title: "تواصل معنا",
   description:
-    "تواصل مع ALAMIR TRAC في القاهرة لطلبات صيانة وإعادة تأهيل المعدات الثقيلة وأنظمة الهيدروليك والمحركات والديزل والتبريد والكهرباء.",
+    "تواصل مع ALAMIR TRAC في البراجيل، القاهرة لطلبات صيانة وإعادة تأهيل المعدات الثقيلة وأنظمة الهيدروليك والمحركات والديزل والتبريد والكهرباء.",
 };
+
+const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(business.mapQuery)}&output=embed`;
 
 export default function ContactPage() {
   return (
@@ -36,7 +38,7 @@ export default function ContactPage() {
           </div>
           <div className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
             <h3 className="font-bold text-foreground">موقع العمل</h3>
-            <p className="mt-2 text-muted">{business.city}</p>
+            <p className="mt-2 text-muted">{business.address}</p>
           </div>
           <div className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
             <h3 className="font-bold text-foreground">مجالات الصيانة</h3>
@@ -45,6 +47,17 @@ export default function ContactPage() {
             </p>
           </div>
         </div>
+      </div>
+
+      <div className="mt-10 overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
+        <iframe
+          title={`موقعنا على الخريطة - ${business.address}`}
+          src={mapSrc}
+          className="h-80 w-full sm:h-96"
+          style={{ border: 0 }}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
       </div>
     </div>
   );
