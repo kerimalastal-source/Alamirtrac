@@ -7,6 +7,7 @@ type Status = "idle" | "sending" | "sent" | "error";
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [fileName, setFileName] = useState("");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -29,6 +30,7 @@ export default function ContactForm() {
 
       setStatus("sent");
       form.reset();
+      setFileName("");
     } catch {
       setStatus("error");
       setErrorMessage("تعذّر الاتصال بالخادم، تحقق من الإنترنت وحاول مرة أخرى.");
@@ -121,12 +123,22 @@ export default function ContactForm() {
         <label htmlFor="attachment" className="mb-1.5 block text-sm font-bold text-foreground">
           إرفاق صورة (اختياري)
         </label>
+        <div className="flex w-full items-center gap-3 rounded-md border border-border bg-background px-3.5 py-2.5">
+          <label
+            htmlFor="attachment"
+            className="shrink-0 cursor-pointer rounded-md bg-accent px-3 py-1.5 text-sm font-bold text-accent-foreground transition-colors hover:bg-accent-strong"
+          >
+            اختيار ملف
+          </label>
+          <span className="truncate text-sm text-muted">{fileName || "لم يتم اختيار أي ملف"}</span>
+        </div>
         <input
           id="attachment"
           name="attachment"
           type="file"
           accept="image/*"
-          className="w-full rounded-md border border-border bg-background px-3.5 py-2.5 text-sm text-muted outline-none file:me-3 file:rounded-md file:border-0 file:bg-accent file:px-3 file:py-1.5 file:text-sm file:font-bold file:text-accent-foreground"
+          onChange={(event) => setFileName(event.target.files?.[0]?.name ?? "")}
+          className="sr-only"
         />
         <p className="mt-1 text-xs text-muted">أقصى حجم للصورة 4 ميجابايت.</p>
       </div>
