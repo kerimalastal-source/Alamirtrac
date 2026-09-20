@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Cairo, Tajawal } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -7,6 +8,8 @@ import JsonLd from "@/components/JsonLd";
 import { business } from "@/lib/content";
 import { localBusinessSchema } from "@/lib/schema";
 import "./globals.css";
+
+const GA_MEASUREMENT_ID = "G-8N9W3E758L";
 
 const cairo = Cairo({
   variable: "--font-cairo",
@@ -64,6 +67,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="ar" dir="rtl" className={`${cairo.variable} ${tajawal.variable} h-full`}>
       <body className="flex min-h-full flex-col antialiased">
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');
+          `}
+        </Script>
         <JsonLd data={localBusinessSchema()} />
         <Header />
         <main className="flex-1">{children}</main>
