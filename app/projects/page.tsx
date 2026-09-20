@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import SectionHeading from "@/components/SectionHeading";
+import CoverIllustration from "@/components/CoverIllustration";
 import { projects } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -21,9 +22,7 @@ export default function ProjectsPage() {
       <div className="mt-12 grid gap-6 sm:grid-cols-2">
         {projects.map((project) => (
           <div key={project.slug} className="overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
-            <div className="flex h-40 items-center justify-center border-b border-border bg-surface-2 text-sm text-muted">
-              صورة العمل (قريباً)
-            </div>
+            <CoverIllustration icon={project.icon} title={project.title} size="sm" className="rounded-none" />
             <div className="p-6">
               <span className="text-xs font-bold text-accent">{project.category}</span>
               <h3 className="mt-2 text-lg font-bold text-foreground">{project.title}</h3>

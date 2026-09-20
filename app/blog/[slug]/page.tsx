@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { blogPosts } from "@/lib/content";
 import JsonLd from "@/components/JsonLd";
+import CoverIllustration from "@/components/CoverIllustration";
 import { blogPostingSchema, breadcrumbSchema } from "@/lib/schema";
 
 export function generateStaticParams() {
@@ -48,6 +49,10 @@ export default async function BlogPostPage({
       <Link href="/blog" className="text-sm font-bold text-accent hover:text-accent-strong">
         ← كل المقالات
       </Link>
+
+      <div className="mt-6">
+        <CoverIllustration icon={post.icon} title={post.title} size="md" />
+      </div>
 
       <span className="mt-6 block text-sm text-muted">
         {new Date(post.publishedDate).toLocaleDateString("ar-EG", {

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
+import HeroIllustration from "@/components/HeroIllustration";
 import { business, services, blogPosts } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -37,39 +38,43 @@ export default function Home() {
   return (
     <>
       <section className="bg-grid bg-dark">
-        <div className="mx-auto max-w-6xl px-5 py-24 sm:py-32">
-          <span className="text-sm font-bold tracking-wide text-accent">
-            {business.nameBrand} — القاهرة
-          </span>
-          <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-tight text-dark-foreground sm:text-5xl">
-            صيانة وإعادة تأهيل المعدات الثقيلة وأنظمة الهيدروليك
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-dark-muted">{business.description}</p>
-          <div className="mt-10 flex flex-wrap gap-4">
-            <Link
-              href="/contact"
-              className="rounded-md bg-accent px-6 py-3 font-bold text-accent-foreground transition-colors hover:bg-accent-strong"
-            >
-              اطلب صيانة الآن
-            </Link>
-            <Link
-              href="/services"
-              className="rounded-md border border-dark-border px-6 py-3 font-bold text-dark-foreground transition-colors hover:border-accent hover:text-accent"
-            >
-              تصفح خدماتنا
-            </Link>
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-10 px-5 py-24 sm:py-32 lg:flex-row lg:justify-between">
+          <div>
+            <span className="text-sm font-bold tracking-wide text-accent">
+              {business.nameBrand} — القاهرة
+            </span>
+            <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-tight text-dark-foreground sm:text-5xl">
+              صيانة وإعادة تأهيل المعدات الثقيلة وأنظمة الهيدروليك
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-dark-muted">{business.description}</p>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Link
+                href="/contact"
+                className="rounded-md bg-accent px-6 py-3 font-bold text-accent-foreground transition-colors hover:bg-accent-strong"
+              >
+                اطلب صيانة الآن
+              </Link>
+              <Link
+                href="/services"
+                className="rounded-md border border-dark-border px-6 py-3 font-bold text-dark-foreground transition-colors hover:border-accent hover:text-accent"
+              >
+                تصفح خدماتنا
+              </Link>
+            </div>
+
+            <div className="mt-16 grid grid-cols-3 gap-6 border-t border-dark-border pt-10">
+              {stats.map((stat) => (
+                <div key={stat.label}>
+                  <div className="font-heading text-3xl font-extrabold text-accent sm:text-4xl">
+                    {stat.value}
+                  </div>
+                  <div className="mt-1 text-sm text-dark-muted">{stat.label}</div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="mt-16 grid grid-cols-3 gap-6 border-t border-dark-border pt-10">
-            {stats.map((stat) => (
-              <div key={stat.label}>
-                <div className="font-heading text-3xl font-extrabold text-accent sm:text-4xl">
-                  {stat.value}
-                </div>
-                <div className="mt-1 text-sm text-dark-muted">{stat.label}</div>
-              </div>
-            ))}
-          </div>
+          <HeroIllustration />
         </div>
       </section>
 
