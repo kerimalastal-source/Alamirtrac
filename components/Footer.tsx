@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { business, services } from "@/lib/content";
 
@@ -6,9 +7,7 @@ export default function Footer() {
     <footer className="border-t border-dark-border bg-dark">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <span className="font-heading text-lg font-extrabold text-dark-foreground">
-            ALAMIR<span className="text-accent">TRAC</span>
-          </span>
+          <Image src="/logo.avif" alt={business.fullName} width={358} height={192} className="h-12 w-auto" />
           <p className="mt-3 text-sm leading-6 text-dark-muted">{business.description}</p>
         </div>
 

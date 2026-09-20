@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { business, services } from "@/lib/content";
 
@@ -13,10 +14,15 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-dark-border bg-dark/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
-        <Link href="/" className="flex items-baseline gap-2">
-          <span className="font-heading text-xl font-extrabold tracking-tight text-dark-foreground">
-            ALAMIR<span className="text-accent">TRAC</span>
-          </span>
+        <Link href="/" className="flex items-center gap-2">
+          <Image
+            src="/logo.avif"
+            alt={business.fullName}
+            width={358}
+            height={192}
+            priority
+            className="h-11 w-auto sm:h-12"
+          />
           <span className="hidden text-xs text-dark-muted sm:inline">{business.nameAr}</span>
         </Link>
 
