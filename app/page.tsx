@@ -34,6 +34,8 @@ const whyUs = [
   },
 ];
 
+const latestBlogPosts = [...blogPosts].sort((a, b) => b.publishedDate.localeCompare(a.publishedDate)).slice(0, 4);
+
 export default function Home() {
   return (
     <>
@@ -118,7 +120,7 @@ export default function Home() {
           </Link>
         </div>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {blogPosts.map((post) => (
+          {latestBlogPosts.map((post) => (
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}

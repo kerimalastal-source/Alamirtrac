@@ -12,6 +12,8 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
+  const sortedPosts = [...blogPosts].sort((a, b) => b.publishedDate.localeCompare(a.publishedDate));
+
   return (
     <div className="mx-auto max-w-6xl px-5 py-20">
       <SectionHeading
@@ -20,8 +22,8 @@ export default function BlogPage() {
         description="خبرة فريقنا الفني في مقالات مبسطة تساعدك على فهم أعطال معداتك واتخاذ القرار الصحيح."
       />
 
-      <div className="mt-12 grid gap-6 sm:grid-cols-2">
-        {blogPosts.map((post) => (
+      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {sortedPosts.map((post) => (
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
