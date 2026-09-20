@@ -1,6 +1,10 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import SiteSearch from "@/components/SiteSearch";
+import { MenuIcon, CloseIcon } from "@/components/Icons";
 import { business, services } from "@/lib/content";
 
 const links = [
@@ -9,13 +13,16 @@ const links = [
   { href: "/services", label: "خدماتنا" },
   { href: "/projects", label: "أعمالنا" },
   { href: "/blog", label: "المدونة" },
+  { href: "/faq", label: "الأسئلة الشائعة" },
   { href: "/contact", label: "تواصل معنا" },
 ];
 
 export default function Header() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-surface/95 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3">
         <Link href="/" className="flex items-center gap-2">
           <Image
             src="/logo.avif"
@@ -25,7 +32,6 @@ export default function Header() {
             priority
             className="h-16 w-auto sm:h-20"
           />
-          <span className="hidden text-xs text-muted sm:inline">{business.nameAr}</span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -74,33 +80,61 @@ export default function Header() {
           <Link href="/blog" className="text-base font-semibold text-foreground transition-colors hover:text-accent">
             المدونة
           </Link>
+          <Link href="/faq" className="text-base font-semibold text-foreground transition-colors hover:text-accent">
+            الأسئلة الشائعة
+          </Link>
           <Link href="/contact" className="text-base font-semibold text-foreground transition-colors hover:text-accent">
             تواصل معنا
           </Link>
         </nav>
 
-        <div className="flex items-center gap-2">
-          <SiteSearch />
+        <div className="hidden items-center gap-3 md:flex">
+          <SiteSearch className="w-56" />
           <Link
             href="/contact"
-            className="rounded-md bg-accent px-4 py-2 text-sm font-bold text-accent-foreground transition-colors hover:bg-accent-strong"
+            className="shrink-0 rounded-md bg-accent px-4 py-2 text-sm font-bold text-accent-foreground transition-colors hover:bg-accent-strong"
           >
             اطلب صيانة
           </Link>
         </div>
+
+        <button
+          type="button"
+          onClick={() => setMobileOpen((value) => !value)}
+          aria-label={mobileOpen ? "إغلاق القائمة" : "فتح القائمة"}
+          aria-expanded={mobileOpen}
+          className="flex h-10 w-10 items-center justify-center rounded-md text-foreground transition-colors hover:bg-surface-2 md:hidden"
+        >
+          {mobileOpen ? <CloseIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
+        </button>
       </div>
 
-      <nav className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2 border-t border-border px-5 py-2.5 md:hidden">
-        {links.map((link) => (
+      {mobileOpen && (
+        <div className="space-y-4 border-t border-border px-5 py-4 md:hidden">
+          <SiteSearch className="w-full" />
+
+          <nav className="flex flex-col gap-1">
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className="rounded-lg px-3 py-2.5 text-base font-semibold text-foreground transition-colors hover:bg-surface-2 hover:text-accent"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+
           <Link
-            key={link.href}
-            href={link.href}
-            className="text-sm font-semibold text-foreground transition-colors hover:text-accent"
+            href="/contact"
+            onClick={() => setMobileOpen(false)}
+            className="block rounded-md bg-accent px-4 py-3 text-center text-sm font-bold text-accent-foreground transition-colors hover:bg-accent-strong"
           >
-            {link.label}
+            اطلب صيانة
           </Link>
-        ))}
-      </nav>
+        </div>
+      )}
     </header>
   );
 }
