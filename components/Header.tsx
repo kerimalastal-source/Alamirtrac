@@ -22,8 +22,8 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-surface/95 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3">
-        <Link href="/" className="flex items-center gap-2">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-5 py-3 xl:px-8">
+        <Link href="/" className="flex shrink-0 items-center gap-2">
           <Image
             src="/logo.avif"
             alt={business.fullName}
@@ -34,18 +34,18 @@ export default function Header() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
-          <Link href="/" className="text-base font-semibold text-foreground transition-colors hover:text-accent">
+        <nav className="hidden items-center gap-5 xl:flex">
+          <Link href="/" className="whitespace-nowrap text-[15px] font-semibold text-foreground transition-colors hover:text-accent">
             الرئيسية
           </Link>
-          <Link href="/about" className="text-base font-semibold text-foreground transition-colors hover:text-accent">
+          <Link href="/about" className="whitespace-nowrap text-[15px] font-semibold text-foreground transition-colors hover:text-accent">
             من نحن
           </Link>
 
           <div className="group relative">
             <Link
               href="/services"
-              className="inline-flex items-center gap-1 text-base font-semibold text-foreground transition-colors hover:text-accent"
+              className="inline-flex items-center gap-1 whitespace-nowrap text-[15px] font-semibold text-foreground transition-colors hover:text-accent"
             >
               خدماتنا
               <svg
@@ -74,25 +74,25 @@ export default function Header() {
             </div>
           </div>
 
-          <Link href="/projects" className="text-base font-semibold text-foreground transition-colors hover:text-accent">
+          <Link href="/projects" className="whitespace-nowrap text-[15px] font-semibold text-foreground transition-colors hover:text-accent">
             أعمالنا
           </Link>
-          <Link href="/blog" className="text-base font-semibold text-foreground transition-colors hover:text-accent">
+          <Link href="/blog" className="whitespace-nowrap text-[15px] font-semibold text-foreground transition-colors hover:text-accent">
             المدونة
           </Link>
-          <Link href="/faq" className="text-base font-semibold text-foreground transition-colors hover:text-accent">
+          <Link href="/faq" className="whitespace-nowrap text-[15px] font-semibold text-foreground transition-colors hover:text-accent">
             الأسئلة الشائعة
           </Link>
-          <Link href="/contact" className="text-base font-semibold text-foreground transition-colors hover:text-accent">
+          <Link href="/contact" className="whitespace-nowrap text-[15px] font-semibold text-foreground transition-colors hover:text-accent">
             تواصل معنا
           </Link>
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex">
-          <SiteSearch className="w-56" />
+        <div className="hidden items-center gap-3 xl:flex">
+          <SiteSearch className="w-48 2xl:w-56" />
           <Link
             href="/contact"
-            className="shrink-0 rounded-md bg-accent px-4 py-2 text-sm font-bold text-accent-foreground transition-colors hover:bg-accent-strong"
+            className="shrink-0 whitespace-nowrap rounded-md bg-accent px-4 py-2 text-sm font-bold text-accent-foreground transition-colors hover:bg-accent-strong"
           >
             اطلب صيانة
           </Link>
@@ -103,14 +103,14 @@ export default function Header() {
           onClick={() => setMobileOpen((value) => !value)}
           aria-label={mobileOpen ? "إغلاق القائمة" : "فتح القائمة"}
           aria-expanded={mobileOpen}
-          className="flex h-10 w-10 items-center justify-center rounded-md text-foreground transition-colors hover:bg-surface-2 md:hidden"
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md text-foreground transition-colors hover:bg-surface-2 xl:hidden"
         >
           {mobileOpen ? <CloseIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
         </button>
       </div>
 
       {mobileOpen && (
-        <div className="space-y-4 border-t border-border px-5 py-4 md:hidden">
+        <div className="space-y-4 border-t border-border px-5 py-4 xl:hidden">
           <SiteSearch className="w-full" />
 
           <nav className="flex flex-col gap-1">
