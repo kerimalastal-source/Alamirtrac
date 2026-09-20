@@ -16,14 +16,14 @@ const whyUs = [
   },
   {
     title: "تشخيص دقيق قبل الإصلاح",
-    description: "نحدد السبب الحقيقي للعطل بدل معالجة الأعراض فقط، لتوفير وقتك وتكلفتك.",
+    description: "نحدد السبب الحقيقي للعطل بدلاً من معالجة الأعراض فقط، لنوفر عليك الوقت والتكلفة.",
   },
   {
     title: "تغطية شاملة لكل الأنظمة",
     description: "من المحرك والهيدروليك إلى التبريد والديزل والكهرباء، في مكان واحد.",
   },
   {
-    title: "إعادة تأهيل بدل الاستبدال",
+    title: "إعادة التأهيل بدلاً من الاستبدال",
     description: "نساعدك على اتخاذ القرار الأمثل بين الإصلاح الجزئي وإعادة التأهيل الكاملة.",
   },
 ];
@@ -120,7 +120,7 @@ export default function Home() {
       <section className="bg-accent">
         <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 px-5 py-16 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h2 className="text-2xl font-extrabold text-accent-foreground">عندك عطل في معدة ثقيلة؟</h2>
+            <h2 className="text-2xl font-extrabold text-accent-foreground">تواجه عطلاً في إحدى معداتك الثقيلة؟</h2>
             <p className="mt-2 text-accent-foreground/85">
               تواصل معنا الآن وسيراجع فريقنا الفني حالة العطل والخدمة المطلوبة.
             </p>
