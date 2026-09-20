@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${business.url}/projects`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${business.url}/blog`, changeFrequency: "weekly", priority: 0.7 },
     { url: `${business.url}/contact`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${business.url}/faq`, changeFrequency: "monthly", priority: 0.7 },
   ];
 
   const serviceRoutes: MetadataRoute.Sitemap = services.map((service) => ({

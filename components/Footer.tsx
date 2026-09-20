@@ -51,6 +51,11 @@ export default function Footer() {
               </Link>
             </li>
             <li>
+              <Link href="/faq" className="text-sm text-muted transition-colors hover:text-accent">
+                الأسئلة الشائعة
+              </Link>
+            </li>
+            <li>
               <Link href="/contact" className="text-sm text-muted transition-colors hover:text-accent">
                 تواصل معنا
               </Link>

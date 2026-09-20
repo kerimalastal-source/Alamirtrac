@@ -1,4 +1,4 @@
-import { business, type Service, type BlogPost } from "@/lib/content";
+import { business, type Service, type BlogPost, type FaqCategory } from "@/lib/content";
 
 const logoUrl = `${business.url}/logo.avif`;
 
@@ -74,6 +74,22 @@ export function blogPostingSchema(post: BlogPost) {
         url: logoUrl,
       },
     },
+  };
+}
+
+export function faqPageSchema(categories: FaqCategory[]) {
+  const items = categories.flatMap((category) => category.items);
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
   };
 }
 

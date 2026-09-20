@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import ContactForm from "@/components/ContactForm";
 import { business } from "@/lib/content";
@@ -46,6 +47,13 @@ export default function ContactPage() {
             <p className="mt-2 text-sm leading-6 text-muted">
               المعدات الثقيلة، الهيدروليك، المحركات، حقن الديزل، أنظمة التبريد، الأنظمة الكهربائية، وإعادة التأهيل الشاملة.
             </p>
+          </div>
+          <div className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
+            <h3 className="font-bold text-foreground">عندك سؤال قبل التواصل؟</h3>
+            <p className="mt-2 text-sm leading-6 text-muted">راجع صفحة الأسئلة الشائعة، فربما تجد إجابتك مباشرة.</p>
+            <Link href="/faq" className="mt-3 inline-block text-sm font-bold text-accent hover:text-accent-strong">
+              الأسئلة الشائعة ←
+            </Link>
           </div>
         </div>
       </div>
