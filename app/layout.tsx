@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingContactButtons from "@/components/FloatingContactButtons";
 import JsonLd from "@/components/JsonLd";
+import VisitorNotifier from "@/components/VisitorNotifier";
 import { business } from "@/lib/content";
 import { localBusinessSchema, websiteSchema } from "@/lib/schema";
 import "./globals.css";
@@ -88,6 +89,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main className="flex-1">{children}</main>
         <Footer />
         <FloatingContactButtons />
+        <VisitorNotifier />
       </body>
     </html>
   );
