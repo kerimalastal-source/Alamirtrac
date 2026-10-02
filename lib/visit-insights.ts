@@ -64,10 +64,21 @@ export function parseUserAgent(ua: string | null | undefined): DeviceInfo {
 
 const DEVICE_AR: Record<DeviceKind, string> = { mobile: '📱 جوال', tablet: '📱 جهاز لوحي', desktop: '💻 حاسوب' };
 
-/** "📱 جوال · iOS · Instagram", or null when nothing is known (visits saved before 2026-10-02). */
+const OS_AR: Record<string, string> = {
+  iOS: 'آي أو إس', Android: 'أندرويد', Windows: 'ويندوز', macOS: 'ماك', Linux: 'لينكس', ChromeOS: 'كروم أو إس',
+};
+const BROWSER_AR: Record<string, string> = {
+  Chrome: 'كروم', Safari: 'سفاري', Firefox: 'فايرفوكس', Edge: 'إيدج', Opera: 'أوبرا', 'Samsung Internet': 'متصفح سامسونج',
+  Yandex: 'ياندكس', Instagram: 'إنستغرام', Facebook: 'فيسبوك', LinkedIn: 'لينكدإن', TikTok: 'تيك توك', Snapchat: 'سناب شات',
+};
+
+export const osLabel = (os: string | null | undefined) => (os ? (OS_AR[os] ?? os) : null);
+export const browserLabel = (browser: string | null | undefined) => (browser ? (BROWSER_AR[browser] ?? browser) : null);
+
+/** "📱 جوال · أندرويد · كروم", or null when nothing is known. */
 export function deviceLabel(f: { device?: string | null; os?: string | null; browser?: string | null }): string | null {
   if (!f.device && !f.os && !f.browser) return null;
-  return [f.device && DEVICE_AR[f.device as DeviceKind], f.os, f.browser].filter(Boolean).join(' · ');
+  return [f.device && DEVICE_AR[f.device as DeviceKind], osLabel(f.os), browserLabel(f.browser)].filter(Boolean).join(' · ');
 }
 
 // ── Time zone against country ──────────────────────────────────────────────

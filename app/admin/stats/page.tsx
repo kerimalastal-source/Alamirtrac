@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { cityAr, countryAr, placeAr } from "@/lib/arabic-places";
 import { sourceLabel } from "@/lib/attribution";
 import { CONTINENT_LABEL, REGION_LABEL, groupByPlace } from "@/lib/geo-regions";
 import { pageName } from "@/lib/page-names";
 import { loadSiteStats, statRange, STAT_RANGES, type SiteStats } from "@/lib/site-stats";
 import { isStatsAuthed, statsConfigured } from "@/lib/stats-auth";
-import { VERDICT_LABEL } from "@/lib/visit-insights";
+import { browserLabel, osLabel, VERDICT_LABEL } from "@/lib/visit-insights";
 import { pageTime, visitsSql } from "@/lib/visits";
 
 export const metadata: Metadata = {
@@ -29,15 +30,7 @@ const when = (iso: string) =>
   new Intl.DateTimeFormat("ar-EG-u-nu-latn", { timeZone: "Africa/Cairo", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }).format(new Date(iso));
 const pct = (part: number, whole: number) => (whole > 0 ? `${((part / whole) * 100).toFixed(1)}%` : "—");
 
-const regionNames = new Intl.DisplayNames(["ar"], { type: "region" });
-function countryName(code: string | null) {
-  if (!code) return "غير معروف";
-  try {
-    return regionNames.of(code) ?? code;
-  } catch {
-    return code;
-  }
-}
+const countryName = (code: string | null) => countryAr(code);
 
 const sourceName = (s: { source: string | null; medium: string | null }) =>
   !s.source || !s.medium || s.medium === "unknown" ? "غير مسجّل" : sourceLabel({ source: s.source, medium: s.medium as never });
@@ -215,7 +208,7 @@ function Dashboard({ stats }: { stats: SiteStats }) {
                 <tbody>
                   {stats.cities.map((c) => (
                     <tr key={`${c.country}|${c.city}`} className="border-t border-border">
-                      <td className={td}><bdi>{c.city}</bdi></td>
+                      <td className={td}>{cityAr(c.city)}</td>
                       <td className={td}>{countryName(c.country)}</td>
                       <td className={`${td} text-end`}>{c.visits}</td>
                     </tr>
@@ -336,7 +329,7 @@ function Dashboard({ stats }: { stats: SiteStats }) {
               <tbody>
                 {stats.browsers.map((b) => (
                   <tr key={b.browser} className="border-t border-border">
-                    <td className={td}>{b.browser || "غير معروف"}</td>
+                    <td className={td}>{browserLabel(b.browser) || "غير معروف"}</td>
                     <td className={`${td} text-end`}>{b.visits} · {pct(b.visits, stats.visits)}</td>
                   </tr>
                 ))}
@@ -358,7 +351,7 @@ function Dashboard({ stats }: { stats: SiteStats }) {
               <li key={i} className="py-4 first:pt-0 last:pb-0">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <p className="font-bold text-foreground">
-                    {[r.city, countryName(r.country)].filter(Boolean).join("، ")}
+                    {placeAr(r.city, r.country)}
                     <span className="ms-2 text-sm font-normal text-muted">{when(r.startedAt)}</span>
                   </p>
                   <span className="rounded-full bg-surface-2 px-3 py-1 text-xs font-bold text-foreground">
@@ -366,7 +359,7 @@ function Dashboard({ stats }: { stats: SiteStats }) {
                   </span>
                 </div>
                 <p className="mt-1 text-sm text-muted">
-                  {[DEVICE_LABEL[r.device ?? ""] ?? r.device, r.os, r.browser].filter(Boolean).join(" · ")}
+                  {[DEVICE_LABEL[r.device ?? ""] ?? r.device, osLabel(r.os), browserLabel(r.browser)].filter(Boolean).join(" · ")}
                   {" · "}المصدر: {r.source ? sourceName(r) : r.referrer ? <bdi>{r.referrer}</bdi> : "مباشر"}
                   {r.campaign ? <> · الحملة: <bdi>{r.campaign}</bdi></> : null}
                 </p>

@@ -1,5 +1,5 @@
 // A page's Arabic name for the statistics page: "الرئيسية", the service's title, "مقال: …".
-import { blogPosts, services } from "@/lib/content";
+import { blogPosts, services } from "./content";
 
 const PAGES: Record<string, string> = {
   "": "الرئيسية",

@@ -8,6 +8,8 @@
 // system and browser read from it, src/lib/visit-insights.ts).
 import { neon } from '@neondatabase/serverless';
 import { sourceLabel, type SourceMedium } from './attribution';
+import { placeAr } from './arabic-places';
+import { pageName } from './page-names';
 import { editTelegramMessage, sendTelegramMessage } from './telegram';
 import { classifyVisit, deviceLabel, verdictLine, type PageFacts, type VisitFacts } from './visit-insights';
 
@@ -414,11 +416,24 @@ export function pageKey(path: string): string {
     .replace(/^\//, '');
 }
 
-/** A path shown left to right inside Arabic text, so "/ar" never reads "ar/". */
-const shownPath = (path: string) => `‎${escapeHtml(path)}`;
+/** A page shown by its Arabic name ("الرئيسية", "صيانة أنظمة الهيدروليك"), never as a raw path. */
+const shownPath = (path: string) => escapeHtml(pageName(path));
 
-const place = (visit: Visit) =>
-  [visit.city, visit.country].filter((v): v is string => Boolean(v)).map(escapeHtml).join(', ') || 'غير معروف';
+/** Latin text (a campaign, a referrer) kept as one left-to-right run inside Arabic text. */
+const ltr = (value: string) => `\u2066${escapeHtml(value)}\u2069`;
+
+/** "https://www.example.com/page?x=1" → "example.com". */
+function referrerHost(referrer: string): string {
+  try {
+    return new URL(referrer).hostname.replace(/^www\./, '');
+  } catch {
+    return referrer;
+  }
+}
+
+const LANGUAGE_AR: Record<string, string> = { ar: 'العربية', en: 'الإنجليزية', fr: 'الفرنسية', tr: 'التركية' };
+
+const place = (visit: Visit) => escapeHtml(placeAr(visit.city, visit.country));
 
 /**
  * Small towns whose visits are mostly data centers (Meta, Amazon, Google,
@@ -484,10 +499,10 @@ export function pageTime(seconds: number): string {
 /** Pages listed in the edited alert; a longer visit keeps its first page and its latest ones. */
 const TRAIL_MAX = 25;
 
-/** "1. / · 40 ث" per page in order; the last page has no time yet (the visitor is on it, or left from it). */
+/** "1. الرئيسية · 40 ث" per page in order; the last page has no time yet (the visitor is on it, or left from it). */
 export function trailLines(trail: VisitState['trail']): string[] {
   const lines = trail.map((page, i) => {
-    const shown = shownPath(page.path.length > 80 ? `${page.path.slice(0, 79)}…` : page.path);
+    const shown = shownPath(page.path);
     const next = trail[i + 1];
     return next ? `${i + 1}. ${shown} · ${pageTime(Math.max(0, next.at - page.at))}` : `${i + 1}. ${shown}`;
   });
@@ -499,17 +514,17 @@ export function trailLines(trail: VisitState['trail']): string[] {
 /** "إعلان فيسبوك · حملة: …" when the source is known, else the raw referrer. */
 function sourceLine(visit: Visit): string {
   if (visit.source && visit.medium && visit.medium !== 'direct') {
-    const campaign = visit.campaign ? ` · حملة: ${escapeHtml(visit.campaign)}` : '';
+    const campaign = visit.campaign ? ` · حملة: ${ltr(visit.campaign)}` : '';
     return `↩️ المصدر: ${escapeHtml(sourceLabel({ source: visit.source, medium: visit.medium }))}${campaign}`;
   }
-  return visit.referrer ? `↩️ المصدر: ${escapeHtml(visit.referrer)}` : '↩️ المصدر: مباشر';
+  return visit.referrer ? `↩️ المصدر: ${ltr(referrerHost(visit.referrer))}` : '↩️ المصدر: مباشر';
 }
 
 const aboutLines = (visit: Visit): string[] => {
   const device = deviceLabel(visit);
   return [
     `📍 من: ${place(visit)}`,
-    visit.locale ? `🌐 اللغة: ${escapeHtml(visit.locale)}` : '',
+    visit.locale ? `🌐 اللغة: ${escapeHtml(LANGUAGE_AR[visit.locale] ?? visit.locale)}` : '',
     sourceLine(visit),
     device ? `🖥️ الجهاز: ${escapeHtml(device)}` : '',
   ].filter(Boolean);
