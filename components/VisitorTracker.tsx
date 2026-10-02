@@ -5,23 +5,21 @@
 // hadarahospitality version runs once per full page load).
 //
 // A session's first page also carries where the visitor came from (an ad, a
-// search engine, another site: lib/ad-touch.ts), and clicks on WhatsApp, email
-// and phone links are counted. To tell people from automated visits, each page
-// view sends the time zone, the screen size and navigator.webdriver, and when
-// the page is hidden or left, how it was used: seconds visible, deepest scroll
-// and seconds with input (lib/visit-insights.ts). Nothing personal is sent.
+// search engine, another site: lib/ad-touch.ts), and clicks on WhatsApp, phone,
+// email and social links are counted (the forms report their own submission).
+// To tell people from automated visits, each page view sends the time zone, the
+// screen size and navigator.webdriver, and when the page is hidden or left, how
+// it was used: seconds visible, deepest scroll and seconds with input
+// (lib/visit-insights.ts). Nothing personal is sent.
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { recordArrival, visitorSessionId } from "@/lib/ad-touch";
+import { actionFromHref, beacon, trackAction } from "@/lib/track-action";
 
 const post = (url: string, body: string) =>
   fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body, keepalive: true }).catch(() => {
     // Tracking must never affect the visitor's experience of the page.
   });
-
-const beacon = (url: string, body: string) => {
-  if (!navigator.sendBeacon?.(url, new Blob([body], { type: "application/json" }))) void post(url, body);
-};
 
 export default function VisitorTracker() {
   const pathname = usePathname();
@@ -53,20 +51,11 @@ export default function VisitorTracker() {
       }),
     );
 
-    // Contact clicks: WhatsApp, email, phone. sendBeacon survives the page
-    // being left (a WhatsApp or mailto link often opens another app).
+    // Contact clicks: WhatsApp, phone, email, Facebook, Instagram.
     const onClick = (event: MouseEvent) => {
       const link = (event.target as Element | null)?.closest?.("a[href]") as HTMLAnchorElement | null;
-      if (!link) return;
-      const href = link.getAttribute("href") ?? "";
-      const kind = /^https:\/\/(wa\.me|api\.whatsapp\.com|chat\.whatsapp\.com)\//.test(href)
-        ? "whatsapp"
-        : href.startsWith("mailto:")
-          ? "email"
-          : href.startsWith("tel:")
-            ? "phone"
-            : null;
-      if (kind) beacon("/api/visit/action", JSON.stringify({ sessionId, kind, path: pathname }));
+      const kind = link ? actionFromHref(link.getAttribute("href") ?? "") : null;
+      if (kind) trackAction(kind);
     };
     document.addEventListener("click", onClick, { capture: true });
 

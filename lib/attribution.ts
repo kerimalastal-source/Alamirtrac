@@ -200,7 +200,7 @@ export function sourceLabel(s: Pick<Source, 'source' | 'medium'>): string {
       return 'مباشر';
     default:
       // Sessions from before the source columns (stats page only).
-      if ((s.medium as string) === 'unknown') return 'غير مسجّل (قبل 28 سبتمبر 2026)';
+      if ((s.medium as string) === 'unknown') return 'غير مسجّل';
       return `موقع آخر (${s.source})`;
   }
 }

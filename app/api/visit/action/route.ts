@@ -1,8 +1,8 @@
-// Counts a click on a WhatsApp, email or phone link. Sent by
+// Counts a click on a WhatsApp, phone, email or social link, or a form submission. Sent by
 // components/VisitorTracker.tsx with sendBeacon; same anonymous session id.
 import { isBot, isTrackedPath, recordAction, visitsSql } from "@/lib/visits";
 
-const KINDS = new Set(["whatsapp", "email", "phone"]);
+const KINDS = new Set(["whatsapp", "email", "phone", "facebook", "instagram", "form"]);
 
 export async function POST(request: Request) {
   let body: Record<string, unknown>;

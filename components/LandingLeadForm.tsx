@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useState, type FormEvent } from "react";
+import { trackAction } from "@/lib/track-action";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -38,6 +39,7 @@ export default function LandingLeadForm({ title = "اطلب أن نتصل بك" 
       }
 
       setStatus("sent");
+      trackAction("form");
       form.reset();
     } catch {
       setStatus("error");

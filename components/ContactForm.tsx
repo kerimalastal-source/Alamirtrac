@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { trackAction } from "@/lib/track-action";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -29,6 +30,7 @@ export default function ContactForm() {
       }
 
       setStatus("sent");
+      trackAction("form");
       form.reset();
       setFileName("");
     } catch {
