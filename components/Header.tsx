@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import SiteSearch from "@/components/SiteSearch";
-import { MenuIcon, CloseIcon, PhoneCallIcon } from "@/components/Icons";
+import { MenuIcon, CloseIcon, PhoneCallIcon, ChartIcon } from "@/components/Icons";
 import { business, services } from "@/lib/content";
 
 const links = [
@@ -121,6 +121,14 @@ export default function Header() {
         <div className="hidden items-center gap-3 xl:flex">
           <SiteSearch className="w-48 2xl:w-56" />
           <Link
+            href="/admin/stats"
+            aria-label="إحصاءات الزوار"
+            title="إحصاءات الزوار"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-border text-muted transition-colors hover:border-accent hover:text-accent"
+          >
+            <ChartIcon className="h-5 w-5" />
+          </Link>
+          <Link
             href="/contact"
             className="shrink-0 whitespace-nowrap rounded-md bg-accent px-4 py-2 text-sm font-bold text-accent-foreground transition-colors hover:bg-accent-strong"
           >
@@ -155,6 +163,15 @@ export default function Header() {
               </Link>
             ))}
           </nav>
+
+          <Link
+            href="/admin/stats"
+            onClick={() => setMobileOpen(false)}
+            className="flex items-center justify-center gap-2 rounded-md border border-border px-4 py-3 text-sm font-bold text-muted transition-colors hover:border-accent hover:text-accent"
+          >
+            <ChartIcon className="h-5 w-5" />
+            إحصاءات الزوار
+          </Link>
 
           <Link
             href="/contact"
