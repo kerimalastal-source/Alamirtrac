@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import PasswordField from "@/components/PasswordField";
 import { cityAr, countryAr, placeAr } from "@/lib/arabic-places";
 import { sourceLabel } from "@/lib/attribution";
 import { CONTINENT_LABEL, REGION_LABEL, groupByPlace } from "@/lib/geo-regions";
@@ -60,15 +61,7 @@ function LoginForm({ error }: { error: boolean }) {
         <label className="block text-sm font-bold text-foreground" htmlFor="password">
           كلمة المرور
         </label>
-        <input
-          id="password"
-          name="password"
-          type="password"
-          required
-          autoFocus
-          autoComplete="current-password"
-          className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-foreground outline-none focus:border-accent"
-        />
+        <PasswordField id="password" name="password" />
         {error && (
           <p role="alert" className="text-sm font-bold text-red-600">
             كلمة المرور غير صحيحة.
