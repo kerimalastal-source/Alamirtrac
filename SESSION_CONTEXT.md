@@ -168,3 +168,18 @@
   `app/services/[slug]/page.tsx`, `app/projects/page.tsx`, `app/blog/page.tsx`,
   `app/blog/[slug]/page.tsx`, `app/faq/page.tsx`, `app/contact/page.tsx`,
   `app/layout.tsx`
+
+## تتبّع الزوار وإشعارات تيليجرام
+
+منقول بنفس نمط موقع hadarahospitality (الجلسة المجهولة، رسالة تيليجرام واحدة تُعدَّل
+مع كل صفحة، تقييم «إنسان/آلي»، مصدر الزيارة، نقرات واتساب/اتصال/بريد).
+
+- المتصفح: `components/VisitorTracker.tsx` (يُحسب كل تغيّر في المسار كعرض صفحة) و`lib/ad-touch.ts`.
+- الخادم: `app/api/visit` و`app/api/visit/engagement` و`app/api/visit/action`.
+- المنطق: `lib/visits.ts` (الحفظ والرسائل)، `lib/visit-insights.ts` (التقييم)،
+  `lib/attribution.ts` (المصدر)، `lib/telegram.ts` (الإرسال).
+- لا يُخزَّن عنوان IP ولا user agent؛ فقط نوع الجهاز والنظام والمتصفح والمدينة والدولة.
+- الجداول تُنشأ تلقائياً عند أول زيارة (Neon Postgres).
+
+متغيرات البيئة في Vercel: `POSTGRES_URL` (يظهر تلقائياً بعد ربط Neon من Storage)،
+`TELEGRAM_BOT_TOKEN`، `TELEGRAM_CHAT_ID`.
