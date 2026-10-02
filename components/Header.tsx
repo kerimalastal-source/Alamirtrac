@@ -3,8 +3,9 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import SiteSearch from "@/components/SiteSearch";
-import { MenuIcon, CloseIcon } from "@/components/Icons";
+import { MenuIcon, CloseIcon, PhoneCallIcon } from "@/components/Icons";
 import { business, services } from "@/lib/content";
 
 const links = [
@@ -19,6 +20,35 @@ const links = [
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+  const isLanding = pathname?.startsWith("/lp");
+
+  if (isLanding) {
+    return (
+      <header className="sticky top-0 z-50 border-b border-border bg-surface/95 backdrop-blur">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-5 py-3 xl:px-8">
+          <Link href="/" className="flex shrink-0 items-center gap-2">
+            <Image
+              src="/logo.avif"
+              alt={business.fullName}
+              width={358}
+              height={192}
+              priority
+              className="h-14 w-auto sm:h-16"
+            />
+          </Link>
+
+          <a
+            href={`tel:${business.phone}`}
+            className="flex shrink-0 items-center gap-2 whitespace-nowrap rounded-md bg-accent px-4 py-2.5 text-sm font-bold text-accent-foreground transition-colors hover:bg-accent-strong sm:px-6"
+          >
+            <PhoneCallIcon className="h-4 w-4" />
+            اتصل بنا الآن
+          </a>
+        </div>
+      </header>
+    );
+  }
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-surface/95 backdrop-blur">

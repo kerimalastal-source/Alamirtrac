@@ -1,3 +1,6 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { business } from "@/lib/content";
 import { WhatsappIcon, PhoneCallIcon, FacebookIcon, InstagramIcon } from "@/components/Icons";
 
@@ -29,9 +32,13 @@ const buttons = [
 ];
 
 export default function FloatingContactButtons() {
+  const pathname = usePathname();
+  const isLanding = pathname?.startsWith("/lp");
+  const visibleButtons = isLanding ? buttons.slice(0, 2) : buttons;
+
   return (
     <div className="fixed bottom-5 start-5 z-50 flex flex-col gap-3">
-      {buttons.map(({ href, label, className, Icon }) => {
+      {visibleButtons.map(({ href, label, className, Icon }) => {
         const isExternal = href.startsWith("http");
         return (
           <a

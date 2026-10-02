@@ -1,8 +1,36 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { business, services } from "@/lib/content";
 
 export default function Footer() {
+  const pathname = usePathname();
+  const isLanding = pathname?.startsWith("/lp");
+
+  if (isLanding) {
+    return (
+      <footer className="border-t border-border bg-surface">
+        <div className="mx-auto flex max-w-4xl flex-col items-center gap-3 px-5 py-10 text-center">
+          <Image src="/logo.avif" alt={business.fullName} width={358} height={192} className="h-14 w-auto" />
+          <p className="text-sm text-muted">{business.address}</p>
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-1 text-sm">
+            <a href={`tel:${business.phone}`} dir="ltr" className="text-muted transition-colors hover:text-accent">
+              {business.phone}
+            </a>
+            <a href={`mailto:${business.email}`} dir="ltr" className="text-muted transition-colors hover:text-accent">
+              {business.email}
+            </a>
+          </div>
+          <p className="mt-2 text-xs text-muted">
+            © {new Date().getFullYear()} {business.fullName} — جميع الحقوق محفوظة
+          </p>
+        </div>
+      </footer>
+    );
+  }
+
   return (
     <footer className="border-t border-border bg-surface">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 sm:grid-cols-2 lg:grid-cols-4">

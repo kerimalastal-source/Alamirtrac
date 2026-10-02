@@ -27,6 +27,7 @@ export async function POST(request: Request) {
   const email = String(formData.get("email") ?? "").trim();
   const service = String(formData.get("service") ?? "").trim();
   const message = String(formData.get("message") ?? "").trim();
+  const source = String(formData.get("source") ?? "").trim();
   const attachment = formData.get("attachment");
 
   if (!name || !phone) {
@@ -51,6 +52,7 @@ export async function POST(request: Request) {
     ["رقم الهاتف", phone],
     ["البريد الإلكتروني", email || "—"],
     ["نوع الخدمة", service || "—"],
+    ["مصدر الطلب", source || "نموذج التواصل في الموقع"],
   ];
 
   const html = `
