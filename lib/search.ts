@@ -40,7 +40,7 @@ const blogItems: SearchItem[] = blogPosts.map((post) => ({
   title: post.title,
   description: post.excerpt,
   url: `/blog/${post.slug}`,
-  category: "المدونة",
+  category: "المدونة الفنية",
 }));
 
 const projectItems: SearchItem[] = projects.map((project) => ({

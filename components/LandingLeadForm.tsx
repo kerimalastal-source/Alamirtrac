@@ -2,6 +2,9 @@
 
 import { useId, useState, type FormEvent } from "react";
 import { trackAction } from "@/lib/track-action";
+import { business } from "@/lib/content";
+import ConsentField from "@/components/ConsentField";
+import FormGuard from "@/components/FormGuard";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -50,8 +53,14 @@ export default function LandingLeadForm({ title = "اطلب أن نتصل بك" 
   if (status === "sent") {
     return (
       <div className="rounded-2xl border border-accent/30 bg-accent/10 p-6 text-center sm:p-8">
-        <p className="font-bold text-foreground">تم إرسال طلبك بنجاح.</p>
-        <p className="mt-1 text-sm text-muted">سيتواصل معك فريقنا الفني خلال وقت قصير.</p>
+        <p className="font-bold text-foreground">وصلنا طلبك.</p>
+        <p className="mt-1 text-sm leading-6 text-muted">
+          سنتواصل معك على رقمك في أقرب وقت خلال مواعيد العمل. وإذا كان العطل مستعجلاً فاتصل بنا على{" "}
+          <a href={`tel:${business.phone}`} dir="ltr" className="font-bold underline">
+            {business.phoneLocal}
+          </a>
+          .
+        </p>
       </div>
     );
   }
@@ -108,6 +117,9 @@ export default function LandingLeadForm({ title = "اطلب أن نتصل بك" 
           ))}
         </select>
       </div>
+
+      <ConsentField id={`${uid}-consent`} />
+      <FormGuard />
 
       <button
         type="submit"

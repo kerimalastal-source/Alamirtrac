@@ -19,6 +19,7 @@ export const business = {
   experienceSince: 1997,
   email: "alamirtrac@gmail.com",
   phone: "+201043676451",
+  phoneLocal: "01043676451",
   whatsapp: "https://wa.me/201043676451",
   facebook: "https://www.facebook.com/profile.php?id=61594001891092",
   instagram: "https://www.instagram.com/alamirtrac",

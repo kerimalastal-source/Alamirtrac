@@ -1,7 +1,10 @@
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
 import { business } from "@/lib/content";
+import { hasTelegramConfigured, sendTelegramMessage } from "@/lib/telegram";
 
 const MAX_ATTACHMENT_BYTES = 4 * 1024 * 1024;
+/** A form submitted faster than this was filled by a script, not a person. */
+const MIN_FILL_MS = 2500;
 
 function escapeHtml(value: string) {
   return value
@@ -9,6 +12,25 @@ function escapeHtml(value: string) {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
+}
+
+/** Tells the owner on Telegram, after the response, so a request is never missed even if the email fails. */
+function notifyOwner(fields: Record<string, string>, hasAttachment: boolean, emailSent: boolean) {
+  if (!hasTelegramConfigured()) return;
+  const ltr = (value: string) => `\u2066${escapeHtml(value)}\u2069`;
+  const lines = [
+    "📩 <b>طلب جديد من نموذج الموقع</b>",
+    `👤 الاسم: ${escapeHtml(fields.name)}`,
+    `📞 الهاتف: ${ltr(fields.phone)}`,
+    fields.company ? `🏢 الشركة: ${escapeHtml(fields.company)}` : "",
+    fields.email ? `✉️ البريد: ${ltr(fields.email)}` : "",
+    fields.service ? `🛠️ الخدمة: ${escapeHtml(fields.service)}` : "",
+    `📍 المصدر: ${escapeHtml(fields.source || "صفحة التواصل")}`,
+    fields.message ? `📝 التفاصيل: ${escapeHtml(fields.message.slice(0, 600))}` : "",
+    hasAttachment ? "📎 أرفق صورة (في البريد الإلكتروني)" : "",
+    emailSent ? "✅ وصل البريد الإلكتروني" : "⚠️ تعذّر إرسال البريد الإلكتروني، اتصل بالعميل مباشرة",
+  ].filter(Boolean);
+  after(() => sendTelegramMessage(lines.join("\n")).then(() => undefined).catch((error) => console.error("[contact] telegram failed", error instanceof Error ? error.message : error)));
 }
 
 export async function POST(request: Request) {
@@ -29,6 +51,15 @@ export async function POST(request: Request) {
   const message = String(formData.get("message") ?? "").trim();
   const source = String(formData.get("source") ?? "").trim();
   const attachment = formData.get("attachment");
+
+  // Spam: a filled honeypot or an instant submission gets a fake success, so a bot learns nothing.
+  const startedAt = Number(formData.get("startedAt"));
+  if (String(formData.get("website") ?? "").trim() || (startedAt > 0 && Date.now() - startedAt < MIN_FILL_MS)) {
+    return NextResponse.json({ ok: true });
+  }
+  if (formData.get("consent") !== "yes") {
+    return NextResponse.json({ ok: false, error: "يرجى الموافقة على استخدام بياناتك للتواصل معك." }, { status: 400 });
+  }
 
   if (!name || !phone) {
     return NextResponse.json({ ok: false, error: "الاسم ورقم الهاتف مطلوبان." }, { status: 400 });
@@ -92,8 +123,10 @@ export async function POST(request: Request) {
   if (!response.ok) {
     const errorBody = await response.text();
     console.error("Resend API error:", errorBody);
+    notifyOwner({ name, phone, company, email, service, message, source }, attachments.length > 0, false);
     return NextResponse.json({ ok: false, error: "تعذّر إرسال الطلب حالياً، حاول مرة أخرى لاحقاً." }, { status: 502 });
   }
 
+  notifyOwner({ name, phone, company, email, service, message, source }, attachments.length > 0, true);
   return NextResponse.json({ ok: true });
 }

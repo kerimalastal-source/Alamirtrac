@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { withSocial } from "@/lib/seo";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import ContactForm from "@/components/ContactForm";
 import { business } from "@/lib/content";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocial({
   title: "تواصل معنا واطلب الصيانة",
   description:
     "تواصل مع ALAMIR TRAC في البراجيل بالجيزة لطلبات صيانة وإعادة تأهيل المعدات الثقيلة وأنظمة الهيدروليك والمحركات والديزل والتبريد والكهرباء.",
   alternates: { canonical: "/contact" },
-};
+});
 
 const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(business.mapQuery)}&output=embed`;
 
@@ -42,13 +43,33 @@ export default function ContactPage() {
           <div className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
             <h3 className="font-bold text-foreground">مواقعنا</h3>
             <div className="mt-3">
-              <span className="text-xs font-bold text-accent">مركز الصيانة</span>
+              <span className="text-xs font-bold text-accent">الورشة</span>
               <p className="mt-1 text-muted">{business.address}</p>
+              <a
+                href={business.workshopMapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-1 inline-block text-sm font-bold text-accent hover:text-accent-strong"
+              >
+                لوكيشن الورشة ←
+              </a>
             </div>
             <div className="mt-4 border-t border-border pt-4">
-              <span className="text-xs font-bold text-accent">مركز الإدارة الرئيسي</span>
+              <span className="text-xs font-bold text-accent">المكتب</span>
               <p className="mt-1 text-muted">{business.hqAddress}</p>
+              <a
+                href={business.officeMapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-1 inline-block text-sm font-bold text-accent hover:text-accent-strong"
+              >
+                لوكيشن المكتب ←
+              </a>
             </div>
+          </div>
+          <div className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
+            <h3 className="font-bold text-foreground">مواعيد العمل</h3>
+            <p className="mt-2 text-sm leading-6 text-muted">{business.workingHours}. الجمعة إجازة.</p>
           </div>
           <div className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
             <h3 className="font-bold text-foreground">مجالات الصيانة</h3>
@@ -68,7 +89,7 @@ export default function ContactPage() {
 
       <div className="mt-10 overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
         <iframe
-          title={`موقعنا على الخريطة - ${business.address}`}
+          title={`موقع الورشة على الخريطة - ${business.address}`}
           src={mapSrc}
           className="h-80 w-full sm:h-96"
           style={{ border: 0 }}

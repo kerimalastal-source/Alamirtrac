@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import { whatsappLink } from "@/lib/whatsapp";
+import { withSocial } from "@/lib/seo";
 import LandingLeadForm from "@/components/LandingLeadForm";
 import { WhatsappIcon, PhoneCallIcon, serviceIcons } from "@/components/Icons";
 import { business, services, faqCategories } from "@/lib/content";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocial({
   title: "اطلب صيانة معداتك الثقيلة الآن",
   description:
     "فريق فني بإشراف مؤسسه أحمد الأمير (خبرة منذ عام 1997) لصيانة وإعادة تأهيل المعدات الثقيلة وأنظمة الهيدروليك في جميع محافظات مصر. اتصل أو تواصل عبر واتساب الآن.",
   robots: { index: false, follow: false },
   alternates: { canonical: "/lp" },
-};
+});
 
 const stats = [
   { value: "منذ 1997", label: "خبرة أحمد الأمير" },
@@ -98,7 +100,7 @@ export default function LandingPage() {
                 اتصل بنا الآن
               </a>
               <a
-                href={business.whatsapp}
+                href={whatsappLink()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 rounded-md bg-[#25D366] px-6 py-3 font-bold text-white transition-colors hover:bg-[#1eb955]"
@@ -220,7 +222,7 @@ export default function LandingPage() {
                 اتصل بنا الآن
               </a>
               <a
-                href={business.whatsapp}
+                href={whatsappLink()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 rounded-md bg-[#25D366] px-6 py-3 font-bold text-white transition-colors hover:bg-[#1eb955]"

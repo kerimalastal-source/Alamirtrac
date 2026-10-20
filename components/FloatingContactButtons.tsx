@@ -1,7 +1,8 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { business } from "@/lib/content";
+import { business, services } from "@/lib/content";
+import { serviceWaMessage, whatsappLink } from "@/lib/whatsapp";
 import { WhatsappIcon, PhoneCallIcon, FacebookIcon, InstagramIcon } from "@/components/Icons";
 
 const buttons = [
@@ -34,7 +35,11 @@ const buttons = [
 export default function FloatingContactButtons() {
   const pathname = usePathname();
   const isLanding = pathname?.startsWith("/lp");
-  const visibleButtons = isLanding ? buttons.slice(0, 2) : buttons;
+  const service = services.find((item) => pathname === `/services/${item.slug}`);
+  const whatsappHref = whatsappLink(service ? serviceWaMessage(service.title) : undefined);
+  const visibleButtons = (isLanding ? buttons.slice(0, 2) : buttons).map((button) =>
+    button.href === business.whatsapp ? { ...button, href: whatsappHref } : button,
+  );
 
   return (
     <div className="fixed bottom-5 start-5 z-50 flex flex-col gap-3">

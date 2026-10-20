@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
+import { withSocial } from "@/lib/seo";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import JsonLd from "@/components/JsonLd";
 import { faqPageSchema, breadcrumbSchema } from "@/lib/schema";
 import { faqCategories } from "@/lib/content";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocial({
   title: "الأسئلة الشائعة",
   description:
     "إجابات على أكثر الأسئلة شيوعاً حول خدمات ALAMIR TRAC في صيانة وإعادة تأهيل المعدات الثقيلة وأنظمة الهيدروليك، وطريقة طلب الخدمة والتواصل معنا في البراجيل بالجيزة.",
   alternates: { canonical: "/faq" },
-};
+});
 
 export default function FaqPage() {
   return (

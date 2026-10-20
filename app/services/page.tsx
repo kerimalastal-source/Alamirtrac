@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { withSocial } from "@/lib/seo";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
 import { services } from "@/lib/content";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocial({
   title: "خدمات صيانة المعدات الثقيلة والهيدروليك",
   description:
     "خدمات ALAMIR TRAC لصيانة المعدات الثقيلة: الهيدروليك، المحركات، الديزل، التبريد، الكهرباء، المجنزرات، ناقل الحركة، اللحام، والصيانة الطارئة، من ورشتنا في البراجيل بالجيزة أو في موقع العمل بجميع المحافظات.",
   alternates: { canonical: "/services" },
-};
+});
 
 export default function ServicesPage() {
   return (

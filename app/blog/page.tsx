@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { withSocial } from "@/lib/seo";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import CoverIllustration from "@/components/CoverIllustration";
 import { blogPosts } from "@/lib/content";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocial({
   title: "مقالات ونصائح صيانة المعدات الثقيلة",
   description:
     "مقالات فنية من ALAMIR TRAC حول صيانة المعدات الثقيلة، أعطال الهيدروليك، المحركات، أنظمة التبريد والصيانة الوقائية.",
   alternates: { canonical: "/blog" },
-};
+});
 
 export default function BlogPage() {
   const sortedPosts = [...blogPosts].sort((a, b) => b.publishedDate.localeCompare(a.publishedDate));

@@ -2,6 +2,9 @@
 
 import { useState, type FormEvent } from "react";
 import { trackAction } from "@/lib/track-action";
+import { business, services } from "@/lib/content";
+import ConsentField from "@/components/ConsentField";
+import FormGuard from "@/components/FormGuard";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -100,12 +103,20 @@ export default function ContactForm() {
         <label htmlFor="service" className="mb-1.5 block text-sm font-bold text-foreground">
           نوع الخدمة المطلوبة
         </label>
-        <input
+        <select
           id="service"
           name="service"
+          defaultValue=""
           className="w-full rounded-md border border-border bg-background px-3.5 py-2.5 text-sm text-foreground outline-none focus:border-accent"
-          placeholder="مثال: صيانة هيدروليك، إعادة تأهيل محرك..."
-        />
+        >
+          <option value="">اختر الخدمة</option>
+          {services.map((item) => (
+            <option key={item.slug} value={item.title}>
+              {item.title}
+            </option>
+          ))}
+          <option value="غير متأكد">غير متأكد</option>
+        </select>
       </div>
 
       <div>
@@ -145,6 +156,9 @@ export default function ContactForm() {
         <p className="mt-1 text-xs text-muted">أقصى حجم للصورة 4 ميجابايت.</p>
       </div>
 
+      <ConsentField id="contact-consent" />
+      <FormGuard />
+
       <button
         type="submit"
         disabled={status === "sending"}
@@ -154,7 +168,13 @@ export default function ContactForm() {
       </button>
 
       {status === "sent" && (
-        <p className="text-sm font-bold text-accent">تم إرسال طلبك بنجاح، سيتواصل معك فريقنا قريباً.</p>
+        <p role="status" className="text-sm font-bold leading-7 text-accent">
+          وصلنا طلبك. سنتواصل معك على رقمك في أقرب وقت خلال مواعيد العمل. وإذا كان العطل مستعجلاً فاتصل بنا على{" "}
+          <a href={`tel:${business.phone}`} dir="ltr" className="underline">
+            {business.phoneLocal}
+          </a>
+          .
+        </p>
       )}
       {status === "error" && <p className="text-sm font-bold text-red-600">{errorMessage}</p>}
     </form>

@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import { withSocial } from "@/lib/seo";
 import SectionHeading from "@/components/SectionHeading";
 import CoverIllustration from "@/components/CoverIllustration";
 import { projects } from "@/lib/content";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocial({
   title: "أعطال شائعة في المعدات الثقيلة وكيف نتعامل معها",
   description:
     "أمثلة توضيحية على أنواع الأعطال التي تعالجها ALAMIR TRAC في المعدات الثقيلة: الهيدروليك والمحركات والتبريد والكهرباء.",
   alternates: { canonical: "/projects" },
-};
+});
 
 export default function ProjectsPage() {
   return (

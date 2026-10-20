@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { services, business } from "@/lib/content";
+import { withSocial } from "@/lib/seo";
+import { serviceWaMessage, whatsappLink } from "@/lib/whatsapp";
 import ServiceHero from "@/components/ServiceHero";
 import { serviceIcons, WhatsappIcon } from "@/components/Icons";
 import JsonLd from "@/components/JsonLd";
@@ -19,11 +21,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const service = services.find((item) => item.slug === slug);
   if (!service) return {};
-  return {
-    title: service.title,
-    description: service.metaDescription ?? service.description,
+  return withSocial({
+    title: `${service.title} في الجيزة والبراجيل`,
+    description: `${service.title} للحفارات واللوادر والمعدات الثقيلة في البراجيل بالجيزة. تشخيص قبل الإصلاح وسعر مكتوب قبل العمل. اتصل على ${business.phoneLocal}.`,
     alternates: { canonical: `/services/${service.slug}` },
-  };
+  });
 }
 
 export default async function ServiceDetailPage({
@@ -87,7 +89,7 @@ export default async function ServiceDetailPage({
             اطلب الخدمة الآن
           </Link>
           <a
-            href={business.whatsapp}
+            href={whatsappLink(serviceWaMessage(service.title))}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 rounded-md bg-[#25D366] px-6 py-3 font-bold text-white transition-colors hover:bg-[#1eb955]"

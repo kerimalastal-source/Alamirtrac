@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { blogPosts, business } from "@/lib/content";
+import { blogPosts } from "@/lib/content";
+import { withSocial } from "@/lib/seo";
+import { whatsappLink } from "@/lib/whatsapp";
 import JsonLd from "@/components/JsonLd";
 import CoverIllustration from "@/components/CoverIllustration";
 import { WhatsappIcon } from "@/components/Icons";
@@ -19,11 +21,14 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = blogPosts.find((item) => item.slug === slug);
   if (!post) return {};
-  return {
-    title: post.title,
-    description: post.excerpt,
-    alternates: { canonical: `/blog/${post.slug}` },
-  };
+  return withSocial(
+    {
+      title: post.title,
+      description: post.excerpt,
+      alternates: { canonical: `/blog/${post.slug}` },
+    },
+    "article",
+  );
 }
 
 export default async function BlogPostPage({
@@ -86,7 +91,7 @@ export default async function BlogPostPage({
             تواصل معنا
           </Link>
           <a
-            href={business.whatsapp}
+            href={whatsappLink()}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 rounded-md bg-[#25D366] px-5 py-2.5 font-bold text-white transition-colors hover:bg-[#1eb955]"

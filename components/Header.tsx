@@ -7,13 +7,14 @@ import { usePathname } from "next/navigation";
 import SiteSearch from "@/components/SiteSearch";
 import { MenuIcon, CloseIcon, PhoneCallIcon, ChartIcon } from "@/components/Icons";
 import { business, services } from "@/lib/content";
+import { whatsappLink } from "@/lib/whatsapp";
 
 const links = [
   { href: "/", label: "الرئيسية" },
   { href: "/about", label: "من نحن" },
   { href: "/services", label: "خدماتنا" },
   { href: "/projects", label: "أعطال نتعامل معها" },
-  { href: "/blog", label: "المدونة" },
+  { href: "/blog", label: "المدونة الفنية" },
   { href: "/faq", label: "الأسئلة الشائعة" },
   { href: "/contact", label: "تواصل معنا" },
 ];
@@ -108,7 +109,7 @@ export default function Header() {
             أعطال نتعامل معها
           </Link>
           <Link href="/blog" className="whitespace-nowrap text-[15px] font-semibold text-foreground transition-colors hover:text-accent">
-            المدونة
+            المدونة الفنية
           </Link>
           <Link href="/faq" className="whitespace-nowrap text-[15px] font-semibold text-foreground transition-colors hover:text-accent">
             الأسئلة الشائعة
@@ -173,13 +174,15 @@ export default function Header() {
             إحصاءات الزوار
           </Link>
 
-          <Link
-            href="/contact"
+          <a
+            href={whatsappLink()}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setMobileOpen(false)}
             className="block rounded-md bg-accent px-4 py-3 text-center text-sm font-bold text-accent-foreground transition-colors hover:bg-accent-strong"
           >
-            اطلب صيانة
-          </Link>
+            اطلب صيانة عبر واتساب
+          </a>
         </div>
       )}
     </header>

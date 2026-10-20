@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { withSocial } from "@/lib/seo";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
 import HeroIllustration from "@/components/HeroIllustration";
 import { business, services, blogPosts } from "@/lib/content";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocial({
   description:
     "شركة الأمير (ALAMIR TRAC) لصيانة وإعادة تأهيل المعدات الثقيلة وأنظمة الهيدروليك، ورشتها في البراجيل بالجيزة وتخدم جميع المحافظات، بخبرة مؤسسها أحمد الأمير منذ عام 1997.",
   alternates: { canonical: "/" },
-};
+});
 
 const stats = [
   { value: "منذ 1997", label: "خبرة أحمد الأمير في المعدات الثقيلة" },
