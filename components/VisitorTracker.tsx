@@ -11,9 +11,11 @@
 // screen size and navigator.webdriver, and when the page is hidden or left, how
 // it was used: seconds visible, deepest scroll and seconds with input
 // (lib/visit-insights.ts). Nothing personal is sent.
-import { useEffect } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 import { usePathname } from "next/navigation";
 import { recordArrival, visitorSessionId } from "@/lib/ad-touch";
+import { getConsent, subscribeConsent } from "@/lib/consent";
+import { flags } from "@/lib/flags";
 import { actionFromHref, beacon, trackAction } from "@/lib/track-action";
 
 const post = (url: string, body: string) =>
@@ -23,8 +25,12 @@ const post = (url: string, body: string) =>
 
 export default function VisitorTracker() {
   const pathname = usePathname();
+  // With NEXT_PUBLIC_OWN_TRACKING_NEEDS_CONSENT the site's own anonymous tracking also waits for "قبول".
+  const consent = useSyncExternalStore(subscribeConsent, getConsent, () => "unknown" as const);
+  const allowed = !(flags.privacy && flags.ownTrackingNeedsConsent) || consent === "granted";
 
   useEffect(() => {
+    if (!allowed) return;
     const { id: sessionId, isNew } = visitorSessionId();
     const touch = recordArrival(isNew);
     const viewId =
@@ -124,7 +130,7 @@ export default function VisitorTracker() {
       window.removeEventListener("scroll", measureScroll);
       for (const type of inputEvents) window.removeEventListener(type, markInput, { capture: true });
     };
-  }, [pathname]);
+  }, [pathname, allowed]);
 
   return null;
 }

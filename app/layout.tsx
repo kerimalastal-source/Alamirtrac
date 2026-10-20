@@ -4,7 +4,9 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingContactButtons from "@/components/FloatingContactButtons";
 import JsonLd from "@/components/JsonLd";
+import ConsentBanner from "@/components/ConsentBanner";
 import VisitorTracker from "@/components/VisitorTracker";
+import { flags } from "@/lib/flags";
 import { business } from "@/lib/content";
 import { localBusinessSchema, websiteSchema } from "@/lib/schema";
 import "./globals.css";
@@ -69,7 +71,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="ar" dir="rtl" className={`${cairo.variable} ${tajawal.variable} h-full`}>
       <body className="flex min-h-full flex-col antialiased">
-        {/* Google Analytics (G-8N9W3E758L) is switched off until the cookie-consent banner is live: it must load only after the visitor accepts. */}
+        {/* Meta Pixel and Google Analytics load from components/ConsentBanner.tsx, only after the visitor accepts (NEXT_PUBLIC_PRIVACY_LIVE=1). */}
         <JsonLd data={localBusinessSchema()} />
         <JsonLd data={websiteSchema()} />
         <Header />
@@ -77,6 +79,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Footer />
         <FloatingContactButtons />
         <VisitorTracker />
+        {flags.privacy && <ConsentBanner />}
       </body>
     </html>
   );

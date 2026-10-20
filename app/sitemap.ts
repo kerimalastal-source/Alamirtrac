@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { flags } from "@/lib/flags";
 import { business, services, blogPosts } from "@/lib/content";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -11,6 +12,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${business.url}/contact`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${business.url}/faq`, changeFrequency: "monthly", priority: 0.7 },
   ];
+  if (flags.privacy) staticRoutes.push({ url: `${business.url}/privacy`, changeFrequency: "yearly", priority: 0.3 });
+  if (flags.warranty) staticRoutes.push({ url: `${business.url}/warranty`, changeFrequency: "yearly", priority: 0.4 });
 
   const serviceRoutes: MetadataRoute.Sitemap = services.map((service) => ({
     url: `${business.url}/services/${service.slug}`,

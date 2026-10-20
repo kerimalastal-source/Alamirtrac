@@ -42,7 +42,7 @@ export default function LandingLeadForm({ title = "اطلب أن نتصل بك" 
       }
 
       setStatus("sent");
-      trackAction("form");
+      trackAction("form", String(new FormData(form).get("service") ?? ""));
       form.reset();
     } catch {
       setStatus("error");

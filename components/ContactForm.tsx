@@ -35,7 +35,7 @@ export default function ContactForm() {
       }
 
       setStatus("sent");
-      trackAction("form");
+      trackAction("form", String(new FormData(form).get("service") ?? ""));
       form.reset();
       setFileName("");
     } catch {

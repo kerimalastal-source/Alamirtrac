@@ -2,6 +2,7 @@
 // session's anonymous id. sendBeacon survives the page being left (a WhatsApp or
 // mailto link often opens another app). Tracking must never affect the page.
 import { visitorSessionId } from "./ad-touch";
+import { trackContactClick, trackLead } from "./trackers";
 
 export type ActionKind = "whatsapp" | "phone" | "email" | "facebook" | "instagram" | "form";
 
@@ -25,6 +26,9 @@ export function actionFromHref(href: string): ActionKind | null {
   return null;
 }
 
-export function trackAction(kind: ActionKind) {
+export function trackAction(kind: ActionKind, detail?: string) {
   beacon("/api/visit/action", JSON.stringify({ sessionId: visitorSessionId().id, kind, path: window.location.pathname }));
+  // Meta Pixel / Google Analytics events: no-ops unless the visitor accepted cookies.
+  if (kind === "whatsapp" || kind === "phone") trackContactClick(kind);
+  else if (kind === "form") trackLead(detail);
 }

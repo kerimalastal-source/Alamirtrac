@@ -396,10 +396,10 @@ async function saveAlert(sql: Sql, sessionId: string, messageId: number): Promis
     ON CONFLICT (session_id) DO NOTHING`;
 }
 
-/** Deletes page views and contact clicks older than 13 months, and Telegram alert references older than 30 days. */
+/** Deletes page views and contact clicks older than 12 months, and Telegram alert references older than 30 days. */
 export async function removeOldVisits(sql: Sql): Promise<void> {
-  await sql`DELETE FROM visitor_events WHERE created_at < now() - interval '13 months'`;
-  await sql`DELETE FROM visitor_actions WHERE created_at < now() - interval '13 months'`;
+  await sql`DELETE FROM visitor_events WHERE created_at < now() - interval '12 months'`;
+  await sql`DELETE FROM visitor_actions WHERE created_at < now() - interval '12 months'`;
   await sql`DELETE FROM visitor_alerts WHERE created_at < now() - interval '30 days'`;
 }
 

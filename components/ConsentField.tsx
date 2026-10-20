@@ -1,4 +1,7 @@
-/** The required consent checkbox of the request forms (the policy link joins once the privacy page is published). */
+import Link from "next/link";
+import { flags } from "@/lib/flags";
+
+/** The required consent checkbox of the request forms (the policy link joins once the privacy page is live). */
 export default function ConsentField({ id }: { id: string }) {
   return (
     <div className="flex items-start gap-3">
@@ -12,6 +15,14 @@ export default function ConsentField({ id }: { id: string }) {
       />
       <label htmlFor={id} className="text-sm leading-6 text-muted">
         أوافق على استخدام بياناتي للتواصل معي بخصوص طلبي.
+        {flags.privacy && (
+          <>
+            {" "}
+            <Link href="/privacy" className="font-bold text-accent underline">
+              سياسة الخصوصية
+            </Link>
+          </>
+        )}
       </label>
     </div>
   );

@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { business, services } from "@/lib/content";
+import { flags, hasLegalIds } from "@/lib/flags";
+import { OPEN_SETTINGS_EVENT } from "@/lib/consent";
 
 export default function Footer() {
   const pathname = usePathname();
@@ -121,7 +123,37 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-border px-5 py-5 text-center text-xs text-muted">
-        © {new Date().getFullYear()} {business.fullName} — جميع الحقوق محفوظة
+        <p>
+          © {new Date().getFullYear()} {business.fullName} — جميع الحقوق محفوظة
+        </p>
+        {hasLegalIds && (
+          <p className="mt-1">
+            السجل التجاري: <span dir="ltr">{flags.commercialRegister}</span> — الرقم الضريبي: <span dir="ltr">{flags.taxId}</span>
+          </p>
+        )}
+        {(flags.privacy || flags.warranty) && (
+          <p className="mt-2 flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
+            {flags.privacy && (
+              <Link href="/privacy" className="transition-colors hover:text-accent">
+                سياسة الخصوصية
+              </Link>
+            )}
+            {flags.warranty && (
+              <Link href="/warranty" className="transition-colors hover:text-accent">
+                الضمان
+              </Link>
+            )}
+            {flags.privacy && (
+              <button
+                type="button"
+                onClick={() => window.dispatchEvent(new Event(OPEN_SETTINGS_EVENT))}
+                className="transition-colors hover:text-accent"
+              >
+                إعدادات الكوكيز
+              </button>
+            )}
+          </p>
+        )}
       </div>
     </footer>
   );
