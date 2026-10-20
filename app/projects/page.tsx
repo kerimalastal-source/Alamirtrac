@@ -26,8 +26,8 @@ export default function ProjectsPage() {
           <div key={project.slug} className="overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
             <CoverIllustration icon={project.icon} title={project.title} size="sm" className="rounded-none" />
             <div className="p-6">
-              <span className="text-xs font-bold text-accent">{project.category}</span>
-              <h3 className="mt-2 text-lg font-bold text-foreground">{project.title}</h3>
+              <span className="text-xs font-bold text-accent-text">{project.category}</span>
+              <h2 className="mt-2 text-lg font-bold text-foreground">{project.title}</h2>
               <p className="mt-2 text-sm leading-6 text-muted">{project.description}</p>
             </div>
           </div>

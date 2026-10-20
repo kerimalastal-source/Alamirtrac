@@ -35,7 +35,7 @@ export default function FaqPage() {
         {faqCategories.map((category, index) => (
           <div key={category.title}>
             <div className="flex items-center gap-3">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent/15 text-sm font-extrabold text-accent">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent/15 text-sm font-extrabold text-accent-text">
                 {index + 1}
               </span>
               <h2 className="text-xl font-extrabold text-foreground sm:text-2xl">{category.title}</h2>
@@ -51,7 +51,7 @@ export default function FaqPage() {
                     {item.question}
                     <svg
                       viewBox="0 0 24 24"
-                      className="h-5 w-5 shrink-0 text-accent transition-transform group-open:rotate-180"
+                      className="h-5 w-5 shrink-0 text-accent-text transition-transform group-open:rotate-180"
                       fill="none"
                       stroke="currentColor"
                       strokeWidth="2"

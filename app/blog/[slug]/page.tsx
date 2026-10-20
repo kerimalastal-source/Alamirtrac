@@ -56,7 +56,7 @@ export default async function BlogPostPage({
           { name: post.title, path: `/blog/${post.slug}` },
         ])}
       />
-      <Link href="/blog" className="text-sm font-bold text-accent hover:text-accent-strong">
+      <Link href="/blog" className="inline-block py-2 text-sm font-bold text-accent-text hover:text-accent-strong">
         ← كل المقالات
       </Link>
 
@@ -100,7 +100,7 @@ export default async function BlogPostPage({
           <ul className="mt-4 space-y-3">
             {relatedPosts.map((item) => (
               <li key={item.slug}>
-                <Link href={`/blog/${item.slug}`} className="font-bold text-accent hover:text-accent-strong">
+                <Link href={`/blog/${item.slug}`} className="font-bold text-accent-text hover:text-accent-strong">
                   {item.title} ←
                 </Link>
               </li>
@@ -114,7 +114,7 @@ export default async function BlogPostPage({
           <h2 className="font-bold text-foreground">عندك العطل ده؟ أرسل صورته على واتساب</h2>
           <p className="mt-1 text-sm text-muted">فريق ALAMIR TRAC يراجع العطل ويقترح الحل المناسب قبل أي تكلفة.</p>
           {relatedService && (
-            <Link href={`/services/${relatedService.slug}`} className="mt-2 inline-block text-sm font-bold text-accent hover:text-accent-strong">
+            <Link href={`/services/${relatedService.slug}`} className="inline-block py-2 mt-2 text-sm font-bold text-accent-text hover:text-accent-strong">
               {relatedService.title} ←
             </Link>
           )}
@@ -130,7 +130,7 @@ export default async function BlogPostPage({
             href={whatsappLink()}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 rounded-md bg-[#25D366] px-5 py-2.5 font-bold text-white transition-colors hover:bg-[#1eb955]"
+            className="flex items-center justify-center gap-2 rounded-md bg-[#157a3f] px-5 py-2.5 font-bold text-white transition-colors hover:bg-[#106232]"
           >
             <WhatsappIcon className="h-5 w-5" />
             تواصل عبر واتساب

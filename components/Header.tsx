@@ -142,7 +142,7 @@ export default function Header() {
           onClick={() => setMobileOpen((value) => !value)}
           aria-label={mobileOpen ? "إغلاق القائمة" : "فتح القائمة"}
           aria-expanded={mobileOpen}
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md text-foreground transition-colors hover:bg-surface-2 xl:hidden"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md text-foreground transition-colors hover:bg-surface-2 xl:hidden"
         >
           {mobileOpen ? <CloseIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
         </button>

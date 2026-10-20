@@ -68,11 +68,11 @@ export default function LandingLeadForm({ title = "اطلب أن نتصل بك" 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 rounded-2xl border border-border bg-surface p-5 shadow-sm sm:p-6">
       <input type="hidden" name="source" value="صفحة الهبوط - إعلان ممول" />
-      <h3 className="text-lg font-bold text-foreground">{title}</h3>
+      <h2 className="text-lg font-bold text-foreground">{title}</h2>
 
       <div>
         <label htmlFor={`${uid}-name`} className="mb-1.5 block text-sm font-bold text-foreground">
-          الاسم <span className="text-accent">*</span>
+          الاسم <span className="text-accent-text">*</span>
         </label>
         <input
           id={`${uid}-name`}
@@ -85,7 +85,7 @@ export default function LandingLeadForm({ title = "اطلب أن نتصل بك" 
 
       <div>
         <label htmlFor={`${uid}-phone`} className="mb-1.5 block text-sm font-bold text-foreground">
-          رقم الهاتف <span className="text-accent">*</span>
+          رقم الهاتف <span className="text-accent-text">*</span>
         </label>
         <input
           id={`${uid}-phone`}

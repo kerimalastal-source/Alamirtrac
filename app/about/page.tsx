@@ -126,7 +126,7 @@ export default function AboutPage() {
                 href={`/services/${service.slug}`}
                 className="group flex items-center gap-3 rounded-xl border border-border bg-surface p-4 transition-colors hover:border-accent/50 hover:bg-surface-2"
               >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-surface-2 text-accent transition-colors group-hover:bg-accent group-hover:text-accent-foreground">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-surface-2 text-accent-text transition-colors group-hover:bg-accent group-hover:text-accent-foreground">
                   <Icon className="h-5 w-5" />
                 </div>
                 <span className="text-sm font-bold text-foreground">{service.title}</span>

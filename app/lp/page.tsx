@@ -103,7 +103,7 @@ export default function LandingPage() {
                 href={whatsappLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 rounded-md bg-[#25D366] px-6 py-3 font-bold text-white transition-colors hover:bg-[#1eb955]"
+                className="flex items-center gap-2 rounded-md bg-[#157a3f] px-6 py-3 font-bold text-white transition-colors hover:bg-[#106232]"
               >
                 <WhatsappIcon className="h-5 w-5" />
                 تواصل عبر واتساب
@@ -128,7 +128,7 @@ export default function LandingPage() {
 
       <section className="mx-auto max-w-6xl px-5 py-16 sm:py-20">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="text-sm font-bold tracking-wide text-accent">لماذا {business.nameBrand}</span>
+          <span className="text-sm font-bold tracking-wide text-accent-text">لماذا {business.nameBrand}</span>
           <h2 className="mt-2 text-3xl font-extrabold text-foreground sm:text-4xl">
             خبرة ميدانية تحمي معداتك من التوقف
           </h2>
@@ -146,7 +146,7 @@ export default function LandingPage() {
       <section className="border-y border-border bg-background">
         <div className="mx-auto max-w-6xl px-5 py-16 sm:py-20">
           <div className="mx-auto max-w-2xl text-center">
-            <span className="text-sm font-bold tracking-wide text-accent">خدماتنا</span>
+            <span className="text-sm font-bold tracking-wide text-accent-text">خدماتنا</span>
             <h2 className="mt-2 text-3xl font-extrabold text-foreground sm:text-4xl">أبرز خدمات الصيانة لدينا</h2>
           </div>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -154,7 +154,7 @@ export default function LandingPage() {
               const Icon = serviceIcons[service.icon];
               return (
                 <div key={service.slug} className="flex items-start gap-3 rounded-xl border border-border bg-surface p-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-surface-2 text-accent">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-surface-2 text-accent-text">
                     <Icon className="h-5 w-5" />
                   </div>
                   <div>
@@ -170,7 +170,7 @@ export default function LandingPage() {
 
       <section className="mx-auto max-w-6xl px-5 py-16 sm:py-20">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="text-sm font-bold tracking-wide text-accent">خطوات بسيطة</span>
+          <span className="text-sm font-bold tracking-wide text-accent-text">خطوات بسيطة</span>
           <h2 className="mt-2 text-3xl font-extrabold text-foreground sm:text-4xl">كيف نعمل معك</h2>
         </div>
         <div className="mt-10 grid gap-6 sm:grid-cols-3">
@@ -190,7 +190,7 @@ export default function LandingPage() {
         <section className="border-y border-border bg-background">
           <div className="mx-auto max-w-3xl px-5 py-16 sm:py-20">
             <div className="mx-auto max-w-2xl text-center">
-              <span className="text-sm font-bold tracking-wide text-accent">أسئلة شائعة</span>
+              <span className="text-sm font-bold tracking-wide text-accent-text">أسئلة شائعة</span>
               <h2 className="mt-2 text-3xl font-extrabold text-foreground sm:text-4xl">قبل ما تتواصل معنا</h2>
             </div>
             <div className="mt-10 space-y-4">
@@ -225,7 +225,7 @@ export default function LandingPage() {
                 href={whatsappLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 rounded-md bg-[#25D366] px-6 py-3 font-bold text-white transition-colors hover:bg-[#1eb955]"
+                className="flex items-center gap-2 rounded-md bg-[#157a3f] px-6 py-3 font-bold text-white transition-colors hover:bg-[#106232]"
               >
                 <WhatsappIcon className="h-5 w-5" />
                 تواصل عبر واتساب

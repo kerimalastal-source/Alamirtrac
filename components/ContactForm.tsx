@@ -49,7 +49,7 @@ export default function ContactForm() {
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className="mb-1.5 block text-sm font-bold text-foreground">
-            الاسم <span className="text-accent">*</span>
+            الاسم <span className="text-accent-text">*</span>
           </label>
           <input
             id="name"
@@ -61,7 +61,7 @@ export default function ContactForm() {
         </div>
         <div>
           <label htmlFor="phone" className="mb-1.5 block text-sm font-bold text-foreground">
-            رقم الهاتف <span className="text-accent">*</span>
+            رقم الهاتف <span className="text-accent-text">*</span>
           </label>
           <input
             id="phone"
@@ -170,7 +170,7 @@ export default function ContactForm() {
       </button>
 
       {status === "sent" && (
-        <p role="status" className="text-sm font-bold leading-7 text-accent">
+        <p role="status" className="text-sm font-bold leading-7 text-accent-text">
           وصلنا طلبك. سنتواصل معك على رقمك في أقرب وقت خلال مواعيد العمل. وإذا كان العطل مستعجلاً فاتصل بنا على{" "}
           <a href={`tel:${business.phone}`} dir="ltr" className="underline">
             {business.phoneLocal}

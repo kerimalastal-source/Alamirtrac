@@ -58,7 +58,7 @@ export default function ConsentBanner() {
     >
       <p className="text-sm leading-7 text-foreground">
         نستخدم ملفات تعريف الارتباط (الكوكيز) لقياس زيارات الموقع وتحسين الإعلانات، ولا نفعّلها إلا بموافقتك. يمكنك تغيير اختيارك في أي وقت من أسفل الصفحة.{" "}
-        <Link href="/privacy" className="font-bold text-accent underline">
+        <Link href="/privacy" className="font-bold text-accent-text underline">
           سياسة الخصوصية
         </Link>
       </p>
@@ -66,7 +66,7 @@ export default function ConsentBanner() {
         <button
           type="button"
           onClick={() => choose("granted")}
-          className="rounded-full bg-accent px-6 py-2.5 text-sm font-bold text-white transition-opacity hover:opacity-90"
+          className="rounded-full bg-accent px-6 py-2.5 text-sm font-bold text-accent-foreground transition-opacity hover:opacity-90"
         >
           قبول
         </button>

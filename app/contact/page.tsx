@@ -34,61 +34,61 @@ export default function ContactPage() {
 
         <div className="space-y-6">
           <div className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
-            <h3 className="font-bold text-foreground">البريد الإلكتروني</h3>
+            <h2 className="font-bold text-foreground">البريد الإلكتروني</h2>
             <a
               href={`mailto:${business.email}`}
               dir="ltr"
-              className="mt-2 block text-right text-accent transition-colors hover:text-accent-strong"
+              className="mt-2 block text-right text-accent-text transition-colors hover:text-accent-strong"
             >
               {business.email}
             </a>
           </div>
           <div className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
-            <h3 className="font-bold text-foreground">مواقعنا</h3>
+            <h2 className="font-bold text-foreground">مواقعنا</h2>
             <div className="mt-3">
-              <span className="text-xs font-bold text-accent">الورشة</span>
+              <span className="text-xs font-bold text-accent-text">الورشة</span>
               <p className="mt-1 text-muted">{business.address}</p>
               <a
                 href={business.workshopMapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-1 inline-block text-sm font-bold text-accent hover:text-accent-strong"
+                className="inline-block py-2 mt-1 text-sm font-bold text-accent-text hover:text-accent-strong"
               >
                 لوكيشن الورشة ←
               </a>
             </div>
             <div className="mt-4 border-t border-border pt-4">
-              <span className="text-xs font-bold text-accent">المكتب</span>
+              <span className="text-xs font-bold text-accent-text">المكتب</span>
               <p className="mt-1 text-muted">{business.hqAddress}</p>
               <a
                 href={business.officeMapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-1 inline-block text-sm font-bold text-accent hover:text-accent-strong"
+                className="inline-block py-2 mt-1 text-sm font-bold text-accent-text hover:text-accent-strong"
               >
                 لوكيشن المكتب ←
               </a>
             </div>
           </div>
           <div className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
-            <h3 className="font-bold text-foreground">مواعيد العمل</h3>
+            <h2 className="font-bold text-foreground">مواعيد العمل</h2>
             <p className="mt-2 text-sm leading-6 text-muted">{business.workingHours}. الجمعة إجازة.</p>
           </div>
           <div className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
-            <h3 className="font-bold text-foreground">مجالات الصيانة</h3>
+            <h2 className="font-bold text-foreground">مجالات الصيانة</h2>
             <p className="mt-2 text-sm leading-6 text-muted">
               المعدات الثقيلة، الهيدروليك، المحركات، حقن الديزل، أنظمة التبريد، الأنظمة الكهربائية، وإعادة التأهيل الشاملة.
             </p>
           </div>
           <div className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
-            <h3 className="font-bold text-foreground">عندك سؤال قبل التواصل؟</h3>
+            <h2 className="font-bold text-foreground">عندك سؤال قبل التواصل؟</h2>
             <p className="mt-2 text-sm leading-6 text-muted">راجع صفحة الأسئلة الشائعة، فربما تجد إجابتك مباشرة.</p>
-            <Link href="/faq" className="mt-3 inline-block text-sm font-bold text-accent hover:text-accent-strong">
+            <Link href="/faq" className="inline-block py-2 mt-3 text-sm font-bold text-accent-text hover:text-accent-strong">
               الأسئلة الشائعة ←
             </Link>
             <Link
               href="/blog/choose-heavy-equipment-repair-workshop-giza"
-              className="mt-2 block text-sm font-bold text-accent hover:text-accent-strong"
+              className="inline-block py-2 mt-2 text-sm font-bold text-accent-text hover:text-accent-strong"
             >
               كيف تختار ورشة صيانة معدات ثقيلة في الجيزة؟ ←
             </Link>

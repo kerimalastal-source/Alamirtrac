@@ -14,7 +14,7 @@ export default function SectionHeading({
   return (
     <div className={center ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
       {eyebrow && (
-        <span className="text-sm font-bold tracking-wide text-accent">{eyebrow}</span>
+        <span className="text-sm font-bold tracking-wide text-accent-text">{eyebrow}</span>
       )}
       <Heading className="mt-2 text-3xl font-extrabold text-foreground sm:text-4xl">{title}</Heading>
       {description && <p className="mt-4 text-muted leading-7">{description}</p>}

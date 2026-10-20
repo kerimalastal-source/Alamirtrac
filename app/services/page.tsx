@@ -24,7 +24,7 @@ export default function ServicesPage() {
 
       <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {services.map((service) => (
-          <ServiceCard key={service.slug} service={service} />
+          <ServiceCard key={service.slug} service={service} as="h2" />
         ))}
       </div>
 
@@ -34,7 +34,7 @@ export default function ServicesPage() {
           <p className="mt-1 text-sm text-muted">أرسل لنا تفاصيل العطل وسيراجعها الفريق الفني ويقترح الحل المناسب.</p>
           <Link
             href="/blog/choose-heavy-equipment-repair-workshop-giza"
-            className="mt-2 inline-block text-sm font-bold text-accent hover:text-accent-strong"
+            className="inline-block py-2 mt-2 text-sm font-bold text-accent-text hover:text-accent-strong"
           >
             كيف تختار ورشة صيانة معدات ثقيلة في الجيزة؟ ←
           </Link>

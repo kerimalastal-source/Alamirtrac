@@ -63,7 +63,7 @@ export default function Home() {
                 href={whatsappLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 rounded-md bg-[#25D366] px-6 py-3 font-bold text-white transition-colors hover:bg-[#1eb955]"
+                className="flex items-center gap-2 rounded-md bg-[#157a3f] px-6 py-3 font-bold text-white transition-colors hover:bg-[#106232]"
               >
                 <WhatsappIcon className="h-5 w-5" />
                 أرسل العطل على واتساب
@@ -105,7 +105,7 @@ export default function Home() {
             />
           )}
           <div className={business.founderPhoto ? "" : "lg:col-span-2"}>
-            <span className="text-sm font-bold tracking-wide text-accent">المؤسس</span>
+            <span className="text-sm font-bold tracking-wide text-accent-text">المؤسس</span>
             <h2 className="mt-3 text-2xl font-extrabold text-foreground sm:text-3xl">
               {business.founderName}، مؤسس الأمير تراك
             </h2>
@@ -124,7 +124,7 @@ export default function Home() {
             title="حلول صيانة شاملة لمعداتك الثقيلة"
             description="نغطي كل أنظمة المعدة الثقيلة بفريق فني واحد، من الفحص الدوري إلى إعادة التأهيل الكاملة."
           />
-          <Link href="/services" className="text-sm font-bold text-accent hover:text-accent-strong">
+          <Link href="/services" className="inline-block py-2 text-sm font-bold text-accent-text hover:text-accent-strong">
             كل الخدمات ←
           </Link>
         </div>
@@ -141,7 +141,7 @@ export default function Home() {
           <ol className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {workSteps.map((step, index) => (
               <li key={step} className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/15 text-base font-extrabold text-accent">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/15 text-base font-extrabold text-accent-text">
                   {index + 1}
                 </span>
                 <p className="mt-4 leading-7 text-foreground">{step}</p>
@@ -168,7 +168,7 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-5 py-20">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <SectionHeading eyebrow="المدونة الفنية" title="مقالات ونصائح فنية" />
-          <Link href="/blog" className="text-sm font-bold text-accent hover:text-accent-strong">
+          <Link href="/blog" className="inline-block py-2 text-sm font-bold text-accent-text hover:text-accent-strong">
             كل المقالات ←
           </Link>
         </div>
@@ -181,7 +181,7 @@ export default function Home() {
             >
               <h3 className="text-base font-bold leading-6 text-foreground">{post.title}</h3>
               <p className="mt-2 line-clamp-3 text-sm leading-6 text-muted">{post.excerpt}</p>
-              <span className="mt-4 text-sm font-bold text-accent">اقرأ المزيد ←</span>
+              <span className="mt-4 text-sm font-bold text-accent-text">اقرأ المزيد ←</span>
             </Link>
           ))}
         </div>

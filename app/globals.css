@@ -11,8 +11,9 @@
 
   /* Brand accent — matches the logo's orange for a consistent identity */
   --accent: #f48615;
-  --accent-strong: #c86d11;
-  --accent-foreground: #ffffff;
+  --accent-strong: #b45309;
+  --accent-text: #b45309;
+  --accent-foreground: #0f172a;
 
   /* Dark navy — header, hero band, footer */
   --dark: #0f172a;
@@ -31,6 +32,7 @@
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --color-accent-strong: var(--accent-strong);
+  --color-accent-text: var(--accent-text);
   --color-accent-foreground: var(--accent-foreground);
   --color-dark: var(--dark);
   --color-dark-elevated: var(--dark-elevated);

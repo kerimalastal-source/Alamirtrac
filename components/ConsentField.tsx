@@ -11,14 +11,14 @@ export default function ConsentField({ id }: { id: string }) {
         type="checkbox"
         value="yes"
         required
-        className="mt-1 h-4 w-4 shrink-0 accent-[var(--accent)]"
+        className="mt-0.5 h-5 w-5 shrink-0 accent-[var(--accent)]"
       />
       <label htmlFor={id} className="text-sm leading-6 text-muted">
         أوافق على استخدام بياناتي للتواصل معي بخصوص طلبي.
         {flags.privacy && (
           <>
             {" "}
-            <Link href="/privacy" className="font-bold text-accent underline">
+            <Link href="/privacy" className="font-bold text-accent-text underline">
               سياسة الخصوصية
             </Link>
           </>

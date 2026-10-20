@@ -54,7 +54,7 @@ export default async function ServiceDetailPage({
           { name: service.title, path: `/services/${service.slug}` },
         ])}
       />
-      <Link href="/services" className="text-sm font-bold text-accent hover:text-accent-strong">
+      <Link href="/services" className="inline-block py-2 text-sm font-bold text-accent-text hover:text-accent-strong">
         ← كل الخدمات
       </Link>
 
@@ -65,7 +65,7 @@ export default async function ServiceDetailPage({
       <h1 className="mt-8 text-3xl font-extrabold leading-tight text-foreground sm:text-4xl">
         {service.title}
       </h1>
-      <p className="mt-3 text-base font-bold text-accent">{audience}</p>
+      <p className="mt-3 text-base font-bold text-accent-text">{audience}</p>
       <p className="mt-4 max-w-2xl text-lg leading-8 text-muted">{service.description}</p>
 
       {service.symptoms && service.symptoms.length > 0 && (
@@ -100,7 +100,7 @@ export default async function ServiceDetailPage({
           <dl className="mt-4 space-y-4">
             {service.notes.rows.map((row) => (
               <div key={row.label}>
-                <dt className="text-sm font-bold text-accent">{row.label}</dt>
+                <dt className="text-sm font-bold text-accent-text">{row.label}</dt>
                 <dd className="mt-1 leading-7 text-foreground">{row.text}</dd>
               </div>
             ))}
@@ -113,7 +113,7 @@ export default async function ServiceDetailPage({
         <ol className="mt-4 space-y-4">
           {workSteps.map((step, index) => (
             <li key={step} className="flex items-start gap-3">
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/15 text-sm font-extrabold text-accent">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/15 text-sm font-extrabold text-accent-text">
                 {index + 1}
               </span>
               <span className="pt-0.5 leading-7 text-foreground">{step}</span>
@@ -160,7 +160,7 @@ export default async function ServiceDetailPage({
             href={whatsappLink(serviceWaMessage(service.title))}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 rounded-md bg-[#25D366] px-6 py-3 font-bold text-white transition-colors hover:bg-[#1eb955]"
+            className="flex items-center justify-center gap-2 rounded-md bg-[#157a3f] px-6 py-3 font-bold text-white transition-colors hover:bg-[#106232]"
           >
             <WhatsappIcon className="h-5 w-5" />
             تواصل معنا عبر واتساب
@@ -181,7 +181,7 @@ export default async function ServiceDetailPage({
           <ul className="mt-5 space-y-3">
             {relatedPosts.map((post) => (
               <li key={post.slug}>
-                <Link href={`/blog/${post.slug}`} className="font-bold text-accent hover:text-accent-strong">
+                <Link href={`/blog/${post.slug}`} className="font-bold text-accent-text hover:text-accent-strong">
                   {post.title} ←
                 </Link>
               </li>
@@ -201,7 +201,7 @@ export default async function ServiceDetailPage({
                 href={`/services/${related.slug}`}
                 className="group flex flex-col rounded-xl border border-border bg-surface p-4 shadow-sm transition-colors hover:border-accent/50"
               >
-                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-surface-2 text-accent transition-colors group-hover:bg-accent group-hover:text-accent-foreground">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-surface-2 text-accent-text transition-colors group-hover:bg-accent group-hover:text-accent-foreground">
                   <Icon className="h-4 w-4" />
                 </div>
                 <span className="mt-3 text-sm font-bold text-foreground">{related.title}</span>

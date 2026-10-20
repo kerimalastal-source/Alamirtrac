@@ -10,7 +10,7 @@ function inline(text: string): ReactNode[] {
   while ((match = pattern.exec(text))) {
     if (match.index > last) parts.push(text.slice(last, match.index));
     parts.push(
-      <Link key={match.index} href={match[2]} className="font-bold text-accent underline-offset-4 hover:underline">
+      <Link key={match.index} href={match[2]} className="font-bold text-accent-text underline-offset-4 hover:underline">
         {match[1]}
       </Link>,
     );

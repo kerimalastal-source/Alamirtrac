@@ -43,7 +43,7 @@ export default function BlogPage() {
               </span>
               <h2 className="mt-3 text-lg font-bold leading-7 text-foreground">{post.title}</h2>
               <p className="mt-2 leading-6 text-muted">{post.excerpt}</p>
-              <span className="mt-4 text-sm font-bold text-accent">اقرأ المقال كاملاً ←</span>
+              <span className="mt-4 text-sm font-bold text-accent-text">اقرأ المقال كاملاً ←</span>
             </div>
           </Link>
         ))}

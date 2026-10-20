@@ -71,7 +71,7 @@ export default function SiteSearch({ className = "" }: { className?: string }) {
                     onClick={reset}
                     className="block rounded-lg px-3 py-2 transition-colors hover:bg-surface-2"
                   >
-                    <span className="text-xs font-bold text-accent">{item.category}</span>
+                    <span className="text-xs font-bold text-accent-text">{item.category}</span>
                     <div className="mt-0.5 text-sm font-bold text-foreground">{item.title}</div>
                     <p className="mt-0.5 line-clamp-1 text-xs text-muted">{item.description}</p>
                   </Link>
