@@ -4,9 +4,9 @@ import CoverIllustration from "@/components/CoverIllustration";
 import { projects } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "نماذج من أعمال الصيانة وإعادة التأهيل",
+  title: "أعطال شائعة في المعدات الثقيلة وكيف نتعامل معها",
   description:
-    "نماذج من أعمال ALAMIR TRAC في صيانة وإعادة تأهيل المعدات الثقيلة وأنظمة الهيدروليك والمحركات والتبريد والديزل والكهرباء.",
+    "أمثلة توضيحية على أنواع الأعطال التي تعالجها ALAMIR TRAC في المعدات الثقيلة: الهيدروليك والمحركات والتبريد والكهرباء.",
   alternates: { canonical: "/projects" },
 };
 
@@ -15,9 +15,9 @@ export default function ProjectsPage() {
     <div className="mx-auto max-w-6xl px-5 py-20">
       <SectionHeading
         as="h1"
-        eyebrow="من أعمالنا"
-        title="نماذج من أعمال الصيانة وإعادة التأهيل"
-        description="أمثلة من طبيعة الأعمال التي ننفذها. القسم قابل للتحديث بصور وتفاصيل حقيقية من أرشيف الشركة."
+        eyebrow="أعطال نتعامل معها"
+        title="أعطال شائعة في المعدات الثقيلة وكيف نتعامل معها"
+        description="هذه الأمثلة توضيحية لأنواع الأعطال التي نصلحها، وليست أعمالاً لعملاء بأسمائهم. وعندما ننجز عملاً ونستأذن صاحبه سنعرضه هنا بالصور."
       />
 
       <div className="mt-12 grid gap-6 sm:grid-cols-2">

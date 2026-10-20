@@ -5,17 +5,23 @@ export const business = {
   url: "https://alamirtrac.com",
   tagline: "صيانة وإعادة تأهيل المعدات الثقيلة وأنظمة الهيدروليك",
   description:
-    "شركة الأمير (ALAMIR TRAC) متخصصة في صيانة وإعادة تأهيل المعدات الثقيلة وأنظمة الهيدروليك في القاهرة، بما يشمل المحركات، المضخات، الصمامات، أنظمة التبريد، حقن الديزل والكهرباء، بخبرة تزيد عن 30 عاماً.",
-  city: "القاهرة، مصر",
-  address: "البراجيل، القاهرة، مصر",
-  hqAddress: "المقطم، القاهرة، مصر",
-  mapQuery: "البراجيل، القاهرة",
+    "شركة الأمير (ALAMIR TRAC) لصيانة وإعادة تأهيل المعدات الثقيلة وأنظمة الهيدروليك، ورشتها في البراجيل بالجيزة وتخدم جميع المحافظات، بخبرة مؤسسها أحمد الأمير منذ عام 1997.",
+  city: "البراجيل، الجيزة، مصر",
+  address: "آخر شارع أبو بكر الصديق، البراجيل، الجيزة",
+  hqAddress: "130 برج العز، شارع صلاح الدين الأيوبي، المقطم، القاهرة",
+  mapQuery: "30.0738033,31.1568433",
+  workshopMapUrl: "https://maps.app.goo.gl/Q9itmSbRozvLCY7W6",
+  officeMapUrl: "https://maps.app.goo.gl/5PExdadcs9MxVgAG6",
+  latitude: 30.0738033,
+  longitude: 31.1568433,
+  workingHours: "من السبت إلى الخميس، من 9 صباحاً إلى 5 مساءً",
+  founderName: "أحمد الأمير",
+  experienceSince: 1997,
   email: "alamirtrac@gmail.com",
-  yearsOfExperience: 30,
   phone: "+201043676451",
   whatsapp: "https://wa.me/201043676451",
-  facebook: "https://www.facebook.com/share/1EuTxNf66E",
-  instagram: "https://www.instagram.com/alamirtrac?stkn=MXhjZmdzaGNod2pvYg==",
+  facebook: "https://www.facebook.com/profile.php?id=61594001891092",
+  instagram: "https://www.instagram.com/alamirtrac",
 } as const;
 
 export type ServiceIcon =
@@ -549,7 +555,7 @@ export const faqCategories: FaqCategory[] = [
       {
         question: "ما هي شركة الأمير (ALAMIR TRAC) وما مجال تخصصها؟",
         answer:
-          "شركة الأمير (ALAMIR TRAC) شركة متخصصة في صيانة وإعادة تأهيل المعدات الثقيلة وأنظمة الهيدروليك، بخبرة ميدانية تتجاوز 30 عاماً، ومقرها الرئيسي في القاهرة.",
+          "شركة الأمير (ALAMIR TRAC) ورشة متخصصة في صيانة وإعادة تأهيل المعدات الثقيلة وأنظمة الهيدروليك في البراجيل بالجيزة، بخبرة مؤسسها أحمد الأمير منذ عام 1997، وتخدم جميع المحافظات.",
       },
       {
         question: "ما هي المناطق التي تغطيها خدماتكم؟",

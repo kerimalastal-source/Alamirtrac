@@ -6,13 +6,13 @@ import { business, services, faqCategories } from "@/lib/content";
 export const metadata: Metadata = {
   title: "اطلب صيانة معداتك الثقيلة الآن",
   description:
-    "فريق فني متخصص بخبرة تتجاوز 30 عاماً لصيانة وإعادة تأهيل المعدات الثقيلة وأنظمة الهيدروليك في جميع محافظات مصر. اتصل أو تواصل عبر واتساب الآن.",
+    "فريق فني بإشراف مؤسسه أحمد الأمير (خبرة منذ عام 1997) لصيانة وإعادة تأهيل المعدات الثقيلة وأنظمة الهيدروليك في جميع محافظات مصر. اتصل أو تواصل عبر واتساب الآن.",
   robots: { index: false, follow: false },
   alternates: { canonical: "/lp" },
 };
 
 const stats = [
-  { value: "+30", label: "عاماً من الخبرة" },
+  { value: "منذ 1997", label: "خبرة أحمد الأمير" },
   { value: "كل مصر", label: "تغطية جميع المحافظات" },
   { value: "15", label: "خدمة صيانة متخصصة" },
 ];
@@ -82,7 +82,7 @@ export default function LandingPage() {
               {business.nameBrand} — الأمير تراك
             </span>
             <h1 className="mt-4 text-3xl font-extrabold leading-tight text-dark-foreground sm:text-4xl lg:text-5xl">
-              معدتك الثقيلة متوقفة عن العمل؟ فريقنا الفني يصلك بخبرة تتجاوز 30 عاماً
+              معدتك الثقيلة متوقفة عن العمل؟ فريقنا الفني يصلك بخبرة مؤسسنا أحمد الأمير منذ عام 1997
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-8 text-dark-muted">
               صيانة وإصلاح وإعادة تأهيل المعدات الثقيلة وأنظمة الهيدروليك في جميع محافظات مصر — تشخيص

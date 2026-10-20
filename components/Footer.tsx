@@ -70,7 +70,7 @@ export default function Footer() {
             </li>
             <li>
               <Link href="/projects" className="text-sm text-muted transition-colors hover:text-accent">
-                من أعمالنا
+                أعطال نتعامل معها
               </Link>
             </li>
             <li>
@@ -94,7 +94,18 @@ export default function Footer() {
         <div>
           <h3 className="mb-3 text-sm font-bold text-foreground">بيانات التواصل</h3>
           <ul className="space-y-2 text-sm text-muted">
-            <li>{business.address}</li>
+            <li>
+              <span className="font-bold text-foreground">الورشة: </span>
+              {business.address}
+            </li>
+            <li>
+              <span className="font-bold text-foreground">المكتب: </span>
+              {business.hqAddress}
+            </li>
+            <li>
+              <span className="font-bold text-foreground">مواعيد العمل: </span>
+              {business.workingHours}
+            </li>
             <li dir="ltr" className="text-right">
               <a href={`tel:${business.phone}`} className="transition-colors hover:text-accent">
                 {business.phone}

@@ -23,7 +23,7 @@ const pageItems: SearchItem[] = [
   { title: "الرئيسية", description: business.tagline, url: "/", category: "الصفحات" },
   { title: "من نحن", description: "قصة الشركة ورسالتنا وقيمنا في العمل", url: "/about", category: "الصفحات" },
   { title: "خدماتنا", description: "كل خدمات صيانة المعدات الثقيلة والهيدروليك", url: "/services", category: "الصفحات" },
-  { title: "من أعمالنا", description: "نماذج من أعمال الصيانة وإعادة التأهيل", url: "/projects", category: "الصفحات" },
+  { title: "أعطال نتعامل معها", description: "أمثلة توضيحية على أعطال المعدات الثقيلة وكيف نتعامل معها", url: "/projects", category: "الصفحات" },
   { title: "المدونة الفنية", description: "مقالات ونصائح صيانة المعدات الثقيلة", url: "/blog", category: "الصفحات" },
   { title: "الأسئلة الشائعة", description: "إجابات على أكثر الأسئلة تكراراً", url: "/faq", category: "الصفحات" },
   { title: "تواصل معنا", description: "أرسل طلب الصيانة الآن", url: "/contact", category: "الصفحات" },
@@ -47,7 +47,7 @@ const projectItems: SearchItem[] = projects.map((project) => ({
   title: project.title,
   description: project.description,
   url: "/projects",
-  category: "أعمالنا",
+  category: "أعطال نتعامل معها",
 }));
 
 const faqItems: SearchItem[] = faqCategories.flatMap((category) =>

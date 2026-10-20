@@ -12,7 +12,7 @@ const egyptAreaServed = {
 export function localBusinessSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": "AutoRepair",
     "@id": `${business.url}/#business`,
     name: business.fullName,
     alternateName: brandNameVariants,
@@ -25,10 +25,19 @@ export function localBusinessSchema() {
     priceRange: "$$",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "البراجيل",
-      addressLocality: "القاهرة",
+      streetAddress: "آخر شارع أبو بكر الصديق",
+      addressLocality: "البراجيل",
+      addressRegion: "الجيزة",
       addressCountry: "EG",
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: business.latitude,
+      longitude: business.longitude,
+    },
+    openingHours: "Sa-Th 09:00-17:00",
+    foundingDate: "2026",
+    founder: { "@type": "Person", name: business.founderName },
     areaServed: egyptAreaServed,
     sameAs: [business.facebook, business.instagram],
   };

@@ -12,7 +12,7 @@ const links = [
   { href: "/", label: "الرئيسية" },
   { href: "/about", label: "من نحن" },
   { href: "/services", label: "خدماتنا" },
-  { href: "/projects", label: "أعمالنا" },
+  { href: "/projects", label: "أعطال نتعامل معها" },
   { href: "/blog", label: "المدونة" },
   { href: "/faq", label: "الأسئلة الشائعة" },
   { href: "/contact", label: "تواصل معنا" },
@@ -105,7 +105,7 @@ export default function Header() {
           </div>
 
           <Link href="/projects" className="whitespace-nowrap text-[15px] font-semibold text-foreground transition-colors hover:text-accent">
-            أعمالنا
+            أعطال نتعامل معها
           </Link>
           <Link href="/blog" className="whitespace-nowrap text-[15px] font-semibold text-foreground transition-colors hover:text-accent">
             المدونة
