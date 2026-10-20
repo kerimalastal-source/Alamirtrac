@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { useSearchParams } from "next/navigation";
 import { trackAction } from "@/lib/track-action";
 import { business, services } from "@/lib/content";
 import ConsentField from "@/components/ConsentField";
@@ -9,6 +10,7 @@ import FormGuard from "@/components/FormGuard";
 type Status = "idle" | "sending" | "sent" | "error";
 
 export default function ContactForm() {
+  const presetService = useSearchParams().get("service") ?? "";
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [fileName, setFileName] = useState("");
@@ -106,7 +108,7 @@ export default function ContactForm() {
         <select
           id="service"
           name="service"
-          defaultValue=""
+          defaultValue={presetService}
           className="w-full rounded-md border border-border bg-background px-3.5 py-2.5 text-sm text-foreground outline-none focus:border-accent"
         >
           <option value="">اختر الخدمة</option>

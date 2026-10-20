@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { withSocial } from "@/lib/seo";
+import { Suspense } from "react";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import ContactForm from "@/components/ContactForm";
@@ -26,7 +27,9 @@ export default function ContactPage() {
 
       <div className="mt-12 grid gap-10 lg:grid-cols-3">
         <div className="lg:col-span-2">
-          <ContactForm />
+          <Suspense fallback={null}>
+            <ContactForm />
+          </Suspense>
         </div>
 
         <div className="space-y-6">

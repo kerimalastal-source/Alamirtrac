@@ -16,6 +16,8 @@ export const business = {
   longitude: 31.1568433,
   workingHours: "من السبت إلى الخميس، من 9 صباحاً إلى 5 مساءً",
   founderName: "أحمد الأمير",
+  // مسار صورة المؤسس (مثل "/images/ahmed-elamir-portrait.jpg") بعد رفعها إلى public/images؛ بدونها يُعرض القسم نصاً فقط.
+  founderPhoto: null as string | null,
   experienceSince: 1997,
   email: "alamirtrac@gmail.com",
   phone: "+201043676451",
@@ -50,6 +52,42 @@ export type Service = {
   metaDescription?: string;
   points: string[];
   icon: ServiceIcon;
+  /** سطر "لمن هذه الخدمة" تحت العنوان؛ وإن غاب استُخدم السطر العام. */
+  audience?: string;
+  /** علامات تدل على حاجة المعدة إلى الخدمة (4 إلى 6)؛ تُعرض متى توفرت. */
+  symptoms?: string[];
+  /** أسئلة شائعة خاصة بالخدمة؛ تُعرض مع FAQPage schema متى توفرت. */
+  faqs?: { question: string; answer: string }[];
+  /** جدول معلومات إضافي (مثل التغطية وتكلفة الانتقال). */
+  notes?: { title: string; rows: { label: string; text: string }[] };
+  /** زر إضافي يفتح نموذج التواصل والخدمة محددة. */
+  ctaLabel?: string;
+};
+
+/** خطوات العمل الأربع، تُعرض في الرئيسية وفي كل صفحة خدمة. */
+export const workSteps = [
+  "أرسل صورة أو فيديو للعطل على واتساب، أو اتصل بنا.",
+  "نشخّص العطل في الورشة أو في موقع العمل.",
+  "نكتب لك عرضاً بالتكلفة ومدة الإصلاح قبل أي عمل.",
+  "نصلح المعدة ونختبرها أمامك، وتستلم تقريراً بالعمل الذي تم.",
+];
+
+/** مقالات المدونة المرتبطة بكل خدمة (روابط داخلية للبحث وللزائر). */
+export const serviceBlogLinks: Record<string, string[]> = {
+  "heavy-equipment-maintenance": ["preventive-maintenance-heavy-equipment"],
+  "hydraulic-systems": ["hydraulic-system-fault-signs-heavy-equipment", "hydraulic-hose-fabrication-installation-guide"],
+  "engine-maintenance": ["diesel-engine-power-loss-causes", "heavy-equipment-overheating-causes"],
+  "diesel-injection": ["fuel-injection-system-common-problems", "diesel-engine-power-loss-causes"],
+  "cooling-systems": ["heavy-equipment-overheating-causes"],
+  "electrical-systems": ["electrical-system-battery-care-heavy-equipment"],
+  rehabilitation: ["heavy-equipment-rehabilitation-vs-partial-repair"],
+  undercarriage: ["undercarriage-track-maintenance-guide"],
+  transmission: ["gearbox-transmission-warning-signs"],
+  "hydraulic-hose-fabrication": ["hydraulic-hose-fabrication-installation-guide"],
+  "emergency-field-service": ["emergency-field-service-vs-workshop-repair"],
+  "structural-welding-repair": ["structural-welding-repair-heavy-equipment"],
+  "pre-purchase-inspection": ["pre-purchase-inspection-used-heavy-equipment"],
+  "maintenance-contracts": ["maintenance-contracts-benefits-fleet-owners"],
 };
 
 export const services: Service[] = [
@@ -214,6 +252,14 @@ export const services: Service[] = [
       "تقييم الحاجة لنقل المعدة إلى الورشة عند اللزوم",
     ],
     icon: "emergency",
+    notes: {
+      title: "الصيانة في موقعك",
+      rows: [
+        { label: "المناطق التي نصلها", text: "جميع محافظات مصر." },
+        { label: "متى نصل إليك", text: "يتحرك الفني في أسرع وقت بعد تأكيد طلب المعاينة، وتتوقف مدة الوصول على مسافة الطريق إلى موقعك." },
+        { label: "تكلفة الانتقال", text: "تُحسب حسب المسافة، وتُبلَغ لك قبل أن يتحرك الفني." },
+      ],
+    },
   },
   {
     slug: "structural-welding-repair",
@@ -255,6 +301,8 @@ export const services: Service[] = [
       "أولوية في الاستجابة لعملاء العقود",
     ],
     icon: "contract",
+    audience: "للأساطيل، من معدة واحدة إلى عشر معدات، في الجيزة والقاهرة وجميع المحافظات.",
+    ctaLabel: "اطلب عرض عقد صيانة",
   },
 ];
 
@@ -561,7 +609,7 @@ export const faqCategories: FaqCategory[] = [
       {
         question: "ما هي المناطق التي تغطيها خدماتكم؟",
         answer:
-          "نغطي بخدماتنا جميع محافظات جمهورية مصر العربية، مع إمكانية تقديم خدمة الصيانة الطارئة في موقع العمل حسب طبيعة الحالة وموقع المعدة.",
+          "نخدم جميع محافظات مصر. ورشتنا في البراجيل بالجيزة، والصيانة في موقع العمل متاحة في أي محافظة، وتُحسب تكلفة الانتقال حسب المسافة وتُبلَغ لك قبل أن يتحرك الفني.",
       },
       {
         question: "هل تتعاملون مع جميع أنواع المعدات الثقيلة؟",
@@ -633,9 +681,14 @@ export const faqCategories: FaqCategory[] = [
           "تُحدَّد التكلفة بعد الفحص الفني للحالة، حيث نوضح للعميل الأعطال المكتشفة والخيارات المتاحة بشفافية كاملة قبل البدء في أي عمل.",
       },
       {
+        question: "هل الكشف على المعدة بمقابل؟",
+        answer:
+          "تتحدد تكلفة الكشف حسب نوع العطل ومكان المعدة، ونبلّغك بها قبل أن نبدأ. والكشف في موقع العمل عليه تكلفة انتقال تُحسب حسب المسافة، وتُبلَغ لك قبل ذلك أيضاً.",
+      },
+      {
         question: "هل يمكنني إرسال طلبي في أي وقت؟",
         answer:
-          "يمكنك إرسال طلبك في أي وقت عبر نموذج التواصل أو واتساب، وسيتم الرد عليك في أقرب وقت ممكن من فريقنا الفني.",
+          "يمكنك إرسال طلبك في أي وقت عبر نموذج التواصل أو واتساب. ونرد على الهاتف وواتساب في أسرع وقت خلال مواعيد العمل (من السبت إلى الخميس، من 9 صباحاً إلى 5 مساءً)، وما يصلنا بعد المواعيد نرد عليه في بداية يوم العمل التالي.",
       },
     ],
   },

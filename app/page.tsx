@@ -4,7 +4,10 @@ import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
 import HeroIllustration from "@/components/HeroIllustration";
-import { business, services, blogPosts } from "@/lib/content";
+import Image from "next/image";
+import { business, services, blogPosts, workSteps } from "@/lib/content";
+import { whatsappLink } from "@/lib/whatsapp";
+import { PhoneCallIcon, WhatsappIcon } from "@/components/Icons";
 
 export const metadata: Metadata = withSocial({
   description:
@@ -28,8 +31,8 @@ const whyUs = [
     description: "نحدد السبب الحقيقي للعطل بدلاً من معالجة الأعراض فقط، لنوفر عليك الوقت والتكلفة.",
   },
   {
-    title: "تغطية شاملة لكل الأنظمة",
-    description: "من المحرك والهيدروليك إلى التبريد والديزل والكهرباء، في مكان واحد.",
+    title: "سعر واضح قبل العمل",
+    description: "نكتب لك التكلفة ومدة الإصلاح قبل أن نبدأ، ولا نبدأ أي عمل قبل موافقتك.",
   },
   {
     title: "إعادة التأهيل بدلاً من الاستبدال",
@@ -49,22 +52,29 @@ export default function Home() {
               {business.nameBrand} — الأمير تراك
             </span>
             <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-tight text-dark-foreground sm:text-5xl">
-              صيانة وإعادة تأهيل المعدات الثقيلة وأنظمة الهيدروليك
+              صيانة هيدروليك ومعدات ثقيلة بتشخيص دقيق وسعر مكتوب قبل العمل، في الورشة أو في موقع العمل
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-dark-muted">{business.description}</p>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-dark-muted">
+              ورشة «الأمير تراك» في البراجيل بالجيزة، بقيادة أحمد الأمير، بخبرة شخصية منذ عام 1997 في هيدروليك
+              ومحركات المعدات الثقيلة. نشخّص العطل أولاً، ونكتب لك التكلفة ومدة الإصلاح قبل أن نبدأ.
+            </p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <Link
-                href="/contact"
-                className="rounded-md bg-accent px-6 py-3 font-bold text-accent-foreground transition-colors hover:bg-accent-strong"
+              <a
+                href={whatsappLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 rounded-md bg-[#25D366] px-6 py-3 font-bold text-white transition-colors hover:bg-[#1eb955]"
               >
-                اطلب صيانة الآن
-              </Link>
-              <Link
-                href="/services"
-                className="rounded-md border border-dark-border px-6 py-3 font-bold text-dark-foreground transition-colors hover:border-accent hover:text-accent"
+                <WhatsappIcon className="h-5 w-5" />
+                أرسل العطل على واتساب
+              </a>
+              <a
+                href={`tel:${business.phone}`}
+                className="flex items-center gap-2 rounded-md border border-dark-border px-6 py-3 font-bold text-dark-foreground transition-colors hover:border-accent hover:text-accent"
               >
-                تصفح خدماتنا
-              </Link>
+                <PhoneCallIcon className="h-5 w-5" />
+                اتصل الآن
+              </a>
             </div>
 
             <div className="mt-16 grid grid-cols-3 gap-6 border-t border-dark-border pt-10">
@@ -80,6 +90,30 @@ export default function Home() {
           </div>
 
           <HeroIllustration />
+        </div>
+      </section>
+
+      <section className="border-b border-border bg-surface">
+        <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 lg:grid-cols-[auto_1fr]">
+          {business.founderPhoto && (
+            <Image
+              src={business.founderPhoto}
+              alt={`${business.founderName}، مؤسس الأمير تراك`}
+              width={400}
+              height={500}
+              className="mx-auto h-auto w-full max-w-[400px] rounded-2xl object-cover"
+            />
+          )}
+          <div className={business.founderPhoto ? "" : "lg:col-span-2"}>
+            <span className="text-sm font-bold tracking-wide text-accent">المؤسس</span>
+            <h2 className="mt-3 text-2xl font-extrabold text-foreground sm:text-3xl">
+              {business.founderName}، مؤسس الأمير تراك
+            </h2>
+            <p className="mt-4 max-w-3xl text-lg leading-8 text-muted">
+              منذ عام 1997 وهو يفتح مضخات وصمامات وأسطوانات الهيدروليك في الحفارات واللوادر والبلدوزرات. وأسّس
+              «الأمير تراك» ليقدّم العمل الذي يتقنه بطريقته: تشخيص قبل الإصلاح، وكلام واضح في التكلفة قبل أي عمل.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -103,6 +137,22 @@ export default function Home() {
 
       <section className="border-y border-border bg-background">
         <div className="mx-auto max-w-6xl px-5 py-20">
+          <SectionHeading eyebrow="كيف نعمل" title="من اتصالك الأول حتى استلام معدتك" />
+          <ol className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {workSteps.map((step, index) => (
+              <li key={step} className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/15 text-base font-extrabold text-accent">
+                  {index + 1}
+                </span>
+                <p className="mt-4 leading-7 text-foreground">{step}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-5 py-20">
+        <div>
           <SectionHeading eyebrow="لماذا ALAMIR TRAC" title="خبرة ميدانية تحمي معداتك من التوقف" />
           <div className="mt-10 grid gap-6 sm:grid-cols-2">
             {whyUs.map((item) => (
