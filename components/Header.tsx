@@ -92,7 +92,7 @@ export default function Header() {
               </svg>
             </Link>
 
-            <div className="invisible absolute end-0 top-full z-50 grid w-[34rem] grid-cols-2 gap-x-4 gap-y-1 rounded-xl border border-border bg-surface p-3 opacity-0 shadow-lg transition-opacity group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+            <div className="invisible absolute left-1/2 top-full z-50 grid w-[34rem] max-w-[calc(100vw-2rem)] -translate-x-1/2 grid-cols-2 gap-x-4 gap-y-1 rounded-xl border border-border bg-surface p-3 opacity-0 shadow-lg transition-opacity group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
               {services.map((service) => (
                 <Link
                   key={service.slug}
