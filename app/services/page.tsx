@@ -32,6 +32,12 @@ export default function ServicesPage() {
         <div>
           <h2 className="text-xl font-bold text-foreground">غير متأكد من الخدمة التي تحتاجها؟</h2>
           <p className="mt-1 text-sm text-muted">أرسل لنا تفاصيل العطل وسيراجعها الفريق الفني ويقترح الحل المناسب.</p>
+          <Link
+            href="/blog/choose-heavy-equipment-repair-workshop-giza"
+            className="mt-2 inline-block text-sm font-bold text-accent hover:text-accent-strong"
+          >
+            كيف تختار ورشة صيانة معدات ثقيلة في الجيزة؟ ←
+          </Link>
         </div>
         <Link
           href="/contact"

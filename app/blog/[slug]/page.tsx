@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { blogPosts } from "@/lib/content";
+import { blogPosts, postRelations, serviceBlogLinks, services } from "@/lib/content";
+import ArticleBody from "@/components/ArticleBody";
 import { withSocial } from "@/lib/seo";
 import { whatsappLink } from "@/lib/whatsapp";
 import JsonLd from "@/components/JsonLd";
 import CoverIllustration from "@/components/CoverIllustration";
 import { WhatsappIcon } from "@/components/Icons";
-import { blogPostingSchema, breadcrumbSchema } from "@/lib/schema";
+import { blogPostingSchema, breadcrumbSchema, faqPageSchema } from "@/lib/schema";
 
 export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
@@ -23,8 +24,8 @@ export async function generateMetadata({
   if (!post) return {};
   return withSocial(
     {
-      title: post.title,
-      description: post.excerpt,
+      title: post.seoTitle ?? post.title,
+      description: post.metaDescription ?? post.excerpt,
       alternates: { canonical: `/blog/${post.slug}` },
     },
     "article",
@@ -40,7 +41,10 @@ export default async function BlogPostPage({
   const post = blogPosts.find((item) => item.slug === slug);
   if (!post) notFound();
 
-  const paragraphs = post.content.split("\n").filter(Boolean);
+  const relatedPosts = (postRelations[slug] ?? [])
+    .map((relatedSlug) => blogPosts.find((item) => item.slug === relatedSlug))
+    .filter((item): item is (typeof blogPosts)[number] => Boolean(item));
+  const relatedService = services.find((item) => (serviceBlogLinks[item.slug] ?? []).includes(slug));
 
   return (
     <article className="mx-auto max-w-3xl px-5 py-20">
@@ -48,7 +52,7 @@ export default async function BlogPostPage({
       <JsonLd
         data={breadcrumbSchema([
           { name: "الرئيسية", path: "/" },
-          { name: "المدونة", path: "/blog" },
+          { name: "المدونة الفنية", path: "/blog" },
           { name: post.title, path: `/blog/${post.slug}` },
         ])}
       />
@@ -67,21 +71,53 @@ export default async function BlogPostPage({
           day: "numeric",
         })}{" "}
         · {post.minutesToRead} دقيقة قراءة
+        {post.author && <> · بقلم {post.author}</>}
       </span>
       <h1 className="mt-3 text-3xl font-extrabold leading-tight text-foreground sm:text-4xl">
         {post.title}
       </h1>
 
-      <div className="mt-10 space-y-5 text-lg leading-9 text-foreground/90">
-        {paragraphs.map((paragraph, index) => (
-          <p key={index}>{paragraph}</p>
-        ))}
-      </div>
+      <ArticleBody content={post.content} />
+
+      {post.faqs && post.faqs.length > 0 && (
+        <section className="mt-14">
+          <JsonLd data={faqPageSchema([{ title: post.title, items: post.faqs }])} />
+          <h2 className="text-2xl font-extrabold text-foreground">أسئلة شائعة</h2>
+          <div className="mt-5 space-y-3">
+            {post.faqs.map((item) => (
+              <details key={item.question} className="rounded-xl border border-border bg-surface p-5">
+                <summary className="cursor-pointer text-lg font-bold text-foreground">{item.question}</summary>
+                <p className="mt-3 text-base leading-8 text-muted">{item.answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {relatedPosts.length > 0 && (
+        <section className="mt-14">
+          <h2 className="text-lg font-bold text-foreground">اقرأ أيضاً</h2>
+          <ul className="mt-4 space-y-3">
+            {relatedPosts.map((item) => (
+              <li key={item.slug}>
+                <Link href={`/blog/${item.slug}`} className="font-bold text-accent hover:text-accent-strong">
+                  {item.title} ←
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <div className="mt-16 rounded-2xl border border-border bg-surface p-6 sm:flex sm:items-center sm:justify-between">
         <div>
-          <h2 className="font-bold text-foreground">تحتاج فحصاً فنياً لمعدتك؟</h2>
-          <p className="mt-1 text-sm text-muted">فريق ALAMIR TRAC جاهز لمراجعة العطل واقتراح الحل المناسب.</p>
+          <h2 className="font-bold text-foreground">عندك العطل ده؟ أرسل صورته على واتساب</h2>
+          <p className="mt-1 text-sm text-muted">فريق ALAMIR TRAC يراجع العطل ويقترح الحل المناسب قبل أي تكلفة.</p>
+          {relatedService && (
+            <Link href={`/services/${relatedService.slug}`} className="mt-2 inline-block text-sm font-bold text-accent hover:text-accent-strong">
+              {relatedService.title} ←
+            </Link>
+          )}
         </div>
         <div className="mt-4 flex flex-col gap-3 sm:mt-0">
           <Link

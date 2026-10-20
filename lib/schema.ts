@@ -82,15 +82,18 @@ export function blogPostingSchema(post: BlogPost) {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: post.title,
-    description: post.excerpt,
+    description: post.metaDescription ?? post.excerpt,
     datePublished: post.publishedDate,
     dateModified: post.publishedDate,
     mainEntityOfPage: `${business.url}/blog/${post.slug}`,
-    author: {
-      "@type": "Organization",
-      name: business.fullName,
-      url: business.url,
-    },
+    inLanguage: "ar",
+    author: post.author
+      ? { "@type": "Person", name: post.author, url: `${business.url}/about` }
+      : {
+          "@type": "Organization",
+          name: business.fullName,
+          url: business.url,
+        },
     publisher: {
       "@type": "Organization",
       name: business.fullName,

@@ -86,6 +86,12 @@ export default function ContactPage() {
             <Link href="/faq" className="mt-3 inline-block text-sm font-bold text-accent hover:text-accent-strong">
               الأسئلة الشائعة ←
             </Link>
+            <Link
+              href="/blog/choose-heavy-equipment-repair-workshop-giza"
+              className="mt-2 block text-sm font-bold text-accent hover:text-accent-strong"
+            >
+              كيف تختار ورشة صيانة معدات ثقيلة في الجيزة؟ ←
+            </Link>
           </div>
         </div>
       </div>
