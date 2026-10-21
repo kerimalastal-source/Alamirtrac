@@ -168,7 +168,7 @@ export default function Header() {
             className="flex shrink-0 items-center gap-2 whitespace-nowrap rounded-md border border-accent px-4 py-2 text-sm font-bold text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
           >
             <PhoneCallIcon className="h-4 w-4" />
-            كلمنا
+            اتصل بنا
           </a>
           <Link
             href="/contact"
