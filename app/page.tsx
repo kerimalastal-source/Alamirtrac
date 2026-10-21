@@ -66,7 +66,7 @@ export default function Home() {
               </a>
               <a
                 href={`tel:${business.phone}`}
-                className="flex items-center gap-2 rounded-md border border-dark-border px-6 py-3 font-bold text-dark-foreground transition-colors hover:border-accent hover:text-accent"
+                className="flex items-center gap-2 rounded-md bg-accent px-6 py-3 font-bold text-accent-foreground transition-colors hover:bg-accent-strong"
               >
                 <PhoneCallIcon className="h-5 w-5" />
                 اتصل الآن
