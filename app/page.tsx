@@ -150,7 +150,7 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-5 py-20">
         <div>
           <SectionHeading eyebrow="لماذا ALAMIR TRAC" title="خبرة ميدانية تحمي معداتك من التوقف" />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2">
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {whyUs.map((item) => (
               <div key={item.title} className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
                 <h3 className="text-lg font-bold text-foreground">{item.title}</h3>
