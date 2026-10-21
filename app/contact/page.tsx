@@ -5,6 +5,19 @@ import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import ContactForm from "@/components/ContactForm";
 import { business } from "@/lib/content";
+import { whatsappLink } from "@/lib/whatsapp";
+import { WhatsappIcon, FacebookIcon, InstagramIcon } from "@/components/Icons";
+
+const socialButtons = [
+  { href: whatsappLink(), label: "واتساب", Icon: WhatsappIcon, className: "bg-[#157a3f] hover:bg-[#106232]" },
+  { href: business.facebook, label: "فيسبوك", Icon: FacebookIcon, className: "bg-[#1877F2] hover:bg-[#1465d1]" },
+  {
+    href: business.instagram,
+    label: "إنستغرام",
+    Icon: InstagramIcon,
+    className: "bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] hover:opacity-90",
+  },
+];
 
 export const metadata: Metadata = withSocial({
   title: "تواصل معنا واطلب الصيانة",
@@ -42,6 +55,23 @@ export default function ContactPage() {
             >
               {business.email}
             </a>
+          </div>
+          <div className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
+            <h2 className="font-bold text-foreground">تابعنا وتواصل معنا</h2>
+            <div className="mt-3 grid grid-cols-3 gap-2">
+              {socialButtons.map(({ href, label, Icon, className }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex items-center justify-center gap-1.5 rounded-md px-2 py-2.5 text-sm font-bold text-white transition-opacity hover:opacity-90 ${className}`}
+                >
+                  <Icon className="h-5 w-5 shrink-0" />
+                  {label}
+                </a>
+              ))}
+            </div>
           </div>
           <div className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
             <h2 className="font-bold text-foreground">مواقعنا</h2>
