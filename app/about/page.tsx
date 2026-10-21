@@ -11,12 +11,12 @@ import { serviceIcons } from "@/components/Icons";
 export const metadata: Metadata = withSocial({
   title: "من نحن",
   description:
-    "تعرّف على شركة الأمير (ALAMIR TRAC)، ورشة صيانة وإعادة تأهيل المعدات الثقيلة وأنظمة الهيدروليك في البراجيل بالجيزة، بخبرة مؤسسها أحمد الأمير منذ عام 1997، ورسالتنا وقيمنا في العمل.",
+    "تعرّف على شركة الأمير (ALAMIR TRAC)، ورشة صيانة وإعادة تأهيل المعدات الثقيلة وأنظمة الهيدروليك في البراجيل بالجيزة، أسّسها أحمد الأمير بعد خبرة في المعدات الثقيلة منذ عام 1997، ورسالتنا وقيمنا في العمل.",
   alternates: { canonical: "/about" },
 });
 
 const stats = [
-  { value: "منذ 1997", label: "خبرة أحمد الأمير في المعدات الثقيلة" },
+  { value: "1997", label: "بداية مسيرة المؤسس أحمد الأمير في المعدات الثقيلة" },
   { value: `${services.length}`, label: "خدمة صيانة متخصصة" },
   { value: "كل المحافظات", label: "صيانة في موقع العمل" },
 ];
@@ -58,7 +58,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-6xl px-5 py-20 sm:py-28">
           <span className="text-sm font-bold tracking-wide text-accent">من نحن</span>
           <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-tight text-dark-foreground sm:text-5xl">
-            أحمد الأمير: من عام 1997 في هيدروليك المعدات الثقيلة، واليوم في ورشته
+            ورشة أسّسها أحمد الأمير بعد خبرة في هيدروليك المعدات الثقيلة منذ عام 1997
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-dark-muted">
             ورشة «الأمير تراك» في البراجيل بالجيزة، متخصصة في هيدروليك ومحركات
@@ -88,8 +88,8 @@ export default function AboutPage() {
               محركات الديزل وأنظمة التبريد والكهرباء والمجنزرات وناقل الحركة.
             </p>
             <p className="mt-4 leading-8 text-muted">
-              وفي عام 2026 أسّس «الأمير تراك» في البراجيل بالجيزة، ورشةً باسمه وتحت مسؤوليته، بفريق
-              فني يعمل بإشرافه المباشر. والفكرة بسيطة: نحدد سبب العطل الحقيقي قبل أي إصلاح، ونكتب
+              ثم أسّس «الأمير تراك» في البراجيل بالجيزة، ورشةً باسمه، بفريق
+              فني متخصص. والفكرة بسيطة: نحدد سبب العطل الحقيقي قبل أي إصلاح، ونكتب
               للعميل التكلفة قبل أن نبدأ العمل.
             </p>
             <p className="mt-4 leading-8 text-muted">

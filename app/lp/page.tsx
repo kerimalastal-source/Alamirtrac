@@ -14,7 +14,7 @@ export const metadata: Metadata = withSocial({
 });
 
 const stats = [
-  { value: "منذ 1997", label: "خبرة أحمد الأمير" },
+  { value: "1997", label: "بداية مسيرة المؤسس أحمد الأمير في المعدات الثقيلة" },
   { value: "كل مصر", label: "تغطية جميع المحافظات" },
   { value: "15", label: "خدمة صيانة متخصصة" },
 ];
@@ -84,7 +84,7 @@ export default function LandingPage() {
               {business.nameBrand} — الأمير تراك
             </span>
             <h1 className="mt-4 text-3xl font-extrabold leading-tight text-dark-foreground sm:text-4xl lg:text-5xl">
-              معدتك الثقيلة متوقفة عن العمل؟ فريقنا الفني يصلك بخبرة مؤسسنا أحمد الأمير منذ عام 1997
+              معدتك الثقيلة متوقفة عن العمل؟ فريقنا الفني يصلك، في ورشة أسّسها أحمد الأمير بخبرة تمتد منذ عام 1997
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-8 text-dark-muted">
               صيانة وإصلاح وإعادة تأهيل المعدات الثقيلة وأنظمة الهيدروليك في جميع محافظات مصر — تشخيص
