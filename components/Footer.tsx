@@ -16,7 +16,11 @@ export default function Footer() {
       <footer className="border-t border-border bg-surface">
         <div className="mx-auto flex max-w-4xl flex-col items-center gap-3 px-5 py-10 text-center">
           <Image src="/logo.avif" alt={business.fullName} width={358} height={192} className="h-14 w-auto" />
-          <p className="text-sm text-muted">{business.address}</p>
+          <p className="text-sm text-muted">
+            <a href={business.workshopMapUrl} target="_blank" rel="noopener noreferrer" className="inline-block py-1 transition-colors hover:text-accent-text hover:underline">
+              {business.address}
+            </a>
+          </p>
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-1 text-sm">
             <a href={`tel:${business.phone}`} dir="ltr" className="text-muted transition-colors hover:text-accent">
               {business.phone}
@@ -98,11 +102,15 @@ export default function Footer() {
           <ul className="space-y-0 text-sm text-muted">
             <li>
               <span className="font-bold text-foreground">الورشة: </span>
-              {business.address}
+              <a href={business.workshopMapUrl} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-accent-text hover:underline">
+                {business.address}
+              </a>
             </li>
             <li>
               <span className="font-bold text-foreground">المكتب: </span>
-              {business.hqAddress}
+              <a href={business.officeMapUrl} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-accent-text hover:underline">
+                {business.hqAddress}
+              </a>
             </li>
             <li>
               <span className="font-bold text-foreground">مواعيد العمل: </span>

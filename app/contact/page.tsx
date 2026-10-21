@@ -47,7 +47,11 @@ export default function ContactPage() {
             <h2 className="font-bold text-foreground">مواقعنا</h2>
             <div className="mt-3">
               <span className="text-xs font-bold text-accent-text">الورشة</span>
-              <p className="mt-1 text-muted">{business.address}</p>
+              <p className="mt-1 text-muted">
+                <a href={business.workshopMapUrl} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-accent-text hover:underline">
+                  {business.address}
+                </a>
+              </p>
               <a
                 href={business.workshopMapUrl}
                 target="_blank"
@@ -59,7 +63,11 @@ export default function ContactPage() {
             </div>
             <div className="mt-4 border-t border-border pt-4">
               <span className="text-xs font-bold text-accent-text">المكتب</span>
-              <p className="mt-1 text-muted">{business.hqAddress}</p>
+              <p className="mt-1 text-muted">
+                <a href={business.officeMapUrl} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-accent-text hover:underline">
+                  {business.hqAddress}
+                </a>
+              </p>
               <a
                 href={business.officeMapUrl}
                 target="_blank"
