@@ -151,7 +151,7 @@ export default function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 xl:flex">
-          <SiteSearch className="w-48 2xl:w-48" />
+          <SiteSearch compact />
           <div className="hidden items-center gap-1.5 2xl:flex">
             <SocialLinks size="h-8 w-8" />
           </div>
@@ -163,6 +163,13 @@ export default function Header() {
           >
             <ChartIcon className="h-5 w-5" />
           </Link>
+          <a
+            href={`tel:${business.phone}`}
+            className="flex shrink-0 items-center gap-2 whitespace-nowrap rounded-md border border-accent px-4 py-2 text-sm font-bold text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+          >
+            <PhoneCallIcon className="h-4 w-4" />
+            كلمنا
+          </a>
           <Link
             href="/contact"
             className="shrink-0 whitespace-nowrap rounded-md bg-accent px-4 py-2 text-sm font-bold text-accent-foreground transition-colors hover:bg-accent-strong"

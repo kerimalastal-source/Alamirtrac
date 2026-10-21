@@ -5,7 +5,8 @@ import Link from "next/link";
 import { searchSite } from "@/lib/search";
 import { SearchIcon, CloseIcon } from "@/components/Icons";
 
-export default function SiteSearch({ className = "" }: { className?: string }) {
+export default function SiteSearch({ className = "", compact = false }: { className?: string; compact?: boolean }) {
+  const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [focused, setFocused] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -15,15 +16,21 @@ export default function SiteSearch({ className = "" }: { className?: string }) {
     function onClickOutside(event: MouseEvent) {
       if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
         setFocused(false);
+        setOpen(false);
       }
     }
     document.addEventListener("mousedown", onClickOutside);
     return () => document.removeEventListener("mousedown", onClickOutside);
   }, []);
 
+  useEffect(() => {
+    if (open) inputRef.current?.focus();
+  }, [open]);
+
   function reset() {
     setQuery("");
     setFocused(false);
+    setOpen(false);
     inputRef.current?.blur();
   }
 
@@ -32,7 +39,28 @@ export default function SiteSearch({ className = "" }: { className?: string }) {
 
   return (
     <div ref={containerRef} className={`relative ${className}`}>
-      <div className="flex items-center gap-2 rounded-md border border-border bg-surface-2 px-3 py-2">
+      {compact && (
+        <button
+          type="button"
+          onClick={() => {
+            setOpen((value) => !value);
+            setFocused(true);
+          }}
+          aria-label="بحث في الموقع"
+          aria-expanded={open}
+          title="بحث في الموقع"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-border text-muted transition-colors hover:border-accent hover:text-accent"
+        >
+          <SearchIcon className="h-5 w-5" />
+        </button>
+      )}
+      <div
+        className={
+          compact
+            ? `absolute end-0 top-full z-50 mt-2 w-72 items-center gap-2 rounded-md border border-border bg-surface px-3 py-2 shadow-lg ${open ? "flex" : "hidden"}`
+            : "flex items-center gap-2 rounded-md border border-border bg-surface-2 px-3 py-2"
+        }
+      >
         <SearchIcon className="h-4 w-4 shrink-0 text-muted" />
         <input
           ref={inputRef}
@@ -59,7 +87,11 @@ export default function SiteSearch({ className = "" }: { className?: string }) {
       </div>
 
       {showDropdown && (
-        <div className="absolute end-0 top-full z-50 mt-2 max-h-[70vh] w-full min-w-[18rem] overflow-y-auto rounded-xl border border-border bg-surface p-2 shadow-lg">
+        <div
+          className={`absolute end-0 z-50 max-h-[70vh] overflow-y-auto rounded-xl border border-border bg-surface p-2 shadow-lg ${
+            compact ? "top-[calc(100%+3.75rem)] w-72" : "top-full mt-2 w-full min-w-[18rem]"
+          }`}
+        >
           {results.length === 0 ? (
             <p className="px-3 py-6 text-center text-sm text-muted">لا توجد نتائج مطابقة لبحثك.</p>
           ) : (
