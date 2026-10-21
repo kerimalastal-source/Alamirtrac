@@ -5,9 +5,40 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import SiteSearch from "@/components/SiteSearch";
-import { MenuIcon, CloseIcon, PhoneCallIcon, ChartIcon } from "@/components/Icons";
+import { MenuIcon, CloseIcon, PhoneCallIcon, ChartIcon, WhatsappIcon, FacebookIcon, InstagramIcon } from "@/components/Icons";
 import { business, services } from "@/lib/content";
 import { whatsappLink } from "@/lib/whatsapp";
+
+const socialLinks = [
+  { href: whatsappLink(), label: "تواصل عبر واتساب", Icon: WhatsappIcon, className: "bg-[#157a3f] hover:bg-[#106232]" },
+  { href: business.facebook, label: "تابعنا على فيسبوك", Icon: FacebookIcon, className: "bg-[#1877F2] hover:bg-[#1465d1]" },
+  {
+    href: business.instagram,
+    label: "تابعنا على إنستغرام",
+    Icon: InstagramIcon,
+    className: "bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] hover:opacity-90",
+  },
+];
+
+function SocialLinks({ size }: { size: string }) {
+  return (
+    <>
+      {socialLinks.map(({ href, label, Icon, className }) => (
+        <a
+          key={label}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={label}
+          title={label}
+          className={`flex ${size} shrink-0 items-center justify-center rounded-full text-white transition-transform hover:scale-110 ${className}`}
+        >
+          <Icon className="h-4 w-4" />
+        </a>
+      ))}
+    </>
+  );
+}
 
 const links = [
   { href: "/", label: "الرئيسية" },
@@ -120,7 +151,10 @@ export default function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 xl:flex">
-          <SiteSearch className="w-48 2xl:w-56" />
+          <SiteSearch className="w-48 2xl:w-48" />
+          <div className="hidden items-center gap-1.5 2xl:flex">
+            <SocialLinks size="h-8 w-8" />
+          </div>
           <Link
             href="/admin/stats"
             aria-label="إحصاءات الزوار"
@@ -164,6 +198,10 @@ export default function Header() {
               </Link>
             ))}
           </nav>
+
+          <div className="flex items-center justify-center gap-3">
+            <SocialLinks size="h-11 w-11" />
+          </div>
 
           <Link
             href="/admin/stats"
