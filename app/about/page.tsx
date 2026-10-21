@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { withSocial } from "@/lib/seo";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
-import CoverIllustration from "@/components/CoverIllustration";
+import Image from "next/image";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import { business, services } from "@/lib/content";
@@ -97,7 +97,9 @@ export default function AboutPage() {
               تشخيص صادق، وسعر واضح قبل العمل.
             </p>
           </div>
-          <CoverIllustration icon="overhaul" title="خبرة ALAMIR TRAC في إعادة تأهيل المعدات الثقيلة" size="lg" />
+          <div className="flex items-center justify-center rounded-2xl border border-border bg-surface p-10 shadow-sm sm:p-14">
+            <Image src="/logo.avif" alt={business.fullName} width={358} height={192} className="h-auto w-full max-w-sm" />
+          </div>
         </div>
       </section>
 
