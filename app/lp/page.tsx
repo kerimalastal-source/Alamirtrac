@@ -8,7 +8,7 @@ import { business, services, faqCategories } from "@/lib/content";
 export const metadata: Metadata = withSocial({
   title: "اطلب صيانة معداتك الثقيلة الآن",
   description:
-    "فريق فني بإشراف مؤسسه أحمد الأمير (خبرة منذ عام 1997) لصيانة وإعادة تأهيل المعدات الثقيلة وأنظمة الهيدروليك في جميع محافظات مصر. اتصل أو تواصل عبر واتساب الآن.",
+    "فريق فني متخصص في صيانة وإعادة تأهيل المعدات الثقيلة وأنظمة الهيدروليك في جميع محافظات مصر. اتصل أو تواصل عبر واتساب الآن.",
   robots: { index: false, follow: false },
   alternates: { canonical: "/lp" },
 });
