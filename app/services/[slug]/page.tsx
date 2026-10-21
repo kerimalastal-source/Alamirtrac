@@ -167,7 +167,7 @@ export default async function ServiceDetailPage({
           </a>
           <a
             href={`tel:${business.phone}`}
-            className="flex items-center justify-center gap-2 rounded-md border border-accent-foreground/40 px-6 py-3 font-bold text-accent-foreground transition-colors hover:bg-accent-foreground/10"
+            className="flex items-center justify-center gap-2 rounded-md bg-surface px-6 py-3 font-bold text-foreground transition-colors hover:bg-surface-2"
           >
             <PhoneCallIcon className="h-5 w-5" />
             اتصل الآن
