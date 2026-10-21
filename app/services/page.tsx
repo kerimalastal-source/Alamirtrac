@@ -4,6 +4,8 @@ import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
 import { services } from "@/lib/content";
+import { whatsappLink } from "@/lib/whatsapp";
+import { WhatsappIcon } from "@/components/Icons";
 
 export const metadata: Metadata = withSocial({
   title: "خدمات صيانة المعدات الثقيلة والهيدروليك",
@@ -39,12 +41,23 @@ export default function ServicesPage() {
             كيف تختار ورشة صيانة معدات ثقيلة في الجيزة؟ ←
           </Link>
         </div>
-        <Link
-          href="/contact"
-          className="shrink-0 rounded-md bg-accent px-6 py-3 font-bold text-accent-foreground transition-colors hover:bg-accent-strong"
-        >
-          راسلنا الآن
-        </Link>
+        <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
+          <a
+            href={whatsappLink()}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 rounded-md bg-[#157a3f] px-6 py-3 font-bold text-white transition-colors hover:bg-[#106232]"
+          >
+            <WhatsappIcon className="h-5 w-5" />
+            تواصل عبر واتساب
+          </a>
+          <Link
+            href="/contact"
+            className="rounded-md bg-accent px-6 py-3 text-center font-bold text-accent-foreground transition-colors hover:bg-accent-strong"
+          >
+            راسلنا الآن
+          </Link>
+        </div>
       </div>
     </div>
   );
