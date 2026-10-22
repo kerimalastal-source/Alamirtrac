@@ -1,3 +1,5 @@
+import { flags } from "./flags";
+
 // Meta Pixel and Google Analytics. Nothing here runs until loadTrackers() is called, and that happens only
 // after the visitor accepts cookies (components/ConsentBanner.tsx). Events are no-ops when a tool isn't loaded.
 export const META_PIXEL_ID = "1408348340968029";
@@ -58,7 +60,8 @@ function loadGoogleAnalytics() {
 
 export function loadTrackers() {
   loadMetaPixel();
-  loadGoogleAnalytics();
+  // Google Analytics stays off until NEXT_PUBLIC_GA_LIVE=1 (the owner asked to leave it as it is).
+  if (flags.analytics) loadGoogleAnalytics();
 }
 
 /** A page change inside the site (the first page view is sent by loadTrackers). Google Analytics sees history changes itself. */

@@ -3,6 +3,7 @@
 // until its variable is set, so nothing reaches visitors before the lawyer's approval.
 //
 //   NEXT_PUBLIC_PRIVACY_LIVE=1                 cookie banner, /privacy, Meta Pixel and Google Analytics after consent
+//   NEXT_PUBLIC_GA_LIVE=1                      Google Analytics too, after consent (off: only Meta Pixel loads after consent)
 //   NEXT_PUBLIC_WARRANTY_LIVE=1                /warranty and every "written warranty" wording on the site
 //   NEXT_PUBLIC_COMMERCIAL_REGISTER=…          } both set → shown in the footer and the privacy policy
 //   NEXT_PUBLIC_TAX_ID=…                       }
@@ -12,6 +13,7 @@ const on = (value: string | undefined) => value === "1" || value === "true";
 
 export const flags = {
   privacy: on(process.env.NEXT_PUBLIC_PRIVACY_LIVE),
+  analytics: on(process.env.NEXT_PUBLIC_GA_LIVE),
   warranty: on(process.env.NEXT_PUBLIC_WARRANTY_LIVE),
   ownTrackingNeedsConsent: on(process.env.NEXT_PUBLIC_OWN_TRACKING_NEEDS_CONSENT),
   commercialRegister: process.env.NEXT_PUBLIC_COMMERCIAL_REGISTER?.trim() ?? "",
