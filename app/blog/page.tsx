@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { withSocial } from "@/lib/seo";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
-import CoverIllustration from "@/components/CoverIllustration";
+import PostCover from "@/components/PostCover";
 import { blogPosts } from "@/lib/content";
 
 export const metadata: Metadata = withSocial({
@@ -31,7 +31,7 @@ export default function BlogPage() {
             href={`/blog/${post.slug}`}
             className="flex flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-sm transition-colors hover:border-accent/50 hover:shadow-md"
           >
-            <CoverIllustration icon={post.icon} title={post.title} size="sm" className="rounded-none" />
+            <PostCover post={post} size="sm" className="rounded-none" />
             <div className="flex flex-1 flex-col p-6">
               <span className="text-xs text-muted">
                 {new Date(post.publishedDate).toLocaleDateString("ar-EG", {

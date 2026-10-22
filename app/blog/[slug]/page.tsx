@@ -6,7 +6,7 @@ import ArticleBody from "@/components/ArticleBody";
 import { withSocial } from "@/lib/seo";
 import { whatsappLink } from "@/lib/whatsapp";
 import JsonLd from "@/components/JsonLd";
-import CoverIllustration from "@/components/CoverIllustration";
+import PostCover from "@/components/PostCover";
 import { WhatsappIcon } from "@/components/Icons";
 import { blogPostingSchema, breadcrumbSchema, faqPageSchema } from "@/lib/schema";
 
@@ -61,7 +61,7 @@ export default async function BlogPostPage({
       </Link>
 
       <div className="mt-6">
-        <CoverIllustration icon={post.icon} title={post.title} size="md" />
+        <PostCover post={post} size="md" priority />
       </div>
 
       <span className="mt-6 block text-sm text-muted">
