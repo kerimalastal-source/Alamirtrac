@@ -212,12 +212,21 @@ export default function Home() {
               تواصل معنا الآن وسيراجع فريقنا الفني حالة العطل والخدمة المطلوبة.
             </p>
           </div>
-          <Link
-            href="/contact"
-            className="shrink-0 rounded-md bg-dark px-6 py-3 font-bold text-dark-foreground transition-colors hover:bg-dark-elevated"
-          >
-            اطلب صيانة الآن
-          </Link>
+          <div className="flex shrink-0 flex-col gap-3">
+            <Link
+              href="/contact"
+              className="rounded-md bg-dark px-6 py-3 text-center font-bold text-dark-foreground transition-colors hover:bg-dark-elevated"
+            >
+              اطلب صيانة الآن
+            </Link>
+            <a
+              href={`tel:${business.phone}`}
+              className="flex items-center justify-center gap-2 rounded-md bg-surface px-6 py-3 font-bold text-foreground transition-colors hover:bg-surface-2"
+            >
+              <PhoneCallIcon className="h-5 w-5" />
+              اتصل بنا الآن
+            </a>
+          </div>
         </div>
       </section>
     </>
