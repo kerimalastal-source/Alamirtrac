@@ -73,7 +73,7 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="mt-16 grid grid-cols-3 gap-6 border-t border-dark-border pt-10">
+            <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-3 border-t border-dark-border pt-10">
               {stats.map((stat) => (
                 <div key={stat.label}>
                   <div className="font-heading text-3xl font-extrabold text-accent sm:text-4xl">

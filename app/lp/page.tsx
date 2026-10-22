@@ -110,7 +110,7 @@ export default function LandingPage() {
               </a>
             </div>
 
-            <div className="mt-14 grid grid-cols-3 gap-6 border-t border-dark-border pt-10 ps-16 sm:ps-0">
+            <div className="mt-14 grid grid-cols-1 gap-6 border-t border-dark-border pt-10 sm:grid-cols-3">
               {stats.map((stat) => (
                 <div key={stat.label}>
                   <div className="font-heading text-2xl font-extrabold text-accent sm:text-3xl">{stat.value}</div>

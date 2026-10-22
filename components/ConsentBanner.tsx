@@ -54,7 +54,7 @@ export default function ConsentBanner() {
     <div
       role="dialog"
       aria-label="موافقة ملفات تعريف الارتباط"
-      className="fixed inset-x-3 bottom-3 z-50 mx-auto max-w-2xl rounded-2xl border border-border bg-surface p-5 shadow-xl"
+      className="fixed inset-x-3 bottom-3 z-[60] mx-auto max-w-2xl rounded-2xl border border-border bg-surface p-5 shadow-xl"
     >
       <p className="text-sm leading-7 text-foreground">
         نستخدم ملفات تعريف الارتباط (الكوكيز) لقياس زيارات الموقع وتحسين الإعلانات، ولا نفعّلها إلا بموافقتك. يمكنك تغيير اختيارك في أي وقت من أسفل الصفحة.{" "}
