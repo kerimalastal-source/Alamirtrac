@@ -42,7 +42,7 @@ export default function FloatingContactButtons() {
   );
 
   return (
-    <div className="fixed bottom-5 left-5 z-50 flex flex-col gap-3">
+    <div className="fixed bottom-4 left-4 z-50 flex flex-col gap-2.5">
       {visibleButtons.map(({ href, label, className, Icon }) => {
         const isExternal = href.startsWith("http");
         return (
@@ -53,9 +53,9 @@ export default function FloatingContactButtons() {
             rel={isExternal ? "noopener noreferrer" : undefined}
             aria-label={label}
             title={label}
-            className={`flex h-12 w-12 items-center justify-center rounded-full text-white shadow-lg ring-1 ring-black/5 transition-transform hover:scale-110 ${className}`}
+            className={`flex h-10 w-10 items-center justify-center rounded-full text-white shadow-lg ring-1 ring-black/5 transition-transform hover:scale-110 ${className}`}
           >
-            <Icon className="h-6 w-6" />
+            <Icon className="h-5 w-5" />
           </a>
         );
       })}
