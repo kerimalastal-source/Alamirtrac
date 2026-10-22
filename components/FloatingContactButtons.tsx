@@ -53,7 +53,7 @@ export default function FloatingContactButtons() {
             rel={isExternal ? "noopener noreferrer" : undefined}
             aria-label={label}
             title={label}
-            className={`flex h-10 w-10 items-center justify-center rounded-full text-white shadow-lg ring-1 ring-black/5 transition-transform hover:scale-110 ${className}`}
+            className={`flex h-10 w-10 items-center justify-center rounded-full text-white shadow-lg ring-1 ring-black/5 opacity-50 transition hover:scale-110 hover:opacity-100 ${className}`}
           >
             <Icon className="h-5 w-5" />
           </a>
