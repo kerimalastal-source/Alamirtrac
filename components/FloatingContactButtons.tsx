@@ -26,7 +26,7 @@ const buttons = [
   },
   {
     href: business.instagram,
-    label: "تابعنا على إنستغرام",
+    label: "تابعنا على إنستجرام",
     className: "bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] hover:opacity-90",
     Icon: InstagramIcon,
   },

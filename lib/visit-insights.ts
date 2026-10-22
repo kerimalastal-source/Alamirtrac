@@ -69,7 +69,7 @@ const OS_AR: Record<string, string> = {
 };
 const BROWSER_AR: Record<string, string> = {
   Chrome: 'كروم', Safari: 'سفاري', Firefox: 'فايرفوكس', Edge: 'إيدج', Opera: 'أوبرا', 'Samsung Internet': 'متصفح سامسونج',
-  Yandex: 'ياندكس', Instagram: 'إنستغرام', Facebook: 'فيسبوك', LinkedIn: 'لينكدإن', TikTok: 'تيك توك', Snapchat: 'سناب شات',
+  Yandex: 'ياندكس', Instagram: 'إنستجرام', Facebook: 'فيسبوك', LinkedIn: 'لينكدإن', TikTok: 'تيك توك', Snapchat: 'سناب شات',
 };
 
 export const osLabel = (os: string | null | undefined) => (os ? (OS_AR[os] ?? os) : null);

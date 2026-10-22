@@ -167,7 +167,7 @@ export function classifySource(touch: AdTouch | null | undefined, ownHost = 'ala
 
 const NETWORK_NAMES: Record<string, string> = {
   facebook: 'فيسبوك',
-  instagram: 'إنستغرام',
+  instagram: 'إنستجرام',
   messenger: 'ماسنجر',
   google: 'جوجل',
   bing: 'بينغ',

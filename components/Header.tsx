@@ -14,7 +14,7 @@ const socialLinks = [
   { href: business.facebook, label: "تابعنا على فيسبوك", Icon: FacebookIcon, className: "bg-[#1877F2] hover:bg-[#1465d1]" },
   {
     href: business.instagram,
-    label: "تابعنا على إنستغرام",
+    label: "تابعنا على إنستجرام",
     Icon: InstagramIcon,
     className: "bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] hover:opacity-90",
   },

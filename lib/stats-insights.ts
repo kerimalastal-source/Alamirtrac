@@ -105,7 +105,7 @@ export function buildInsights(stats: SiteStats): Insight[] {
   if (submitted > 0) out.push({ icon: '📝', text: submitted === 1 ? 'وصل طلب واحد عبر نموذج التواصل في هذه الفترة.' : `وصل ${submitted} طلبات عبر نموذج التواصل في هذه الفترة.`, tone: 'good' });
   if (clicked > 0) {
     const kind = top(stats.clicks.filter((x) => x.kind !== 'form'), (x) => x.clicks);
-    const names: Record<string, string> = { whatsapp: 'واتساب', phone: 'الاتصال الهاتفي', email: 'البريد الإلكتروني', facebook: 'فيسبوك', instagram: 'إنستغرام' };
+    const names: Record<string, string> = { whatsapp: 'واتساب', phone: 'الاتصال الهاتفي', email: 'البريد الإلكتروني', facebook: 'فيسبوك', instagram: 'إنستجرام' };
     out.push({ icon: '👆', text: `${clicked} ${clicked === 1 ? 'زائر نقر' : 'زائراً نقروا'} على وسيلة تواصل${kind ? `، وأكثرها ${names[kind.kind] ?? kind.kind}` : ''}.`, tone: 'good' });
   } else if (visits >= 20 && submitted === 0) {
     out.push({ icon: '💡', text: 'لم ينقر أحد على وسائل التواصل ولم يُرسل أحد نموذجاً رغم وجود زيارات؛ راجع وضوح أزرار الاتصال وواتساب.', tone: 'warn' });

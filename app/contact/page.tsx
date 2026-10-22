@@ -13,7 +13,7 @@ const socialButtons = [
   { href: business.facebook, label: "فيسبوك", Icon: FacebookIcon, className: "bg-[#1877F2] hover:bg-[#1465d1]" },
   {
     href: business.instagram,
-    label: "إنستغرام",
+    label: "إنستجرام",
     Icon: InstagramIcon,
     className: "bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] hover:opacity-90",
   },

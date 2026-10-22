@@ -14,7 +14,7 @@ const KIND_LABEL: Record<string, string> = {
   phone: "اتصال هاتفي",
   email: "بريد إلكتروني",
   facebook: "فيسبوك",
-  instagram: "إنستغرام",
+  instagram: "إنستجرام",
   form: "إرسال نموذج التواصل",
 };
 const DEVICE_LABEL: Record<string, string> = { mobile: "جوال", tablet: "جهاز لوحي", desktop: "حاسوب", "": "غير معروف" };
@@ -225,7 +225,7 @@ export default function Dashboard({ stats }: { stats: SiteStats }) {
         <Kpi label="مشاهدات الصفحات" value={fmt.format(stats.pageViews)} note={`بمعدل ${stats.engagement.avgPages.toFixed(1)} صفحة لكل زائر.`} delta={<Delta now={stats.pageViews} before={stats.previous.pageViews} />} />
         <Kpi label="متوسط مدة الزيارة" value={durationLabel(stats.engagement.avgSeconds)} note="كم يقضي الزائر في الموقع عادةً." />
         <Kpi label="نسبة المغادرة السريعة" value={`${Math.round(stats.engagement.bounceRate * 100)}%`} note="زوار غادروا بعد صفحة واحدة. كلما قلّت النسبة كان ذلك أفضل." />
-        <Kpi label="نقرات التواصل" value={fmt.format(stats.contactClicks)} note="واتساب واتصال وبريد وفيسبوك وإنستغرام." />
+        <Kpi label="نقرات التواصل" value={fmt.format(stats.contactClicks)} note="واتساب واتصال وبريد وفيسبوك وإنستجرام." />
         <Kpi label="طلبات من النموذج" value={fmt.format(stats.forms)} note={`نسبة التحويل ${pct(stats.forms, stats.visits)}% من الزوار.`} />
       </div>
 
