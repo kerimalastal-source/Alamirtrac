@@ -109,6 +109,12 @@ export default function Home() {
               بدأ عام 1997 بفتح مضخات وصمامات وأسطوانات الهيدروليك في الحفارات واللوادر والبلدوزرات. وأسّس
               «الأمير تراك» ليقدّم العمل الذي أتقنه بطريقته: تشخيص قبل الإصلاح، وكلام واضح في التكلفة قبل أي عمل.
             </p>
+            <Link
+              href="/about"
+              className="mt-6 inline-block rounded-md bg-accent px-6 py-3 font-bold text-accent-foreground transition-colors hover:bg-accent-strong"
+            >
+              اضغط للمزيد
+            </Link>
           </div>
         </div>
       </section>
