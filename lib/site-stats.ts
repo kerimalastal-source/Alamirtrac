@@ -60,6 +60,10 @@ export interface SiteStats {
   countries: { country: string; visits: number }[];
   cities: { country: string; city: string; visits: number }[];
   pages: { path: string; views: number; visitors: number }[];
+  /** Where visits begin: the first page of each visit, and how many of them left after that page alone. */
+  entryPages: { path: string; visits: number; bounced: number }[];
+  /** Where visits end: the last page of each visit, and how many ended without any contact click or form. */
+  exitPages: { path: string; visits: number; withoutContact: number }[];
   clicks: ClickRow[];
   clicksByPage: { path: string; kind: string; clicks: number }[];
   sources: SourceRow[];
@@ -192,7 +196,7 @@ export function toRecentVisit(r: Record<string, unknown>): RecentVisit {
 }
 
 export async function loadSiteStats(sql: Sql, days: StatRange): Promise<SiteStats> {
-  const [totals, daily, countries, cities, pages, sourceVisits, actionsBySource, clicks, clicksByPage, devices, browsers, recent, previous, online, engagement, hours, funnel] =
+  const [totals, daily, countries, cities, pages, entryPages, exitPages, sourceVisits, actionsBySource, clicks, clicksByPage, devices, browsers, recent, previous, online, engagement, hours, funnel] =
     await Promise.all([
       rows(sql`SELECT count(DISTINCT session_id)::int AS visits, count(*)::int AS views
         FROM visitor_events WHERE created_at >= now() - make_interval(days => ${days}) AND coalesce(webdriver, false) = false`),
@@ -209,6 +213,22 @@ export async function loadSiteStats(sql: Sql, days: StatRange): Promise<SiteStat
       rows(sql`SELECT path, count(*)::int AS views, count(DISTINCT session_id)::int AS visitors
         FROM visitor_events WHERE created_at >= now() - make_interval(days => ${days}) AND coalesce(webdriver, false) = false
         GROUP BY 1 ORDER BY 2 DESC LIMIT 20`),
+      rows(sql`SELECT path, count(*)::int AS visits, count(*) FILTER (WHERE pages = 1)::int AS bounced FROM (
+          SELECT DISTINCT ON (e.session_id) e.path,
+            (SELECT count(*) FROM visitor_events x WHERE x.session_id = e.session_id
+              AND x.created_at >= now() - make_interval(days => ${days})) AS pages
+          FROM visitor_events e
+          WHERE e.created_at >= now() - make_interval(days => ${days}) AND coalesce(e.webdriver, false) = false
+          ORDER BY e.session_id, e.created_at
+        ) s GROUP BY 1 ORDER BY 2 DESC LIMIT 15`),
+      rows(sql`SELECT path, count(*)::int AS visits, count(*) FILTER (WHERE NOT acted)::int AS without_contact FROM (
+          SELECT DISTINCT ON (e.session_id) e.path,
+            EXISTS (SELECT 1 FROM visitor_actions a WHERE a.session_id = e.session_id
+              AND a.created_at >= now() - make_interval(days => ${days})) AS acted
+          FROM visitor_events e
+          WHERE e.created_at >= now() - make_interval(days => ${days}) AND coalesce(e.webdriver, false) = false
+          ORDER BY e.session_id, e.created_at DESC
+        ) s GROUP BY 1 ORDER BY 2 DESC LIMIT 15`),
       // A session's source is set on its first event only.
       rows(sql`SELECT source, medium, campaign, count(*)::int AS n FROM (
           SELECT DISTINCT ON (session_id) session_id, source, medium, campaign FROM visitor_events
@@ -301,6 +321,8 @@ export async function loadSiteStats(sql: Sql, days: StatRange): Promise<SiteStat
     countries: countries.map((r) => ({ country: text(r.country) ?? '', visits: num(r.visits) })),
     cities: cities.map((r) => ({ country: text(r.country) ?? '', city: String(r.city), visits: num(r.visits) })),
     pages: pages.map((r) => ({ path: String(r.path), views: num(r.views), visitors: num(r.visitors) })),
+    entryPages: entryPages.map((r) => ({ path: String(r.path), visits: num(r.visits), bounced: num(r.bounced) })),
+    exitPages: exitPages.map((r) => ({ path: String(r.path), visits: num(r.visits), withoutContact: num(r.without_contact) })),
     clicks: clicks.map((r) => ({ kind: String(r.kind), clicks: num(r.clicks), visitors: num(r.visitors) })),
     clicksByPage: clicksByPage.map((r) => ({ path: String(r.path), kind: String(r.kind), clicks: num(r.clicks) })),
     sources,

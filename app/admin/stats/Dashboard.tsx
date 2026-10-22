@@ -386,6 +386,51 @@ export default function Dashboard({ stats }: { stats: SiteStats }) {
         </Section>
       </div>
 
+      {/* الدخول والخروج */}
+      <div className="grid gap-6 lg:grid-cols-2">
+        <Section title="الصفحات التي يدخل منها الزوار" hint="أول صفحة يفتحها كل زائر، وكم زائراً غادر بعدها دون أن يفتح صفحة ثانية.">
+          {stats.entryPages.length === 0 ? (
+            <Empty />
+          ) : (
+            <table className="w-full text-sm">
+              <thead>
+                <tr><th className={th}>الصفحة</th><th className={`${th} text-end`}>الزوار</th><th className={`${th} text-end`}>غادروا بعدها مباشرة</th></tr>
+              </thead>
+              <tbody>
+                {stats.entryPages.map((p) => (
+                  <tr key={p.path} className="border-t border-border">
+                    <td className={td}><a href={p.path} className="font-bold text-accent-strong hover:underline">{pageName(p.path)}</a></td>
+                    <td className={`${td} text-end`}>{p.visits}</td>
+                    <td className={`${td} text-end`}>{p.bounced}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </Section>
+
+        <Section title="الصفحات التي يغادرون منها" hint="آخر صفحة شاهدها كل زائر قبل أن يخرج، وكم منهم خرج دون أي نقرة تواصل أو إرسال نموذج.">
+          {stats.exitPages.length === 0 ? (
+            <Empty />
+          ) : (
+            <table className="w-full text-sm">
+              <thead>
+                <tr><th className={th}>الصفحة</th><th className={`${th} text-end`}>الزوار</th><th className={`${th} text-end`}>دون تواصل</th></tr>
+              </thead>
+              <tbody>
+                {stats.exitPages.map((p) => (
+                  <tr key={p.path} className="border-t border-border">
+                    <td className={td}><a href={p.path} className="font-bold text-accent-strong hover:underline">{pageName(p.path)}</a></td>
+                    <td className={`${td} text-end`}>{p.visits}</td>
+                    <td className={`${td} text-end`}>{p.withoutContact}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </Section>
+      </div>
+
       {/* المصادر */}
       <Section title="من أين جاء الزوار؟" hint="مصدر الدخول الأول لكل زائر: إعلان أو بحث أو منصة تواصل أو دخول مباشر.">
         {stats.sources.length === 0 ? (
