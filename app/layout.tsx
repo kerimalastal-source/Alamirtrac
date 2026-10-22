@@ -43,6 +43,8 @@ export const metadata: Metadata = {
     "الامير تراك",
   ],
   authors: [{ name: business.fullName, url: business.url }],
+  // توثيق نطاق alamirtrac.com في Meta Business Manager (يظهر في head كل صفحة، وصفحة الرئيسية خصوصاً).
+  other: { "facebook-domain-verification": "cgbxahsuua4mw6sye2l83cg6lf13b1" },
   robots: {
     index: true,
     follow: true,
