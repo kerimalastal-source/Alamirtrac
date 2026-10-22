@@ -6,7 +6,8 @@ import Image from "next/image";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import { business, services } from "@/lib/content";
-import { serviceIcons } from "@/components/Icons";
+import { serviceIcons, WhatsappIcon } from "@/components/Icons";
+import { whatsappLink } from "@/lib/whatsapp";
 
 export const metadata: Metadata = withSocial({
   title: "من نحن",
@@ -146,12 +147,23 @@ export default function AboutPage() {
               تواصل مع فريق {business.nameBrand} الآن لمراجعة حالة معدتك وتحديد الخدمة المناسبة.
             </p>
           </div>
-          <Link
-            href="/contact"
-            className="shrink-0 rounded-md bg-dark px-6 py-3 font-bold text-dark-foreground transition-colors hover:bg-dark-elevated"
-          >
-            تواصل معنا الآن
-          </Link>
+          <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
+            <a
+              href={whatsappLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 rounded-md bg-[#157a3f] px-6 py-3 font-bold text-white transition-colors hover:bg-[#106232]"
+            >
+              <WhatsappIcon className="h-5 w-5" />
+              اطلب صيانة الآن
+            </a>
+            <Link
+              href="/contact"
+              className="rounded-md bg-dark px-6 py-3 text-center font-bold text-dark-foreground transition-colors hover:bg-dark-elevated"
+            >
+              تواصل معنا الآن
+            </Link>
+          </div>
         </div>
       </section>
     </div>
