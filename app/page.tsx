@@ -150,6 +150,21 @@ export default function Home() {
               </li>
             ))}
           </ol>
+          <div className="mt-10 flex flex-wrap gap-4">
+            <a
+              href={`tel:${business.phone}`}
+              className="flex items-center gap-2 rounded-md border border-accent px-6 py-3 font-bold text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+            >
+              <PhoneCallIcon className="h-5 w-5" />
+              اتصل بنا
+            </a>
+            <Link
+              href="/contact"
+              className="rounded-md bg-accent px-6 py-3 font-bold text-accent-foreground transition-colors hover:bg-accent-strong"
+            >
+              اطلب صيانة
+            </Link>
+          </div>
         </div>
       </section>
 
